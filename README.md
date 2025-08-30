@@ -28,13 +28,6 @@ It helps villagers and administrators to connect, manage complaints, events, and
 1. Clone the repository:
    ```bash
    git clone https://github.com/Sandip-2006/panchyat.git
-   cd panchyat
-
-## ⚙️ Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/Sandip-2006/panchyat.git
    ```
 
 2. Create and activate virtual environment:
