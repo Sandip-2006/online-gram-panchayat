@@ -1,0 +1,156 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block title %}
+  Online Gram Panchayat
+{% endblock %}
+{% block content %}
+  <div class="slider-1 clearfix">
+    <div class="flex-container my-4">
+      <div class="flexslider loading">
+        <ul class="slides">
+          <li>
+            <!-- <div class="container"> -->
+            <div class="sixteen columns contain">
+              <img src="{% static 'images/1.jpg ' %}" class="item" data-topimage="16%" style="height:60vh;width:100%;object-fit:containcover" />
+            </div>
+            <!-- End Container -->
+          </li>
+          <!-- End item -->
+          <li>
+            <!-- <div class="container"> -->
+            <div class="sixteen columns contain">
+              <img src="{% static 'images/2.jpg ' %}" class="item" data-topimage="16%" style="height:60vh;width: 100%;object-fit: fill;" />
+            </div>
+            <!-- End Container -->
+          </li>
+          <!-- End item -->
+          <li>
+            <!-- <div class="container"> -->
+            <div class="sixteen columns contain">
+              <img src="{% static 'images/3.jpg' %}" class="item" data-topimage="16%" style="height:60vh;width: 100%;object-fit: fill;" />
+            </div>
+            <!-- End Container -->
+          </li>
+          <!-- End item -->
+          <li>
+            <!-- <div class="container"> -->
+            <div class="sixteen columns contain">
+              <img src="{% static 'images/4.jpg' %}" class="item" data-topimage="16%" style="height:60vh;width: 100%;object-fit: fill;" />
+            </div>
+            <!-- End Container -->
+          </li>
+          <!-- End item -->
+          <li>
+            <!-- <div class="container"> -->
+            <div class="sixteen columns contain">
+              <img src="{% static 'images/5.jpg' %}" class="item" data-topimage="16%" style="height:60vh;width: 100%;object-fit: fill;" />
+            </div>
+            <!-- End Container -->
+          </li>
+          <!-- End item -->
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- End slider -->
+
+  <div class="services style-1 home bottom-3">
+    <div class="container clearfix">
+      <div class="one-third column">
+        <div class="item">
+          <div class="circle" style="display: flex;justify-content: center;align-items: center;">
+            <a href="#"><i class="icon-home s-80 white"></i></a>
+          </div>
+          <h3><a href="#">Village Developmemt Projects</a></h3>
+        </div>
+      </div>
+      <!-- End item -->
+
+      <div class="one-third column">
+        <div class="item">
+          <div class="circle" style="display: flex;justify-content: center;align-items: center;">
+            <a href="#"><i class="icon-comment s080 white"></i></a>
+          </div>
+          <h3><a href="#">Grievance/Complaint</a></h3>
+        </div>
+      </div>
+      <!-- End item -->
+
+      <div class="one-third column">
+        <div class="item">
+          <div class="circle">
+            <a href="#"><i class="icon-money"></i></a>
+          </div>
+          <h3><a href="#">Retina Ready</a></h3>
+        </div>
+      </div>
+      <!-- End item -->
+    </div>
+    <!-- End Container -->
+  </div>
+  <!-- End services -->
+
+  <!-- Start main content -->
+  <div class="container main-content clearfix">
+    <div class="recent-work clearfix bottom-2">
+      <div class="slidewrap1">
+        <div class="sixteen columns">
+          <h3 class="title bottom-2">Recent Work</h3>
+        </div>
+
+        <ul class="slider" id="sliderName1">
+          <li class="slide">
+            <!-- item -->
+            <div class="one-third column item">
+              <a href="single_project_1.html">
+                <img src="{% static 'images/img/portfolio/thumb-1.jpg' %}" alt="" class="pic" />
+                <div class="img-caption">
+                  <div class="desc">
+                    <h3>Apple Creative</h3>
+                    <p>Illustration, 3d</p><span>+</span>
+                  </div>
+                </div>
+                <!-- hover effect -->
+              </a>
+            </div>
+            <!-- End -->
+
+            <!-- item -->
+            <div class="one-third column item">
+              <a href="single_project_1.html">
+                <img src="{% static 'images/img/portfolio/thumb-2.jpg' %}" alt="" class="pic" />
+                <div class="img-caption">
+                  <div class="desc">
+                    <h3>Apple Creative</h3>
+                    <p>Illustration, 3d</p><span>+</span>
+                  </div>
+                </div>
+                <!-- hover effect -->
+              </a>
+            </div>
+            <!-- End -->
+
+            <!-- item -->
+            <div class="one-third column item">
+              <a href="single_project_1.html">
+                <img src="{% static 'images/img/portfolio/thumb-3.jpg' %}" alt="" class="pic" />
+                <div class="img-caption">
+                  <div class="desc">
+                    <h3>Apple Creative</h3>
+                    <p>Illustration, 3d</p><span>+</span>
+                  </div>
+                </div>
+                <!-- hover effect -->
+              </a>
+            </div>
+            <!-- End -->
+          </li>
+          <!-- End slide -->
+        </ul>
+      </div>
+      <!-- End slidewrap -->
+    </div>
+    <!-- End recent-work -->
+  </div>
+  <!-- <<< End Container >>> -->
+{% endblock %}
