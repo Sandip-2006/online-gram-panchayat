@@ -2608,3 +2608,11 @@ body.under-construction footer .social {
 }
 
 /* navbar */
+
+
+
+header li a:hover,
+header li a.active {
+	background-color: #ff9800;
+	color: #ff0000;
+}
