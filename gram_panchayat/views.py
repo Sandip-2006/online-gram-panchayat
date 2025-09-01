@@ -8,5 +8,8 @@ def index(request):
 def complain(request):
     return render(request, "complain.html")
 
+def gallery(request):
+    return render(request, "gallery.html")
+
 def contact(request):
     return render(request, "contact.html")
