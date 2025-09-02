@@ -1,36 +1,16 @@
+{% extends 'layout.html' %}
+{% block title %}
+  Gallery
+{% endblock %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gallery - Online Gram Panchayat</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-gray-50 text-gray-800">
-  <!-- Header -->
-  <header class="bg-green-700 text-white shadow-md">
-    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-      <h1 class="text-xl font-bold">Online Gram Panchayat</h1>
-      <nav>
-        <ul class="flex gap-6 text-sm">
-          <li><a href="index.html" class="hover:text-yellow-300">Home</a></li>
-          <li><a href="gallery.html" class="text-yellow-300 font-semibold">Gallery</a></li>
-          <li><a href="complaint.html" class="hover:text-yellow-300">Complaint</a></li>
-          <li><a href="contact.html" class="hover:text-yellow-300">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <!-- Hero Section -->
-  <section class="bg-green-100 py-12 text-center">
-    <h2 class="text-3xl font-bold mb-2">Village Gallery</h2>
-    <p class="text-gray-600">Photos of Panchayat activities, schemes and events</p>
-  </section>
+{% block content %}
 
   <!-- Gallery Section -->
-  <main class="container mx-auto px-4 py-12">
+  <main class="container mx-auto px-4 py-12 ">
+    <div class="bg-slate-50-100 py-12 text-center ">
+      <h2 class="text-3xl font-bold mb-2">Village Gallery</h2>
+      <p class="text-gray-600">Photos of Panchayat activities, schemes and events</p>
+    </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
       <!-- Gallery Item -->
       <div class="bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden transform transition-transform hover:scale-105">
@@ -57,7 +37,7 @@
         </div>
       </div>
 
-      <div class="bg-white rounded-2xl shadow hover:shadow-lg transform transition-transform hover:scale-105 overflow-hidden transform transition-transform hover:scale-105">
+      <div class="bg-white rounded-2xl shadow hover:shadow-lg transform transition-transform hover:scale-105 overflow-hidden ">
         <img src="{% static 'images/3.jpg' %}" alt="Tree Plantation" class="w-full h-48 object-cover" />
         <div class="p-4">
           <h3 class="font-semibold">Tree Plantation</h3>
@@ -88,7 +68,7 @@
         </div>
       </div>
 
-      <div class="bg-white rounded-2xl shadow hover:shadow-lg transform transition-transform hover:scale-105 overflow-hidden transform transition-transform hover:scale-105">
+      <div class="bg-white rounded-2xl shadow hover:shadow-lg transform transition-transform hover:scale-105 overflow-hidden ">
         <img src="{% static 'images/3.jpg' %}" alt="Tree Plantation" class="w-full h-48 object-cover" />
         <div class="p-4">
           <h3 class="font-semibold">Tree Plantation</h3>
@@ -97,12 +77,4 @@
       </div>
     </div>
   </main>
-
-  <!-- Footer -->
-  <footer class="bg-green-700 text-white py-6 mt-12">
-    <div class="container mx-auto px-4 text-center">
-      <p>&copy; 2025 Online Gram Panchayat. All Rights Reserved.</p>
-    </div>
-  </footer>
-</body>
-</html>
+{% endblock %}

@@ -1,206 +1,253 @@
 {% extends 'layout.html' %}
 {% load static %}
+
 {% block title %}
-Online Gram Panchayat
+  Online Gram Panchayat
 {% endblock %}
+
 {% block content %}
-
-
-<div class="slider-1 clearfix">
-  <div class="flex-container my-4">
-    <div class="flexslider loading">
-      <ul class="slides">
-        <li>
-          <!-- <div class="container"> -->
-          <div class="sixteen columns contain">
-            <img src="{% static 'images/1.jpg ' %}" class="item" data-topimage="16%"
-              style="height:60vh;width:100%;object-fit:containcover" />
+  <!-- TAILWIND SLIDER (no external lib) -->
+  <section class="w-full select-none">
+    <div id="tp-slider" class="relative group">
+      <!-- Viewport -->
+      <div class="overflow-hidden">
+        <!-- Track -->  
+        <div class="flex transition-transform duration-500 ease-out" data-track>
+          <!-- Slides -->
+          <div class="min-w-full h-56 md:h-96 lg:h-[500px] xl:h-[600px]">
+            <img src="{% static 'images/1.jpg' %}" class="w-full h-full object-cover" alt="Slide 1" />
           </div>
-          <!-- End Container -->
-        </li>
-        <!-- End item -->
-        <li>
-          <!-- <div class="container"> -->
-          <div class="sixteen columns contain">
-            <img src="{% static 'images/2.jpg ' %}" class="item" data-topimage="16%"
-              style="height:60vh;width: 100%;object-fit: fill;" />
+          <div class="min-w-full h-56 md:h-96 lg:h-[500px] xl:h-[600px]">
+            <img src="{% static 'images/2.jpg' %}" class="w-full h-full object-cover" alt="Slide 2" />
           </div>
-          <!-- End Container -->
-        </li>
-        <!-- End item -->
-        <li>
-          <!-- <div class="container"> -->
-          <div class="sixteen columns contain">
-            <img src="{% static 'images/3.jpg' %}" class="item" data-topimage="16%"
-              style="height:60vh;width: 100%;object-fit: fill;" />
+          <div class="min-w-full h-56 md:h-96 lg:h-[500px] xl:h-[600px]">
+            <img src="{% static 'images/3.jpg' %}" class="w-full h-full object-cover" alt="Slide 3" />
           </div>
-          <!-- End Container -->
-        </li>
-        <!-- End item -->
-        <li>
-          <!-- <div class="container"> -->
-          <div class="sixteen columns contain">
-            <img src="{% static 'images/4.jpg' %}" class="item" data-topimage="16%"
-              style="height:60vh;width: 100%;object-fit: fill;" />
+          <div class="min-w-full h-56 md:h-96 lg:h-[500px] xl:h-[600px]">
+            <img src="{% static 'images/4.jpg' %}" class="w-full h-full object-cover" alt="Slide 4" />
           </div>
-          <!-- End Container -->
-        </li>
-        <!-- End item -->
-        <li>
-          <!-- <div class="container"> -->
-          <div class="sixteen columns contain">
-            <img src="{% static 'images/5.jpg' %}" class="item" data-topimage="16%"
-              style="height:60vh;width: 100%;object-fit: fill;" />
+          <div class="min-w-full h-56 md:h-96 lg:h-[500px] xl:h-[600px]">
+            <img src="{% static 'images/5.jpg' %}" class="w-full h-full object-cover" alt="Slide 5" />
           </div>
-          <!-- End Container -->
-        </li>
-        <!-- End item -->
-      </ul>
-    </div>
-  </div>
-</div>
-<!-- End slider -->
-
-<h2 align="center" style="margin-top: 3rem;  ">WEL COME TO FOJIVADA GRAM PANCHAYAT</h2>
-
-<div class="Wel-come-block" style="display: flex; width: 100%; height: 25rem;">
-  <div class="wel-come-block-SideLeft" style="width: 50%; display: flex;
-    align-items: center;
-    justify-content: end;">
-    <!-- <img align="center" style="width: 50vh; " src="{% static 'images/5.jpg' %}" alt=""> -->
-    <iframe
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7318.3911245800155!2d73.0668116953769!3d23.489464555196093!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395dc1f8ca48eddf%3A0x362739a758669d5!2sFojivada%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1756570427316!5m2!1sen!2sin"
-      width="70%" height="80%" style="border:0;" allowfullscreen="" loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"></iframe>
-  </div>
-  <div class="wel-come-SideRight" style="
-    margin-left: 10%;
-    width: 50%;
-    height: 25rem;
-    display: flex;
-    justify-content: center;
-    align-items: start;
-    flex-direction: column;">
-
-    <h4 align="start" style="    width: 60%;
-    display: flex;
-    align-items: center;
-    justify-content: end;">
-      Our Gram Panchayat is dedicated to building a stronger, smarter, and more connected village community.
-      We aim to bring governance closer to the people by making essential services and information available online.
-    </h4>
-    <a href="#" style="
-    height: 4%;
-    padding: 1%;
-    width: 10%;
-    border: 1px solid black;
-    border-radius: 7px;">Learn More...</a>
-  </div>
-</div>
-
-<div class="services style-1 home bottom-3">
-  <h2 style="text-align: center;margin-bottom: 10px;">Our Services</h2>
-  <div class="container clearfix">
-    <div class="one-third column">
-      <div class="item">
-        <div class="circle" style="display: flex;justify-content: center;align-items: center;">
-          <a href="#"><i class="icon-home s-80 white"></i></a>
         </div>
-        <h3><a href="#">Village Developmemt Projects</a></h3>
+      </div>
+
+      <!-- Prev / Next -->
+      <button type="button" class="absolute left-3 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition focus:opacity-100 inline-flex items-center justify-center h-10 w-10 rounded-full bg-white/80 shadow hover:bg-white" aria-label="Previous slide" data-prev>
+        <!-- left icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 19-7-7 7-7" />
+        </svg>
+      </button>
+
+      <button type="button" class="absolute right-3 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition focus:opacity-100 inline-flex items-center justify-center h-10 w-10 rounded-full bg-white/80 shadow hover:bg-white" aria-label="Next slide" data-next>
+        <!-- right icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 5 7 7-7 7" />
+        </svg>
+      </button>
+
+      <!-- Dots -->
+      <div class="absolute left-0 right-0 bottom-3 flex items-center justify-center gap-2" data-dots></div>
+    </div>
+  </section>
+
+  <div class="container">
+    <!-- Welcome Section -->
+    <h2 class="text-2xl md:text-3xl font-bold text-center mt-12">WELCOME TO FOJIVADA GRAM PANCHAYAT</h2>
+
+    <div class="flex flex-col md:flex-row items-center justify-between gap-8 mt-10 px-6 md:px-16">
+      <!-- Left Map -->
+      <div class="w-full md:w-1/2 flex justify-center">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7318.3911245800155!2d73.0668116953769!3d23.489464555196093!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395dc1f8ca48eddf%3A0x362739a758669d5!2sFojivada%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1756570427316!5m2!1sen!2sin" class="w-[90%] h-[300px] md:h-[400px] rounded-lg shadow-md" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+
+      <!-- Right Text -->
+      <div class="w-full md:w-1/2 flex flex-col space-y-6">
+        <p class="text-gray-700 leading-relaxed">Our Gram Panchayat is dedicated to building a stronger, smarter, and more connected village community. We aim to bring governance closer to the people by making essential services and information available online.</p>
+        <a href="#" class="px-4 py-2 w-fit border border-gray-700 rounded-lg text-gray-700 hover:bg-gray-700 hover:text-white transition duration-700">Learn More...</a>
       </div>
     </div>
-    <!-- End item -->
-
-    <div class="one-third column">
-      <div class="item">
-        <div class="circle" style="display: flex;justify-content: center;align-items: center;">
-          <a href="{% url "compalin" %}"><i class="icon-comment s080 white"></i></a>
-        </div>
-        <h3><a href="#">Grievance/Complaint</a></h3>
-      </div>
-    </div>
-    <!-- End item -->
-
-
-    <div class="one-third column">
-      <div class="item">
-        <div class="circle">
-          <a><svg xmlns="http://www.w3.org/2000/svg" style="margin-top: -10%" width="128" height="90"
-              fill="currentColor" class="bi bi-currency-rupee" viewBox="0 0 16 16">
-              <path
-                d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4z" />
-            </svg></a>
-        </div>
-        <h3><a href="#">pay Proprty Water Tax</a></h3>
-      </div>
-    </div>
-    <!--  -->
   </div>
-  <!-- End Container -->
-</div>
-<!-- End services -->
 
-<!-- Start main content -->
-<div class="container main-content clearfix">
-  <div class="recent-work clearfix bottom-2">
-    <div class="slidewrap1">
-      <div class="sixteen columns">
-        <h3 class="title bottom-2">Recent Work</h3>
+  <!-- Services Section -->
+  <div class="mt-16 px-6 md:px-16">
+    <h2 class="text-center text-2xl md:text-3xl font-bold mb-10">Our Services</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+      <!-- Service 1 -->
+      <div class="p-6 bg-white shadow-md rounded-xl hover:shadow-lg transition">
+        <div class="w-20 h-20 mx-auto flex items-center justify-center bg-blue-600 text-white rounded-full mb-4">
+          <i class="icon-home text-3xl"></i>
+        </div>
+        <h3 class="font-semibold"><a href="#">Village Development Projects</a></h3>
       </div>
 
-      <ul class="slider" id="sliderName1">
-        <li class="slide">
-          <!-- item -->
-          <div class="one-third column item ">
-            <a href="single_project_1.html">
-              <img src="{% static 'images/img/portfolio/thumb-1.jpg' %}" alt="" class="pic" />
-              <div class="img-caption">
-                <div class="desc">
-                  <h3>Apple Creative</h3>
-                  <p>Illustration, 3d</p><span>+</span>
-                </div>
-              </div>
-              <!-- hover effect -->
-            </a>
-          </div>
-          <!-- End -->
+      <!-- Service 2 -->
+      <div class="p-6 bg-white shadow-md rounded-xl hover:shadow-lg transition">
+        <div class="w-20 h-20 mx-auto flex items-center justify-center bg-green-600 text-white rounded-full mb-4">
+          <i class="icon-comment text-3xl"></i>
+        </div>
+        <h3 class="font-semibold"><a href="{% url 'complain' %}">Grievance / Complaint</a></h3>
+      </div>
 
-          <!-- item -->
-          <div class="one-third column item">
-            <a href="single_project_1.html">
-              <img src="{% static 'images/img/portfolio/thumb-2.jpg' %}" alt="" class="pic" />
-              <div class="img-caption">
-                <div class="desc">
-                  <h3>Apple Creative</h3>
-                  <p>Illustration, 3d</p><span>+</span>
-                </div>
-              </div>
-              <!-- hover effect -->
-            </a>
-          </div>
-          <!-- End -->
-
-          <!-- item -->
-          <div class="one-third column item">
-            <a href="single_project_1.html">
-              <img src="{% static 'images/img/portfolio/thumb-3.jpg' %}" alt="" class="pic" />
-              <div class="img-caption">
-                <div class="desc">
-                  <h3>Apple Creative</h3>
-                  <p>Illustration, 3d</p><span>+</span>
-                </div>
-              </div>
-              <!-- hover effect -->
-            </a>
-          </div>
-          <!-- End -->
-        </li>
-        <!-- End slide -->
-      </ul>
+      <!-- Service 3 -->
+      <div class="p-6 bg-white shadow-md rounded-xl hover:shadow-lg transition">
+        <div class="w-20 h-20 mx-auto flex items-center justify-center bg-yellow-600 text-white rounded-full mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4z" />
+          </svg>
+        </div>
+        <h3 class="font-semibold"><a href="#">Pay Property / Water Tax</a></h3>
+      </div>
     </div>
-    <!-- End slidewrap -->
   </div>
-  <!-- End recent-work -->
-</div>
-<!-- <<< End Container >>> -->
+
+  <!-- Recent Work -->
+  <div class="mt-16 px-6 md:px-16">
+    <h3 class="text-2xl font-bold mb-8">Recent Work</h3>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <!-- Work item -->
+      <div class="relative group overflow-hidden rounded-lg shadow-md">
+        <img src="{% static 'images/img/portfolio/thumb-1.jpg' %}" alt="" class="w-full h-64 object-cover group-hover:scale-105 transition-transform" />
+        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 flex items-center justify-center text-white transition">
+          <div>
+            <h3 class="text-lg font-semibold">Hey this is as</h3>
+            <p class="text-sm">Illustration, 3d</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="relative group overflow-hidden rounded-lg shadow-md">
+        <img src="{% static 'images/img/portfolio/thumb-2.jpg' %}" alt="" class="w-full h-64 object-cover group-hover:scale-105 transition-transform" />
+        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 flex items-center justify-center text-white transition">
+          <div>
+            <h3 class="text-lg font-semibold">Apple Creative</h3>
+            <p class="text-sm">Illustration, 3d</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="relative group overflow-hidden rounded-lg shadow-md">
+        <img src="{% static 'images/img/portfolio/thumb-3.jpg' %}" alt="" class="w-full h-64 object-cover group-hover:scale-105 transition-transform" />
+        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 flex items-center justify-center text-white transition">
+          <div>
+            <h3 class="text-lg font-semibold">Apple Creative</h3>
+            <p class="text-sm">Illustration, 3d</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    ;(() => {
+      const root = document.getElementById('tp-slider')
+      const track = root.querySelector('[data-track]')
+      const slides = Array.from(track.children)
+      const btnPrev = root.querySelector('[data-prev]')
+      const btnNext = root.querySelector('[data-next]')
+      const dotsWrap = root.querySelector('[data-dots]')
+    
+      let index = 0
+      let autoplayId = null
+      const interval = 4000 // 4s
+    
+      // Build dots
+      slides.forEach((_, i) => {
+        const b = document.createElement('button')
+        b.type = 'button'
+        b.className = 'h-2.5 w-2.5 rounded-full bg-white/60 hover:bg-white shadow ring-1 ring-black/10'
+        b.setAttribute('aria-label', `Go to slide ${i + 1}`)
+        b.addEventListener('click', () => goTo(i))
+        dotsWrap.appendChild(b)
+      })
+    
+      const dots = Array.from(dotsWrap.children)
+    
+      function updateUI() {
+        track.style.transform = `translateX(-${index * 100}%)`
+        dots.forEach((d, i) => {
+          d.classList.toggle('w-6', i === index)
+          d.classList.toggle('bg-white', i === index)
+          d.classList.toggle('bg-white/60', i !== index)
+        })
+      }
+    
+      function goTo(i) {
+        index = (i + slides.length) % slides.length
+        updateUI()
+      }
+    
+      function next() {
+        goTo(index + 1)
+      }
+      function prev() {
+        goTo(index - 1)
+      }
+    
+      // Buttons
+      btnNext.addEventListener('click', next)
+      btnPrev.addEventListener('click', prev)
+    
+      // Autoplay
+      function start() {
+        autoplayId = setInterval(next, interval)
+      }
+      function stop() {
+        clearInterval(autoplayId)
+        autoplayId = null
+      }
+    
+      root.addEventListener('mouseenter', stop)
+      root.addEventListener('mouseleave', () => {
+        if (!autoplayId) start()
+      })
+    
+      // Keyboard
+      root.setAttribute('tabindex', '0')
+      root.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') next()
+        if (e.key === 'ArrowLeft') prev()
+      })
+    
+      // Touch swipe
+      let startX = 0,
+        isTouch = false
+      track.addEventListener(
+        'touchstart',
+        (e) => {
+          isTouch = true
+          startX = e.touches[0].clientX
+          stop()
+        },
+        { passive: true }
+      )
+    
+      track.addEventListener(
+        'touchmove',
+        (e) => {
+          if (!isTouch) return
+          const dx = e.touches[0].clientX - startX
+          // optional: could implement drag preview; keeping simple
+        },
+        { passive: true }
+      )
+    
+      track.addEventListener('touchend', (e) => {
+        if (!isTouch) return
+        const endX = e.changedTouches[0].clientX
+        const dx = endX - startX
+        const threshold = 40 // px
+        if (dx > threshold) prev()
+        else if (dx < -threshold) next()
+        isTouch = false
+        start()
+      })
+    
+      // Init
+      updateUI()
+      start()
+    })()
+  </script>
 {% endblock %}

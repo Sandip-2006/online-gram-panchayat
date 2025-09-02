@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block title %} Our Sarpanch {% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-10">
+  <div class="max-w-4xl mx-auto bg-white shadow-lg rounded-2xl overflow-hidden">
+    
+    <!-- Header / Cover Image -->
+    <div class="h-40 bg-blue-600"></div>
+    
+    <!-- Profile Section -->
+    <div class="flex flex-col items-center -mt-20">
+      <img class="w-40 h-40 object-cover rounded-full border-4 border-white shadow-md"
+           src="{% static 'images/sarpanch.jpg' %}"
+           alt="Sarpanch Photo" />
+      <h2 class="mt-4 text-2xl font-bold text-gray-800">Mr. Ramlal Patel</h2>
+      <p class="text-blue-700 font-medium">Village Panchayat Sarpanch</p>
+    </div>
+
+    <!-- Info Section -->
+    <div class="px-6 py-6">
+      <h3 class="text-lg font-semibold text-gray-700 mb-2">Introduction</h3>
+      <p class="text-gray-600 leading-relaxed mb-6">
+        My vision is to ensure the development of our village through education, cleanliness, healthcare, and employment. 
+        Every issue of the Panchayat will be resolved in a transparent and fair manner.
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <div>
+          <h4 class="text-md font-semibold text-gray-700 mb-2">Contact Information</h4>
+          <ul class="text-gray-600 space-y-2">
+            <li><strong>Phone:</strong> +91 98765 43210</li>
+            <li><strong>Email:</strong> sarpanch@gram.in</li>
+            <li><strong>Address:</strong> Panchayat Bhavan, Main Road, Gujarat</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-md font-semibold text-gray-700 mb-2">Term & Development Plans</h4>
+          <ul class="list-disc pl-5 text-gray-600 space-y-2">
+            <li>Term: 2023 - 2028</li>
+            <li>Expansion of clean drinking water facilities</li>
+            <li>Improvement of village roads and street lights</li>
+            <li>Women empowerment and employment schemes</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

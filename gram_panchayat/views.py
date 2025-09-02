@@ -11,5 +11,8 @@ def complain(request):
 def gallery(request):
     return render(request, "gallery.html")
 
+def sarpanch(request):
+    return render(request, "sarpanch.html")
+
 def contact(request):
     return render(request, "contact.html")
