@@ -14,5 +14,8 @@ def gallery(request):
 def sarpanch(request):
     return render(request, "sarpanch.html")
 
+def event(request):
+    return render(request, "event.html")
+
 def contact(request):
     return render(request, "contact.html")

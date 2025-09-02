@@ -1,0 +1,68 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}Events - Gram Panchayat{% endblock %}
+
+{% block content %}
+<section class="bg-gray-50 py-12">
+  <div class="container mx-auto px-6">
+    <!-- Page Header -->
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+        Events
+      </h2>
+      <p class="text-gray-600 max-w-2xl mx-auto">
+        Stay updated with the latest programs, meetings, and cultural events organized by our Gram Panchayat.
+      </p>
+    </div>
+
+    <!-- Event Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Event Card -->
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl hover:scale-105 transition">
+        <img src="{% static 'images/event1.jpg' %}" alt="Event 1" class="w-full h-56 object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">Village Cleanliness Drive</h3>
+          <p class="text-gray-600 text-sm mb-4">
+            Join us in making our village clean and green. Let's come together for a healthy tomorrow.
+          </p>
+          <div class="flex items-center justify-between text-sm text-gray-500">
+            <span>📅 10 Sept 2025</span>
+            <span>📍 Gram Panchayat Bhavan</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Event Card -->
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl hover:scale-105 transition">
+        <img src="{% static 'images/event2.jpg' %}" alt="Event 2" class="w-full h-56 object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">Health Check-up Camp</h3>
+          <p class="text-gray-600 text-sm mb-4">
+            Free medical check-ups for villagers. Doctors from district hospital will be present.
+          </p>
+          <div class="flex items-center justify-between text-sm text-gray-500">
+            <span>📅 18 Sept 2025</span>
+            <span>📍 Primary School Ground</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Event Card -->
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl hover:scale-105 transition">
+        <img src="{% static 'images/event3.jpg' %}" alt="Event 3" class="w-full h-56 object-cover">
+        <div class="p-6">
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">Cultural Festival</h3>
+          <p class="text-gray-600 text-sm mb-4">
+            Celebrate local culture with music, dance, and food. Everyone is invited to participate!
+          </p>
+          <div class="flex items-center justify-between text-sm text-gray-500">
+            <span>📅 25 Sept 2025</span>
+            <span>📍 Community Hall</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
