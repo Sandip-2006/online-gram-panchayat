@@ -9,4 +9,5 @@ urlpatterns = [
     path('gallery/',views.gallery,name="gallery"),
     path('sarpanch/',views.sarpanch,name="sarpanch"),
     path('event/',views.event,name="event"),
+    path('<str:page_type>/',views.staff_member,name="staff_member"),
 ]

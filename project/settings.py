@@ -127,7 +127,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
-     BASE_DIR / "gram_panchayat" / "static"   # <-- ye zaroor hona chahiye
+     BASE_DIR / "gram_panchayat" / "static"  
 ]
 
 MEDIA_URL = '/media/'

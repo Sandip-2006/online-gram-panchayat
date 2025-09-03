@@ -19,3 +19,19 @@ def event(request):
 
 def contact(request):
     return render(request, "contact.html")
+
+def staff_member(request, page_type):
+    if page_type == "staff":
+        context={"title": "OUR PANCHAYAT STAFF", "person": [
+            {"name": "Suthar Gunvant lal", "position": "Sarpanch", "contact": "1234567890", "image": "images/member.png"},
+            {"name": "Jane Smith", "position": "Panchayat Member", "contact": "0987654321", "image": "images/download.jpg"},
+        ]}
+    elif page_type == "member":
+        context={"title": "OUR PANCHAYAT MEMBERS", "person": [
+            {"name": "Alice Brown", "position": "Member", "contact": "1122334455", "image": "images/images.jpg"},
+            {"name": "Bob White", "position": "Member", "contact": "2233445566", "image": "images/panch.jpg"},
+        ]}
+    else:
+        context = {"title": "home", "description": "Welcome to the Panchayat"}
+    return render(request, "staff_member.html", context)
+        

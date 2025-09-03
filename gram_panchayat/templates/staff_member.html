@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}
+    <title>{{ title }}</title>
+    {% endblock title %}
+</head>
+
+<body>
+    {% block content %}
+    <h1 class="text-black my-10 underline text-center text-3xl font-bold">{{ title }}</h1>
+
+    <div class="container text-black m-auto flex gap-15 flex-wrap">
+        {% for p in person %}
+        <div class="person border p-4 rounded-lg w-50 ">
+            <img src="{% static p.image %}" alt="{{p.name}}"
+                class="w-32 h-32 object-cover rounded-full m-auto my-2 mb-2 bg-gray-200">
+
+            <h2><b>Name:</b> {{p.name}}</h2>
+            <p><b>position:</b> {{p.position}}</p>
+            <p><b>Contact:</b> {{p.contact}}</p>
+        </div>
+        {% endfor %}
+    </div>
+
+    {% endblock content %}
+</body>
+
+</html>
