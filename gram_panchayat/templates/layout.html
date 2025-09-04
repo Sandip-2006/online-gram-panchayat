@@ -75,6 +75,9 @@
                   <li>
                     <a href="{% url 'event' %}" class="block px-4 py-2 hover:bg-gray-100">Events</a>
                   </li>
+                  <li>
+                    <a href="{% url 'celebrity' %}" class="block px-4 py-2 hover:bg-gray-100">Celebrity</a>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -82,6 +85,7 @@
             {% comment %} <a href="{% url 'gallery' %}" class="text-gray-700 hover:text-blue-600">Gallery</a> {% endcomment %}
             <a href="{% url 'sarpanch' %}" class="text-gray-700 hover:text-blue-600">Sarpanch</a>
             <a href="{% url "complain" %}" class="text-gray-700 hover:text-blue-600">Complaint</a>
+            <a href="{% url "gramsabha" %}" class="text-gray-700 hover:text-blue-600">Gramsabha</a>
             <a href="{% url "contact" %}" class="text-gray-700 hover:text-blue-600">Contact</a>
             <a href="{% url 'staff_member' 'staff' %}" class="text-gray-700 hover:text-blue-600">Staff</a>
             <a href="{% url 'staff_member' 'member' %}" class="text-gray-700 hover:text-blue-600">Members</a>
@@ -120,12 +124,7 @@
         </div>
       </header>
 
-      <script>
-        // Mobile menu toggle
-        document.getElementById('menu-btn').addEventListener('click', () => {
-          document.getElementById('menu').classList.toggle('hidden')
-        })
-      </script>
+      
 
       {% block content %}
 
@@ -190,5 +189,11 @@
         menu.classList.toggle('hidden')
       })
     </script>
+    {% comment %} <script>
+        // Mobile menu toggle
+        document.getElementById('menu-btn').addEventListener('click', () => {
+          document.getElementById('menu').classList.toggle('hidden')
+        })
+      </script> {% endcomment %}
   </body>
 </html>

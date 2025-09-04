@@ -1779,6 +1779,9 @@
   .mt-4 {
     margin-top: calc(var(--spacing) * 4);
   }
+  .mt-6 {
+    margin-top: calc(var(--spacing) * 6);
+  }
   .mt-10 {
     margin-top: calc(var(--spacing) * 10);
   }
@@ -2158,6 +2161,9 @@
   .min-w-full {
     min-width: 100%;
   }
+  .border-collapse {
+    border-collapse: collapse;
+  }
   .-translate-y-1\/2 {
     --tw-translate-y: calc(calc(1/2 * 100%) * -1);
     translate: var(--tw-translate-x) var(--tw-translate-y);
@@ -2191,6 +2197,9 @@
   }
   .resize-y {
     resize: vertical;
+  }
+  .list-inside {
+    list-style-position: inside;
   }
   .list-disc {
     list-style-type: disc;
@@ -2238,6 +2247,11 @@
     --tw-space-y-reverse: 0;
     margin-block-start: calc(calc(var(--spacing) * 2) * var(--tw-space-y-reverse));
     margin-block-end: calc(calc(var(--spacing) * 2) * calc(1 - var(--tw-space-y-reverse)));
+  }
+  :where(.space-y-4 > :not(:last-child)) {
+    --tw-space-y-reverse: 0;
+    margin-block-start: calc(calc(var(--spacing) * 4) * var(--tw-space-y-reverse));
+    margin-block-end: calc(calc(var(--spacing) * 4) * calc(1 - var(--tw-space-y-reverse)));
   }
   :where(.space-y-6 > :not(:last-child)) {
     --tw-space-y-reverse: 0;
@@ -2306,6 +2320,10 @@
     border-top-style: var(--tw-border-style);
     border-top-width: 1px;
   }
+  .border-b {
+    border-bottom-style: var(--tw-border-style);
+    border-bottom-width: 1px;
+  }
   .alert-info {
     border-color: var(--color-info);
     color: var(--color-info-content);
@@ -2333,6 +2351,9 @@
   }
   .bg-blue-600 {
     background-color: var(--color-blue-600);
+  }
+  .bg-blue-700 {
+    background-color: var(--color-blue-700);
   }
   .bg-gray-50 {
     background-color: var(--color-gray-50);
@@ -2379,6 +2400,9 @@
   }
   .object-fill {
     object-fit: fill;
+  }
+  .p-3 {
+    padding: calc(var(--spacing) * 3);
   }
   .p-4 {
     padding: calc(var(--spacing) * 4);
@@ -2430,6 +2454,9 @@
   }
   .text-center {
     text-align: center;
+  }
+  .text-left {
+    text-align: left;
   }
   .font-sans {
     font-family: var(--font-sans);
@@ -2524,6 +2551,9 @@
   }
   .text-gray-900 {
     color: var(--color-gray-900);
+  }
+  .text-green-700 {
+    color: var(--color-green-700);
   }
   .text-indigo-500 {
     color: var(--color-indigo-500);
@@ -2645,6 +2675,9 @@
     border-style: var(--tw-border-style);
     border-width: 0px;
   }
+  .file\:bg-blue-600::file-selector-button {
+    background-color: var(--color-blue-600);
+  }
   .file\:bg-green-600::file-selector-button {
     background-color: var(--color-green-600);
   }
@@ -2674,6 +2707,11 @@
   @media (hover: hover) {
     .hover\:bg-blue-700:hover {
       background-color: var(--color-blue-700);
+    }
+  }
+  @media (hover: hover) {
+    .hover\:bg-gray-50:hover {
+      background-color: var(--color-gray-50);
     }
   }
   @media (hover: hover) {
@@ -2730,12 +2768,21 @@
     }
   }
   @media (hover: hover) {
+    .hover\:file\:bg-blue-700:hover::file-selector-button {
+      background-color: var(--color-blue-700);
+    }
+  }
+  @media (hover: hover) {
     .hover\:file\:bg-green-700:hover::file-selector-button {
       background-color: var(--color-green-700);
     }
   }
   .focus\:opacity-100:focus {
     opacity: 100%;
+  }
+  .focus\:ring-1:focus {
+    --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
   .focus\:ring-2:focus {
     --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);

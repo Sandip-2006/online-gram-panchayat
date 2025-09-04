@@ -43,7 +43,6 @@ def staff_member(request, page_type):
     else:
         context = {"title": "404 NOT FOUND SANDIP RATHOD :)", "description": "Welcome to the Panchayat"}
     return render(request, "staff_member.html", context)
-        
 def history(request):
     return render(request,'history.html')
 
