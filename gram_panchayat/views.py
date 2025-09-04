@@ -48,3 +48,12 @@ def history(request):
 
 def devlopment(request):
     return render(request,'devlopment.html')
+
+def celebrity(request):
+    return render(request,'celebrity.html')
+
+def gramsabha(request):
+    return render(request,'gramsabha.html')
+
+def celebrity_detail(request):
+    return render(request,'celebrity_detail.html')
