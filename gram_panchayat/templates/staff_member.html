@@ -15,7 +15,7 @@
     {% block content %}
     <h1 class="text-black my-10 underline text-center text-3xl font-bold">{{ title }}</h1>
 
-    <div class="container text-black m-auto flex gap-15 flex-wrap">
+    <div class="container text-black m-auto flex justify-center gap-15 flex-wrap">
         {% for p in person %}
         <div class="person border p-4 rounded-lg w-50 ">
             <img src="{% static p.image %}" alt="{{p.name}}"

@@ -35,3 +35,16 @@ def staff_member(request, page_type):
         context = {"title": "home", "description": "Welcome to the Panchayat"}
     return render(request, "staff_member.html", context)
         
+
+def celebrity(request):
+    return render(request,"celebrity.html")
+
+def celebrity_detail(request):
+    return render(request,"celebrity_detail.html")
+
+def gramsabhaView(request):
+    return render(request,"gramsabha.html")
+
+
+def schemeView(request):
+    return render(request,"scheme.html")
