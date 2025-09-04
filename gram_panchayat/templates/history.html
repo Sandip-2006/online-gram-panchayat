@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block content %}
+<!-- History Section -->
+<section class="bg-white text-gray-800 py-16 px-6">
+    <div class="container mx-auto max-w-6xl">
+        <!-- Section Heading -->
+        <div class="text-center mb-16">
+            <h4 class="text-indigo-500 font-semibold uppercase tracking-wide">Our Journey</h4>
+            <h1 class="text-3xl md:text-5xl font-bold text-gray-900 mt-2">
+                A Glimpse Into Our History
+            </h1>
+            <p class="mt-4 text-gray-600 max-w-2xl mx-auto">
+                From humble beginnings to where we stand today — our history is a story of dedication, growth, and a passion for excellence.
+            </p>
+        </div>
+
+        <!-- Timeline Items -->
+        <div class="space-y-20">
+            <!-- Item 1 -->
+            <div class="grid gap-12 md:grid-cols-2 items-center">
+                <div class="flex justify-center">
+                    <img src="{% static 'images/9093693731_c0002b961d_k.jpg' %}" alt="The Beginning"
+                        class="rounded-2xl shadow-lg w-full max-w-md object-cover transform hover:scale-105 transition duration-500">
+                </div>
+                <div>
+                    <span class="text-indigo-500 font-medium text-sm uppercase">2000</span>
+                    <h2 class="text-2xl font-semibold mt-2 mb-4">The Beginning</h2>
+                    <p class="text-gray-600 leading-relaxed">
+                        Our journey started with a vision to bring innovation and creativity to life. 
+                        This was the foundation that shaped everything we are today.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="grid gap-12 md:grid-cols-2 items-center">
+                <div class="flex justify-center md:order-2">
+                    <img src="{% static 'images/iStock_000029446484_Full.webp' %}" alt="Growth & Expansion"
+                        class="rounded-2xl shadow-lg w-full max-w-md object-cover transform hover:scale-105 transition duration-500">
+                </div>
+                <div class="md:order-1">
+                    <span class="text-indigo-500 font-medium text-sm uppercase">2010</span>
+                    <h2 class="text-2xl font-semibold mt-2 mb-4">Growth & Expansion</h2>
+                    <p class="text-gray-600 leading-relaxed">
+                        Over the years, we expanded our reach, building trust and delivering quality. 
+                        Every milestone reflects our dedication and hard work.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="grid gap-12 md:grid-cols-2 items-center">
+                <div class="flex justify-center">
+                    <img src="{% static 'images/Tracing-and-Excavating-at-Kach-Kouch.jpg' %}" alt="Today"
+                        class="rounded-2xl shadow-lg w-full max-w-md object-cover transform hover:scale-105 transition duration-500">
+                </div>
+                <div>
+                    <span class="text-indigo-500 font-medium text-sm uppercase">Today</span>
+                    <h2 class="text-2xl font-semibold mt-2 mb-4">Shaping the Future</h2>
+                    <p class="text-gray-600 leading-relaxed">
+                        Today, we continue to innovate and inspire. 
+                        Our story is not just about the past but about shaping a better future.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

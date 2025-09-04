@@ -15,7 +15,7 @@
     <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" />
   </head>
 
-  <body class="bg-gray-50">
+  <body class="bg-gray-50 text-black">
     <div id="wrap" class="boxed">
       <!-- Header -->
       <header class="bg-white shadow-md w-full z-50 top-0">
@@ -85,6 +85,8 @@
             <a href="{% url "contact" %}" class="text-gray-700 hover:text-blue-600">Contact</a>
             <a href="{% url 'staff_member' 'staff' %}" class="text-gray-700 hover:text-blue-600">Staff</a>
             <a href="{% url 'staff_member' 'member' %}" class="text-gray-700 hover:text-blue-600">Members</a>
+            <a href="{% url "history" %}" class="text-gray-700 hover:text-blue-600">History</a>
+            <a href="{% url "development" %}" class="text-gray-700 hover:text-blue-600">Development</a>
 
             <a href="#" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Login</a>
           </nav>

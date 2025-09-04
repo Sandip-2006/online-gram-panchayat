@@ -9,5 +9,7 @@ urlpatterns = [
     path('gallery/',views.gallery,name="gallery"),
     path('sarpanch/',views.sarpanch,name="sarpanch"),
     path('event/',views.event,name="event"),
+    path('history/',views.history,name="history"),
+    path('devlopment/',views.devlopment,name="development"),
     path('<str:page_type>/',views.staff_member,name="staff_member"),
 ]
