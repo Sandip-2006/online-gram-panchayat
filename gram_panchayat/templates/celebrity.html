@@ -7,19 +7,21 @@
   <h2 class="text-3xl font-bold text-center mb-10">🌟 Gram Panchayat Celebrities</h2>
   <div class="grid md:grid-cols-3 gap-8">
     <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
-      <img src="assets/img/celebrity1.jpg" alt="Celebrity" class="w-full h-48 object-cover">
+      <img src="{% static 'images/celebrity.png' %}" alt="Celebrity" class="w-full h-48 object-cover">
       <div class="p-6">
         <h3 class="text-xl font-semibold">Shri Ramesh Patel</h3>
         <p class="text-gray-600 mt-2">Social Reformer & Freedom Fighter</p>
-        <a href="{% url "celebrity_detail" %}" class="mt-4 inline-block text-blue-700 font-semibold hover:underline">View Details →</a>
+        <a href="{% url 'celebrity_detail' %}"
+          class="mt-4 inline-block text-blue-700 font-semibold hover:underline">View Details →</a>
       </div>
     </div>
     <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
-      <img src="assets/img/celebrity2.jpg" alt="Celebrity" class="w-full h-48 object-cover">
+      <img src="{% static 'images/celebrity2.png' %}" alt="Celebrity" class="w-full h-48 object-cover">
       <div class="p-6">
         <h3 class="text-xl font-semibold">Smt. Meena Sharma</h3>
         <p class="text-gray-600 mt-2">National Awarded Teacher</p>
-        <a href="{% url "celebrity_detail" %}" class="mt-4 inline-block text-blue-700 font-semibold hover:underline">View Details →</a>
+        <a href="{% url 'celebrity_detail' %}"
+          class="mt-4 inline-block text-blue-700 font-semibold hover:underline">View Details →</a>
       </div>
     </div>
   </div>
