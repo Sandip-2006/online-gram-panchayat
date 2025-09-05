@@ -8,7 +8,7 @@
 
     {% tailwind_css %}
 
-    <!-- Flowbite (for carousel / dropdowns) -->
+    <!-- Flowbite (for dropdowns, carousel etc.) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 
     <!-- Favicon -->
@@ -16,184 +16,169 @@
   </head>
 
   <body class="bg-gray-50 text-black">
-    <div id="wrap" class="boxed">
-      <!-- Header -->
-      <header class="bg-white shadow-md w-full z-50 top-0">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-          <!-- Logo -->
-          <a href="{% url 'home' %}" class="flex items-center space-x-2">
-            <img src="{% static 'images/1.jpg' %}" alt="Logo" class="h-10 w-10 rounded-full object-fill" />
-            <span class="text-xl font-bold text-gray-800">Gram Panchayat</span>
-          </a>
+    <!-- Navbar -->
+    <header class="bg-white shadow-md fixed top-0 left-0 w-full z-50">
+      <nav class="container mx-auto flex items-center justify-between px-6 py-3">
+        <!-- Logo -->
+        <a href="{% url 'home' %}" class="flex items-center space-x-2">
+          <img src="{% static 'images/1.jpg' %}" alt="Logo" class="h-10 w-10 rounded-full object-fill" />
+          <span class="text-xl font-bold text-gray-800">Gram Panchayat</span>
+        </a>
 
-          <!-- Navigation -->
-          <!-- Navigation -->
-          <nav class="hidden md:flex space-x-8 items-center">
-            <a href="{% url 'home' %}" class="text-gray-700 hover:text-blue-600">Home</a>
-            <a href="#" class="text-gray-700 hover:text-blue-600">About</a>
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center space-x-6">
+          <a href="{% url 'home' %}" class="text-gray-700 hover:text-blue-600">Home</a>
+          <a href="#" class="text-gray-700 hover:text-blue-600">About</a>
 
-            <!-- Dropdown (Schemes/Services) -->
-            <div class="relative">
-              <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center text-gray-700 hover:text-blue-600">
-                Schemes<svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-              
-              <!-- Dropdown menu -->
-              <div id="dropdownNavbar" class="z-50 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
-                <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownNavbarLink">
-                  <li>
-                    <a href="#" class="block px-4 py-2 hover:bg-gray-100">Water Supply</a>
-                  </li>
-                  <li>
-                    <a href="#" class="block px-4 py-2 hover:bg-gray-100">Sanitation</a>
-                  </li>
-                  <li>
-                    <a href="#" class="block px-4 py-2 hover:bg-gray-100">Employment</a>
-                  </li>
-                  <li>
-                    <a href="#" class="block px-4 py-2 hover:bg-gray-100">Education</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="relative">
-              <button id="dropdownMediaLink" data-dropdown-toggle="dropdownMedia" class="flex items-center text-gray-700 hover:text-blue-600">
-                Media<svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-              
-              <!-- Dropdown menu -->
-              <div id="dropdownMedia" class="z-50 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
-                <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownMediaLink">
-                  <li>
-                    <a href="{% url 'gallery' %}" class="block px-4 py-2 hover:bg-gray-100">Gallery</a>
-                  </li>
-                  <li>
-                    <a href="{% url 'event' %}" class="block px-4 py-2 hover:bg-gray-100">Events</a>
-                  </li>
-                  <li>
-                    <a href="{% url 'celebrity' %}" class="block px-4 py-2 hover:bg-gray-100">Celebrity</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            {% comment %} <a href="{% url 'gallery' %}" class="text-gray-700 hover:text-blue-600">Gallery</a> {% endcomment %}
-            <a href="{% url 'sarpanch' %}" class="text-gray-700 hover:text-blue-600">Sarpanch</a>
-            <a href="{% url "complain" %}" class="text-gray-700 hover:text-blue-600">Complaint</a>
-            <a href="{% url "gramsabha" %}" class="text-gray-700 hover:text-blue-600">Gramsabha</a>
-            <a href="{% url "contact" %}" class="text-gray-700 hover:text-blue-600">Contact</a>
-            <a href="{% url 'staff_member' 'staff' %}" class="text-gray-700 hover:text-blue-600">Staff</a>
-            <a href="{% url 'staff_member' 'member' %}" class="text-gray-700 hover:text-blue-600">Members</a>
-            <a href="{% url "history" %}" class="text-gray-700 hover:text-blue-600">History</a>
-            <a href="{% url "development" %}" class="text-gray-700 hover:text-blue-600">Development</a>
-
-            <a href="#" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Login</a>
-          </nav>
-
-          <!-- Mobile Menu Button -->
-          <button id="menu-btn" class="md:hidden text-gray-700 focus:outline-none">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
-        </div>
-
-        <!-- Mobile Menu -->
-        <div id="menu" class="hidden md:hidden bg-gray-100 px-6 py-4 space-y-2">
-          <a href="{% url 'home' %}" class="block text-gray-700 hover:text-blue-600">Home</a>
-          <a href="#" class="block text-gray-700 hover:text-blue-600">About</a>
-
-          <!-- Dropdown in mobile -->
-          <div class="border-t pt-2">
-            <p class="font-semibold text-gray-700">Schemes</p>
-            <a href="#" class="block text-sm pl-4 text-gray-600 hover:text-blue-600">Water Supply</a>
-            <a href="#" class="block text-sm pl-4 text-gray-600 hover:text-blue-600">Sanitation</a>
-            <a href="#" class="block text-sm pl-4 text-gray-600 hover:text-blue-600">Employment</a>
-            <a href="#" class="block text-sm pl-4 text-gray-600 hover:text-blue-600">Education</a>
-          </div>
-
-          <a href="{% url 'gallery' %}" class="block text-gray-700 hover:text-blue-600">Gallery</a>
-          <a href="#" class="block text-gray-700 hover:text-blue-600">Complaint</a>
-          <a href="#" class="block text-gray-700 hover:text-blue-600">Contact</a>
-          <a href="#" class="block bg-blue-600 text-white px-4 py-2 rounded-lg text-center hover:bg-blue-700">Login</a>
-        </div>
-      </header>
-
-      
-
-      {% block content %}
-
-      {% endblock %}
-
-      <!-- Footer -->
-      <footer class="bg-gray-900 text-gray-300 mt-16">
-        <div class="container mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
-          <!-- About -->
-          <div>
-            <h3 class="text-lg font-semibold text-white mb-4">About Us</h3>
-            <p class="text-sm">Our Gram Panchayat works for village development, welfare, and transparent governance.</p>
-          </div>
-
-          <!-- Quick Links -->
-          <div>
-            <h3 class="text-lg font-semibold text-white mb-4">Quick Links</h3>
-            <ul class="space-y-2">
-              <li>
-                <a href="{% url 'home' %}" class="hover:text-white hover:underline">Home</a>
-              </li>
-              <li>
-                <a href="{% url 'gallery' %}" class="hover:text-white hover:underline">Gallery</a>
-              </li>
-              <li>
-                <a href="{% url 'sarpanch' %}" class="hover:text-white hover:underline">Sarpanch</a>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Contact -->
-          <div>
-            <h3 class="text-lg font-semibold text-white mb-4">Contact</h3>
-            <ul class="space-y-2 text-sm">
-              <li>📍 Fojivada, Sabarkantha, Gujarat</li>
-              <li>📞 +91 98 56 23 1245</li>
-              <li>📧 fojivada@gmail.com</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Bottom -->
-        <div class="bg-gray-800 py-4">
-          <div class="container mx-auto px-6 flex justify-between items-center">
-            <p class="text-sm">© 2025 Gram Panchayat. All Rights Reserved.</p>
-            <div class="flex space-x-4">
-              <a href="#" class="hover:text-white">🌐</a>
-              <a href="#" class="hover:text-white">📘</a>
-              <a href="#" class="hover:text-white">▶️</a>
+          <!-- Schemes Dropdown -->
+          <div class="relative">
+            <button id="dropdownSchemesBtn" data-dropdown-toggle="dropdownSchemes" class="flex items-center text-gray-700 hover:text-blue-600">
+              Schemes
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div id="dropdownSchemes" class="hidden z-50 bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+              <ul class="py-2 text-sm text-gray-700">
+                <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Water Supply</a></li>
+                <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Sanitation</a></li>
+                <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Employment</a></li>
+                <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Education</a></li>
+              </ul>
             </div>
           </div>
+
+          <!-- Media Dropdown -->
+          <div class="relative">
+            <button id="dropdownMediaBtn" data-dropdown-toggle="dropdownMedia" class="flex items-center text-gray-700 hover:text-blue-600">
+              Media
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div id="dropdownMedia" class="hidden z-50 bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+              <ul class="py-2 text-sm text-gray-700">
+                <li><a href="{% url 'gallery' %}" class="block px-4 py-2 hover:bg-gray-100">Gallery</a></li>
+                <li><a href="{% url 'event' %}" class="block px-4 py-2 hover:bg-gray-100">Events</a></li>
+                <li><a href="{% url 'celebrity' %}" class="block px-4 py-2 hover:bg-gray-100">Celebrity</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Other Links -->
+          <a href="{% url 'sarpanch' %}" class="text-gray-700 hover:text-blue-600">Sarpanch</a>
+          <a href="{% url 'complain' %}" class="text-gray-700 hover:text-blue-600">Complaint</a>
+          <a href="{% url 'gramsabha' %}" class="text-gray-700 hover:text-blue-600">Gramsabha</a>
+          <a href="{% url 'contact' %}" class="text-gray-700 hover:text-blue-600">Contact</a>
+          <a href="{% url 'staff_member' 'staff' %}" class="text-gray-700 hover:text-blue-600">Staff</a>
+          <a href="{% url 'staff_member' 'member' %}" class="text-gray-700 hover:text-blue-600">Members</a>
+          <a href="{% url 'history' %}" class="text-gray-700 hover:text-blue-600">History</a>
+          <a href="{% url 'development' %}" class="text-gray-700 hover:text-blue-600">Development</a>
+          <a href="{% url 'scheme' %}" class="text-gray-700 hover:text-blue-600">Scheme</a>
+
+          <!-- Login -->
+          <a href="#" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Login</a>
         </div>
-      </footer>
-    </div>
-    <!-- End wrap -->
+
+        <!-- Mobile Menu Button -->
+        <button id="menu-btn" class="md:hidden text-gray-700 focus:outline-none">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </nav>
+
+      <!-- Mobile Menu -->
+      <div id="menu" class="hidden md:hidden bg-gray-100 px-6 py-4 space-y-3">
+        <a href="{% url 'home' %}" class="block text-gray-700 hover:text-blue-600">Home</a>
+        <a href="#" class="block text-gray-700 hover:text-blue-600">About</a>
+
+        <!-- Schemes -->
+        <div>
+          <p class="font-semibold text-gray-700">Schemes</p>
+          <a href="#" class="block text-sm pl-4 text-gray-600 hover:text-blue-600">Water Supply</a>
+          <a href="#" class="block text-sm pl-4 text-gray-600 hover:text-blue-600">Sanitation</a>
+          <a href="#" class="block text-sm pl-4 text-gray-600 hover:text-blue-600">Employment</a>
+          <a href="#" class="block text-sm pl-4 text-gray-600 hover:text-blue-600">Education</a>
+        </div>
+
+        <!-- Media -->
+        <div>
+          <p class="font-semibold text-gray-700">Media</p>
+          <a href="{% url 'gallery' %}" class="block text-sm pl-4 text-gray-600 hover:text-blue-600">Gallery</a>
+          <a href="{% url 'event' %}" class="block text-sm pl-4 text-gray-600 hover:text-blue-600">Events</a>
+          <a href="{% url 'celebrity' %}" class="block text-sm pl-4 text-gray-600 hover:text-blue-600">Celebrity</a>
+        </div>
+
+        <a href="{% url 'sarpanch' %}" class="block text-gray-700 hover:text-blue-600">Sarpanch</a>
+        <a href="{% url 'complain' %}" class="block text-gray-700 hover:text-blue-600">Complaint</a>
+        <a href="{% url 'gramsabha' %}" class="block text-gray-700 hover:text-blue-600">Gramsabha</a>
+        <a href="{% url 'contact' %}" class="block text-gray-700 hover:text-blue-600">Contact</a>
+        <a href="{% url 'staff_member' 'staff' %}" class="block text-gray-700 hover:text-blue-600">Staff</a>
+        <a href="{% url 'staff_member' 'member' %}" class="block text-gray-700 hover:text-blue-600">Members</a>
+        <a href="{% url 'history' %}" class="block text-gray-700 hover:text-blue-600">History</a>
+        <a href="{% url 'development' %}" class="block text-gray-700 hover:text-blue-600">Development</a>
+        <a href="{% url 'scheme' %}" class="block text-gray-700 hover:text-blue-600">Scheme</a>
+
+        <a href="#" class="block bg-blue-600 text-white px-4 py-2 rounded-lg text-center hover:bg-blue-700">Login</a>
+      </div>
+    </header>
+
+    <!-- Body Content -->
+    <main class="pt-24">
+      {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer (same as before) -->
+    <footer class="bg-gray-900 text-gray-300 mt-16">
+      <div class="container mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- About -->
+        <div>
+          <h3 class="text-lg font-semibold text-white mb-4">About Us</h3>
+          <p class="text-sm">Our Gram Panchayat works for village development, welfare, and transparent governance.</p>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h3 class="text-lg font-semibold text-white mb-4">Quick Links</h3>
+          <ul class="space-y-2">
+            <li><a href="{% url 'home' %}" class="hover:text-white hover:underline">Home</a></li>
+            <li><a href="{% url 'gallery' %}" class="hover:text-white hover:underline">Gallery</a></li>
+            <li><a href="{% url 'sarpanch' %}" class="hover:text-white hover:underline">Sarpanch</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div>
+          <h3 class="text-lg font-semibold text-white mb-4">Contact</h3>
+          <ul class="space-y-2 text-sm">
+            <li>📍 Fojivada, Sabarkantha, Gujarat</li>
+            <li>📞 +91 98 56 23 1245</li>
+            <li>📧 fojivada@gmail.com</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom -->
+      <div class="bg-gray-800 py-4">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+          <p class="text-sm">© 2025 Gram Panchayat. All Rights Reserved.</p>
+          <div class="flex space-x-4">
+            <a href="#" class="hover:text-white">🌐</a>
+            <a href="#" class="hover:text-white">📘</a>
+            <a href="#" class="hover:text-white">▶️</a>
+          </div>
+        </div>
+      </div>
+    </footer>
 
     <!-- JS for Mobile Menu -->
     <script>
-      const btn = document.getElementById('menu-btn')
-      const menu = document.getElementById('menu')
+      const btn = document.getElementById('menu-btn');
+      const menu = document.getElementById('menu');
       btn.addEventListener('click', () => {
-        menu.classList.toggle('hidden')
-      })
+        menu.classList.toggle('hidden');
+      });
     </script>
-    {% comment %} <script>
-        // Mobile menu toggle
-        document.getElementById('menu-btn').addEventListener('click', () => {
-          document.getElementById('menu').classList.toggle('hidden')
-        })
-      </script> {% endcomment %}
   </body>
 </html>

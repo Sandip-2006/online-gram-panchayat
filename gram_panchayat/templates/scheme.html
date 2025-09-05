@@ -1,23 +1,58 @@
 {% extends 'layout.html' %}
 {% load static %}
-{% block title %}
-  Complaint Section - Online Gram Panchayat
-{% endblock %}
 {% block content %}
-<section class="container mx-auto px-6 py-16">
-  <h2 class="text-3xl font-bold text-center mb-10">📑 Government Schemes</h2>
-  <div class="space-y-4">
-    <div class="bg-white rounded-xl shadow-md p-6">
-      <h3 class="text-lg font-semibold">Pradhan Mantri Awas Yojana</h3>
-      <p class="text-gray-600 mt-2">Providing affordable housing for rural families with subsidies and easy loans.</p>
-      <a href="#" class="mt-3 inline-block text-green-700 font-medium hover:underline">Read More →</a>
-    </div>
-    <div class="bg-white rounded-xl shadow-md p-6">
-      <h3 class="text-lg font-semibold">MGNREGA (Rural Employment)</h3>
-      <p class="text-gray-600 mt-2">Guarantees 100 days of wage employment to rural households every year.</p>
-      <a href="#" class="mt-3 inline-block text-green-700 font-medium hover:underline">Read More →</a>
+<section class="bg-gray-50 py-16">
+  <div class="container mx-auto px-6 lg:px-16">
+    <h2 class="text-3xl font-bold text-center mb-10">📜 Gram Panchayat Schemes</h2>
+    
+    <div class="space-y-4">
+      
+      <!-- Scheme 1 -->
+      <details class="bg-white rounded-xl shadow p-6 
+                     transition transform hover:-translate-y-1 hover:shadow-xl hover:bg-blue-50">
+        <summary class="cursor-pointer text-lg font-semibold text-gray-800">
+          🏠 Rural Housing Scheme
+        </summary>
+        <div class="mt-3 text-gray-600 space-y-2">
+          <p><strong>About:</strong> The Rural Housing Scheme provides financial support to poor families for constructing safe and permanent houses in villages.</p>
+          <p><strong>Eligibility:</strong> Families below poverty line (BPL) or without permanent housing.</p>
+          <p><strong>Benefits:</strong> Subsidy amount up to ₹1.2 – ₹1.5 lakh (varies by state).</p>
+          <p><strong>Documents Required:</strong> Aadhaar card, ration card, income proof, land ownership proof.</p>
+          <p><strong>How to Apply:</strong> Visit Gram Panchayat office → Submit application form → Verification by officials → Approval & fund release.</p>
+        </div>
+      </details>
+
+      <!-- Scheme 2 -->
+      <details class="bg-white rounded-xl shadow p-6 
+                     transition transform hover:-translate-y-1 hover:shadow-xl hover:bg-blue-50">
+        <summary class="cursor-pointer text-lg font-semibold text-gray-800">
+          🚰 Clean Water Mission
+        </summary>
+        <div class="mt-3 text-gray-600 space-y-2">
+          <p><strong>About:</strong> Ensures safe drinking water supply and sanitation facilities for all households.</p>
+          <p><strong>Eligibility:</strong> All rural households without piped drinking water connection.</p>
+          <p><strong>Benefits:</strong> Free water tap connection, improved sanitation, regular water supply.</p>
+          <p><strong>Documents Required:</strong> Aadhaar card, residence proof, village certificate.</p>
+          <p><strong>How to Apply:</strong> Apply at Panchayat office → Field inspection → Water connection installation.</p>
+        </div>
+      </details>
+
+      <!-- Scheme 3 -->
+      <details class="bg-white rounded-xl shadow p-6 
+                     transition transform hover:-translate-y-1 hover:shadow-xl hover:bg-blue-50">
+        <summary class="cursor-pointer text-lg font-semibold text-gray-800">
+          👷 MGNREGA Employment
+        </summary>
+        <div class="mt-3 text-gray-600 space-y-2">
+          <p><strong>About:</strong> Mahatma Gandhi National Rural Employment Guarantee Act (MGNREGA) guarantees 100 days of wage employment to rural households.</p>
+          <p><strong>Eligibility:</strong> Any adult member of a rural household willing to do unskilled manual work.</p>
+          <p><strong>Benefits:</strong> 100 days guaranteed wage employment, equal wages for men & women, local work availability.</p>
+          <p><strong>Documents Required:</strong> Aadhaar card, job card (issued under MGNREGA), bank account details.</p>
+          <p><strong>How to Apply:</strong> Apply at Gram Panchayat → Get job card → Demand for work → Panchayat assigns work within 15 days.</p>
+        </div>
+      </details>
+
     </div>
   </div>
 </section>
-
 {% endblock %}

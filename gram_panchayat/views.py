@@ -41,8 +41,10 @@ def staff_member(request, page_type):
             {"name": "Bob White", "position": "Member", "contact": "2233445566", "image": "images/panch.jpg"},
         ]}
     else:
-        context = {"title": "404 NOT FOUND SANDIP RATHOD :)", "description": "Welcome to the Panchayat"}
+        context = {"title": "404 NOT FOUND :)", "description": "Welcome to the Panchayat"}
     return render(request, "staff_member.html", context)
+
+
 def history(request):
     return render(request,'history.html')
 
@@ -57,3 +59,6 @@ def gramsabha(request):
 
 def celebrity_detail(request):
     return render(request,'celebrity_detail.html')
+
+def scheme(request):
+    return render(request,'scheme.html')

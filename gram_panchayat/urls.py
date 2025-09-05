@@ -14,6 +14,8 @@ urlpatterns = [
     path('celebrity/',views.celebrity,name="celebrity"),
     path('celebrity_detail/',views.celebrity_detail,name="celebrity_detail"),
     path('gramsabha/',views.gramsabha,name="gramsabha"),
+    path('scheme/',views.scheme,name="scheme"),
+
 
     path('<str:page_type>/',views.staff_member,name="staff_member"),
 ]
