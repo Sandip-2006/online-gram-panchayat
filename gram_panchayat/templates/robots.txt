@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /static/
+Disallow: /media/
+Disallow: /__reload__/     # Django live-reload, should not be indexed
+Disallow: /accounts/       # If you have login/signup routes
+Disallow: /complain/       # If complaints are private
+Disallow: /staff/          # Staff details (if sensitive)

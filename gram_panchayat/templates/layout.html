@@ -1,10 +1,17 @@
 {% load static tailwind_tags %}
 <!DOCTYPE html>
+
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <title>Gram Panchayat</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Gram Panchayat Website" />
+    <meta name="author" content="Krish Suthar | Sandip Rathod" />  
+    <meta name="keywords" content="Gram Panchayat, Village, Development, Governance" />
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
+
 
     {% tailwind_css %}
 
@@ -21,7 +28,9 @@
       <nav class="container mx-auto flex items-center justify-between px-6 py-3">
         <!-- Logo -->
         <a href="{% url 'home' %}" class="flex items-center space-x-2">
-          <img src="{% static 'images/1.jpg' %}" alt="Logo" class="h-10 w-10 rounded-full object-fill" />
+          <img src="{% static 'images/1.jpg' %}" alt="Profile photo"
+             class="h-10 w-10 rounded-full object-cover" />
+
           <span class="text-xl font-bold text-gray-800">Gram Panchayat</span>
         </a>
 
@@ -75,7 +84,9 @@
           <a href="{% url 'history' %}" class="text-gray-700 hover:text-blue-600">History</a>
           <a href="{% url 'development' %}" class="text-gray-700 hover:text-blue-600">Development</a>
           <a href="{% url 'scheme' %}" class="text-gray-700 hover:text-blue-600">Scheme</a>
-
+          <a href="{% url 'download' %}" class="block text-gray-700 hover:text-blue-600">Download</a>
+          <a href="{% url 'Infrastructure' %}" class="block text-gray-700 hover:text-blue-600">Infrastructure</a>
+          
           <!-- Login -->
           <a href="#" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Login</a>
         </div>
@@ -119,10 +130,13 @@
         <a href="{% url 'history' %}" class="block text-gray-700 hover:text-blue-600">History</a>
         <a href="{% url 'development' %}" class="block text-gray-700 hover:text-blue-600">Development</a>
         <a href="{% url 'scheme' %}" class="block text-gray-700 hover:text-blue-600">Scheme</a>
+      
 
         <a href="#" class="block bg-blue-600 text-white px-4 py-2 rounded-lg text-center hover:bg-blue-700">Login</a>
       </div>
     </header>
+
+    
 
     <!-- Body Content -->
     <main class="pt-24">
@@ -150,6 +164,7 @@
 
         <!-- Contact -->
         <div>
+          
           <h3 class="text-lg font-semibold text-white mb-4">Contact</h3>
           <ul class="space-y-2 text-sm">
             <li>📍 Fojivada, Sabarkantha, Gujarat</li>

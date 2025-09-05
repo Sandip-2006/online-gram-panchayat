@@ -62,3 +62,27 @@ def celebrity_detail(request):
 
 def scheme(request):
     return render(request,'scheme.html')
+
+def download(request):
+    return render(request,'download.html')
+
+def Infrastructure(request):
+    return render(request,'Infrastructure.html')
+
+# dont touch this file its for robots.txt
+from django.http import HttpResponse
+
+def robots_txt(request):
+    content = """
+    User-agent: *
+    Disallow: /admin/
+    Disallow: /static/
+    Disallow: /media/
+    Disallow: /__reload__/
+    Disallow: /accounts/
+    Disallow: /complain/
+    Disallow: /staff/
+
+    Sitemap: https://yourdomain.com/sitemap.xml
+    """
+    return HttpResponse(content, content_type="text/plain")

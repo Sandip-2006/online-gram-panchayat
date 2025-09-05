@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'tailwind',
     'theme',   
     'django_browser_reload',
+    "csp",
 ]
 
 
@@ -58,6 +59,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django_browser_reload.middleware.BrowserReloadMiddleware',
+    "csp.middleware.CSPMiddleware",
 ]
 
 ROOT_URLCONF = 'project.urls'
@@ -141,4 +143,16 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 
-
+# improve security of the website by adding the below lines in settings.py
+# Content Security Policy (CSP)
+# ✅ NEW STYLE (django-csp v4+)
+CONTENT_SECURITY_POLICY = {
+    "DIRECTIVES": {
+        "default-src": ("'self'",),
+        "script-src": ("'self'", "https://cdnjs.cloudflare.com"),
+        "style-src": ("'self'", "https://fonts.googleapis.com"),
+        "font-src": ("'self'", "https://fonts.gstatic.com"),
+        "img-src": ("'self'", "data:"),
+        "frame-src": ("'self'", "https://www.google.com"),
+    }
+}
