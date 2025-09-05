@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us - Gram Panchayat</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-white text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">About Us</h1>
+            <p class="text-lg md:text-xl text-gray-600">
+                Welcome to <span class="font-semibold">Fojivada</span> Gram Panchayat –
+                working for the development and welfare of our community.
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12 space-y-12">
+
+        <!-- Introduction -->
+        <section class="bg-white rounded-lg shadow p-6">
+            <h2 class="text-2xl font-semibold text-blue-700 mb-4">Who We Are</h2>
+            <p class="text-gray-700 leading-relaxed">
+                Our Gram Panchayat is the primary unit of local self-government, working to improve the
+                lives of villagers through effective planning, transparent governance, and community
+                participation. We aim to strengthen rural infrastructure, promote social welfare, and
+                ensure access to basic facilities such as clean water, sanitation, education, and healthcare.
+            </p>
+        </section>
+
+        <!-- Vision -->
+        <section class="bg-white rounded-lg shadow p-6">
+            <h2 class="text-2xl font-semibold text-blue-700 mb-4">🌿 Our Vision</h2>
+            <p class="text-gray-700 leading-relaxed">
+                To build a <span class="font-semibold">self-reliant, progressive, and sustainable village</span>
+                by empowering citizens, promoting development, and preserving our cultural heritage.
+            </p>
+        </section>
+
+        <!-- Mission -->
+        <section class="bg-white rounded-lg shadow p-6">
+            <h2 class="text-2xl font-semibold text-blue-700 mb-4">🎯 Our Mission</h2>
+            <ul class="list-disc list-inside space-y-2 text-gray-700">
+                <li>Provide <strong>basic amenities</strong> like roads, street lights, drinking water, and sanitation.
+                </li>
+                <li>Encourage <strong>education, women empowerment, and youth development</strong>.</li>
+                <li>Implement <strong>government schemes and welfare programs</strong> effectively.</li>
+                <li>Maintain <strong>transparency and accountability</strong> in governance.</li>
+                <li>Promote <strong>environmental protection and cleanliness</strong> in the village.</li>
+            </ul>
+        </section>
+
+        <!-- Role -->
+        <section class="bg-white rounded-lg shadow p-6">
+            <h2 class="text-2xl font-semibold text-blue-700 mb-4">👥 Our Role in the Community</h2>
+            <p class="text-gray-700 leading-relaxed">
+                The Gram Panchayat acts as a bridge between the <strong>government and the villagers</strong>,
+                ensuring that policies, schemes, and benefits reach people at the grassroots level.
+                We believe in <span class="italic">“Sabka Saath, Sabka Vikas”</span> (Together with all, Development for
+                all)
+                and work collectively for the upliftment of every household in the village.
+            </p>
+        </section>
+
+    </main>
+
+</body>
+
+</html>
+{% endblock %}

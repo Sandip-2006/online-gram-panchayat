@@ -8,6 +8,9 @@ def index(request):
 def complain(request):
     return render(request, "complain.html")
 
+def about(request):
+    return render(request, "about.html")
+
 def gallery(request):
     return render(request, "gallery.html")
 
@@ -72,17 +75,17 @@ def Infrastructure(request):
 # dont touch this file its for robots.txt
 from django.http import HttpResponse
 
-def robots_txt(request):
-    content = """
-    User-agent: *
-    Disallow: /admin/
-    Disallow: /static/
-    Disallow: /media/
-    Disallow: /__reload__/
-    Disallow: /accounts/
-    Disallow: /complain/
-    Disallow: /staff/
+# def robots_txt(request):
+#     content = """
+#     User-agent: *
+#     Disallow: /admin/
+#     Disallow: /static/
+#     Disallow: /media/
+#     Disallow: /__reload__/
+#     Disallow: /accounts/
+#     Disallow: /complain/
+#     Disallow: /staff/
 
-    Sitemap: https://yourdomain.com/sitemap.xml
-    """
-    return HttpResponse(content, content_type="text/plain")
+#     Sitemap: https://yourdomain.com/sitemap.xml
+#     """
+#     return HttpResponse(content, content_type="text/plain")

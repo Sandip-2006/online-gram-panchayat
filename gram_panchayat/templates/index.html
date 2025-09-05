@@ -76,33 +76,40 @@
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
       <!-- Service 1 -->
+       
       <div class="p-6 bg-white shadow-md rounded-xl hover:shadow-lg transition">
+        <a href="{% url 'Infrastructure' %}">
         <div class="w-20 h-20 mx-auto flex items-center justify-center bg-blue-600 text-white rounded-full mb-4">
           <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
             <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z"/>
           </svg>
         </div>
         <h3 class="font-semibold"><a href="#">Village Development Projects</a></h3>
+        </a>
       </div>
 
       <!-- Service 2 -->
+      <a href="{% url 'complain' %}">
       <div class="p-6 bg-white shadow-md rounded-xl hover:shadow-lg transition">
         <div class="w-20 h-20 mx-auto flex items-center justify-center bg-green-600 text-white rounded-full mb-4">
          <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-chat-square-text-fill" viewBox="0 0 16 16">
             <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.5a1 1 0 0 0-.8.4l-1.9 2.533a1 1 0 0 1-1.6 0L5.3 12.4a1 1 0 0 0-.8-.4H2a2 2 0 0 1-2-2zm3.5 1a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1zm0 2.5a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1zm0 2.5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1z"/>
         </svg>
         </div>
-        <h3 class="font-semibold"><a href="{% url 'complain' %}">Grievance / Complaint</a></h3>
+        <h3 class="font-semibold">Grievance / Complaint</h3>
       </div>
+      </a>
 
       <!-- Service 3 -->
       <div class="p-6 bg-white shadow-md rounded-xl hover:shadow-lg transition">
+        <a href="{% url 'complain' %}">
         <div class="w-20 h-20 mx-auto flex items-center justify-center bg-yellow-600 text-white rounded-full mb-4">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" fill="currentColor" viewBox="0 0 16 16">
             <path d="M4 3.06h2.726c1.22 0 2.12.575 2.325 1.724H4v1.051h5.051C8.855 7.001 8 7.558 6.788 7.558H4v1.317L8.437 14h2.11L6.095 8.884h.855c2.316-.018 3.465-1.476 3.688-3.049H12V4.784h-1.345c-.08-.778-.357-1.335-.793-1.732H12V2H4z" />
           </svg>
         </div>
         <h3 class="font-semibold"><a href="#">Pay Property / Water Tax</a></h3>
+      </a>
       </div>
     </div>
   </div>
@@ -112,35 +119,42 @@
     <h3 class="text-2xl font-bold mb-8">Recent Work</h3>
     <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
       <!-- Work item -->
+       <a href="{% url 'Infrastructure' %}">
       <div class="relative group overflow-hidden rounded-lg shadow-md">
-        <img src="{% static 'images/img/portfolio/thumb-1.jpg' %}" alt="" class="w-full h-64 object-cover group-hover:scale-105 transition-transform" />
+        <img src="{% static 'images/electri.jpg' %}" alt="" class="w-full h-64 object-cover group-hover:scale-105 transition-transform" />
         <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 flex items-center justify-center text-white transition">
           <div>
-            <h3 class="text-lg font-semibold">Hey this is as</h3>
-            <p class="text-sm">Illustration, 3d</p>
+            <h3 class="text-lg font-semibold">Electricity is vital for development.</h3>
+            <p class="text-sm">Electricity Supply Project</p>
           </div>
         </div>
       </div>
+      </a>
 
+      <a href="{% url 'development' %}">
       <div class="relative group overflow-hidden rounded-lg shadow-md">
-        <img src="{% static 'images/img/portfolio/thumb-2.jpg' %}" alt="" class="w-full h-64 object-cover group-hover:scale-105 transition-transform" />
+        <img src="{% static 'images/road.webp' %}" alt="" class="w-full h-64 object-cover group-hover:scale-105 transition-transform" />
         <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 flex items-center justify-center text-white transition">
           <div>
-            <h3 class="text-lg font-semibold">Apple Creative</h3>
-            <p class="text-sm">Illustration, 3d</p>
+            <h3 class="text-lg font-semibold">Road Development</h3>
+            <p class="text-sm">Nirmal Gram Project yojana</p>
           </div>
         </div>
       </div>
+    </a>
 
+      <a href="{% url 'development' %}">
       <div class="relative group overflow-hidden rounded-lg shadow-md">
-        <img src="{% static 'images/img/portfolio/thumb-3.jpg' %}" alt="" class="w-full h-64 object-cover group-hover:scale-105 transition-transform" />
+        <img src="{% static 'images/Education.jpg' %}" alt="" class="w-full h-64 object-cover group-hover:scale-105 transition-transform" />
         <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 flex items-center justify-center text-white transition">
           <div>
-            <h3 class="text-lg font-semibold">Apple Creative</h3>
-            <p class="text-sm">Illustration, 3d</p>
+            <h3 class="text-lg font-semibold">Education Development</h3>
+            <p class="text-sm">New Village School</p>
           </div>
         </div>
       </div>
+      </a>
+
     </div>
   </div>
 
