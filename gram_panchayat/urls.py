@@ -5,6 +5,7 @@ from . import views
 urlpatterns = [
     path('',views.index,name="home"),
     path('complain/',views.complain,name="complain"),
+    path('about/',views.about,name="about"),
     path('contact/',views.contact,name="contact"),
     path('gallery/',views.gallery,name="gallery"),
     path('sarpanch/',views.sarpanch,name="sarpanch"),
@@ -19,7 +20,7 @@ urlpatterns = [
     path('Infrastructure/', views.Infrastructure, name="Infrastructure"),
 
     # robots.txt dont touch the below line
-    path("robots.txt", views.robots_txt, name="robots"),
+    # path("robots.txt", views.robots_txt, name="robots"),
 
     path('<str:page_type>/', views.staff_member, name="staff_member"),
 ]

@@ -146,13 +146,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # improve security of the website by adding the below lines in settings.py
 # Content Security Policy (CSP)
 # ✅ NEW STYLE (django-csp v4+)
-CONTENT_SECURITY_POLICY = {
-    "DIRECTIVES": {
-        "default-src": ("'self'",),
-        "script-src": ("'self'", "https://cdnjs.cloudflare.com"),
-        "style-src": ("'self'", "https://fonts.googleapis.com"),
-        "font-src": ("'self'", "https://fonts.gstatic.com"),
-        "img-src": ("'self'", "data:"),
-        "frame-src": ("'self'", "https://www.google.com"),
-    }
-}
+# CONTENT_SECURITY_POLICY = {
+#     "DIRECTIVES": {
+#         "default-src": ("'self'",),
+#         "script-src": ("'self'", "https://cdnjs.cloudflare.com"),
+#         "style-src": ("'self'", "https://fonts.googleapis.com"),
+#         "font-src": ("'self'", "https://fonts.gstatic.com"),
+#         "img-src": ("'self'", "data:"),
+#         "frame-src": ("'self'", "https://www.google.com"),
+#     }
+# }
