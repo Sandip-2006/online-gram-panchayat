@@ -25,11 +25,11 @@
   <body class="bg-gray-50 text-black">
 
     {% comment %} form submit meassge {% endcomment %}
-  {% if messages %}
+  {% comment %} {% if messages %}
     {% for message in messages %}
     <div class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[99] border rounded-4xl alert alert-success text-zinc-950">{{ message }}</div>
     {% endfor %}
-    {% endif %}
+    {% endif %} {% endcomment %}
     <!-- Navbar -->
     <header class="bg-white shadow-md fixed top-0 left-0 w-full z-50">
       <nav class="container mx-auto flex items-center justify-between px-6 py-3">

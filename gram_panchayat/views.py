@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from .models import complain
-from .forms import complain_form
+from .models import Celebrity, Event
+from .forms import complain_form, contact_form
 from django.shortcuts import get_object_or_404,redirect
 from django.contrib import messages
 
@@ -32,10 +32,22 @@ def sarpanch(request):
     return render(request, "sarpanch.html")
 
 def event(request):
-    return render(request, "event.html")
+    events = Event.objects.all().order_by("-date")
+    return render(request, "event.html",{'events':events})
 
 def contact(request):
-    return render(request, "contact.html")
+    if request.method == "POST":
+        form = contact_form(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request,'Your message has been send successfully!')
+            return redirect('contact')
+        # else:
+        #     messages.error(request,'Please correct the errors below.')
+    else:
+            form = contact_form()
+
+    return render(request, "contact.html", {'form': form})
 
 def staff_member(request, page_type):
     if page_type == "staff":
@@ -69,13 +81,21 @@ def devlopment(request):
     return render(request,'devlopment.html')
 
 def celebrity(request):
-    return render(request,'celebrity.html')
+    celebritys = Celebrity.objects.all().order_by('-created_at')
+    return render(request,'celebrity.html',{'celebritys':celebritys})
 
 def gramsabha(request):
     return render(request,'gramsabha.html')
 
-def celebrity_detail(request):
-    return render(request,'celebrity_detail.html')
+def celebrity_detail(request,celebrity_id):
+    celebrity = get_object_or_404(Celebrity,id=celebrity_id)
+    # print(celebritys)
+    # Split extra_points by comma into a list
+    points = []
+    if celebrity.extra_points:
+        points = [p.strip() for p in celebrity.extra_points.split(',')]
+    
+    return render(request, 'celebrity_detail.html', {'celebrity': celebrity, 'points': points})
 
 def scheme(request):
     return render(request,'scheme.html')
