@@ -1,12 +1,26 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .models import complain
+from .forms import complain_form
+from django.shortcuts import get_object_or_404,redirect
+from django.contrib import messages
 
 # Create your views here.
 
 def index(request):
     return render(request, "index.html")
 
-def complain(request):
-    return render(request, "complain.html")
+def complain_create(request):
+    if request.method == 'POST':
+        form = complain_form(request.POST, request.FILES)
+        if form.is_valid():
+            complains = form.save(commit=False)
+            complains.save()
+            messages.success(request, "Complaint submitted successfully!")
+            return redirect('home')
+    else:
+        form = complain_form()
+    return render(request, "complain.html", {'form': form})
+
 
 def about(request):
     return render(request, "about.html")

@@ -23,6 +23,13 @@
   </head>
 
   <body class="bg-gray-50 text-black">
+
+    {% comment %} form submit meassge {% endcomment %}
+  {% if messages %}
+    {% for message in messages %}
+    <div class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[99] border rounded-4xl alert alert-success text-zinc-950">{{ message }}</div>
+    {% endfor %}
+    {% endif %}
     <!-- Navbar -->
     <header class="bg-white shadow-md fixed top-0 left-0 w-full z-50">
       <nav class="container mx-auto flex items-center justify-between px-6 py-3">
@@ -76,7 +83,7 @@
 
           <!-- Other Links -->
           <a href="{% url 'sarpanch' %}" class="text-gray-700 hover:text-blue-600">Sarpanch</a>
-          <a href="{% url 'complain' %}" class="text-gray-700 hover:text-blue-600">Complaint</a>
+          <a href="{% url 'complain' %}" class="text-gray-700 hover:text-blue-600">Complain</a>
           <a href="{% url 'gramsabha' %}" class="text-gray-700 hover:text-blue-600">Gramsabha</a>
           <a href="{% url 'contact' %}" class="text-gray-700 hover:text-blue-600">Contact</a>
           <a href="{% url 'staff_member' 'staff' %}" class="text-gray-700 hover:text-blue-600">Staff</a>
