@@ -1,26 +1,23 @@
 {% extends 'layout.html' %}
 {% load static %}
-{% block title %} Celebrity{% endblock %}
+{% block title %}
+  Celebrity
+{% endblock %}
 
 {% block content %}
-<section class="container mx-auto px-6 py-16">
-  <div class="grid md:grid-cols-2 gap-10">
-    <img src="{% static 'images/celebrity.png' %}" class="rounded-xl shadow-lg">
-    <div>
-      <h2 class="text-3xl font-bold">Shri Ramesh Patel</h2>
-      <p class="mt-4 text-gray-700 leading-relaxed">
-        Born in 1945, Shri Ramesh Patel was a prominent social reformer and freedom fighter from our village.
-        He dedicated his life towards improving education and rural infrastructure.
-      </p>
-      <ul class="list-disc list-inside mt-4 text-gray-600">
-        <li>Started first village library</li>
-        <li>Led water conservation movement</li>
-        <li>Worked for women empowerment</li>
-      </ul>
-      <button onclick="history.back()" class="mt-6 px-4 py-2 bg-blue-700 text-white rounded-lg">← Back</button>
+  <section class="container mx-auto px-6 py-16">
+    <div class="grid md:grid-cols-2 gap-10">
+      <img src="{{ celebrity.image.url }}" class="rounded-xl shadow-lg" />
+      <div>
+        <h2 class="text-3xl font-bold">{{ celebrity.name }}</h2>
+        <p class="mt-4 text-gray-700 leading-relaxed">{{ celebrity.description }}</p>
+        <ul class="list-disc list-inside mt-4 text-gray-600">
+          {% for point in points %}
+            <li>{{ point }}</li>
+          {% endfor %}
+        </ul>
+        <button onclick="history.back()" class="mt-6 px-4 py-2 bg-blue-700 text-white rounded-lg">← Back</button>
+      </div>
     </div>
-  </div>
-</section>
-
-
+  </section>
 {% endblock %}

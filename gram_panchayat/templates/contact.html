@@ -6,7 +6,6 @@
 {% endblock %}
 
 {% block content %}
-
   <!-- Contact Section -->
   <section class="py-16 px-6 lg:px-20 text-black">
     <div class="max-w-6xl mx-auto">
@@ -18,12 +17,13 @@
 
       <!-- Content Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-        
         <!-- Left: Contact Info -->
         <div class="space-y-6">
           <div class="bg-white shadow rounded-xl p-6">
             <h3 class="text-xl font-semibold text-gray-800 mb-4">Our Office</h3>
-            <p class="text-gray-600">Gram Panchayat Office, Main Street,<br> Your Village, Gujarat - 385001</p>
+            <p class="text-gray-600">
+              Gram Panchayat Office, Main Street,<br /> Your Village, Gujarat - 385001
+            </p>
           </div>
 
           <div class="bg-white shadow rounded-xl p-6">
@@ -39,42 +39,60 @@
 
         <!-- Right: Contact Form -->
         <div class="bg-white shadow rounded-xl p-8">
-          <form action="#" method="POST" class="space-y-6">
+          <form action="{% url 'contact' %}" method="POST" class="space-y-6">
+            {% csrf_token %}
+
+            {% if messages %}
+              {% for message in messages %}
+                <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
+                  <strong class="font-bold">Success!</strong>
+                  <span class="block sm:inline">{{ message }}</span>
+                  <button type="button" class="absolute top-2 right-3 text-xl font-bold text-green-700 hover:text-green-900 cursor-pointer" onclick="this.parentElement.style.display='none';">&times;</button>
+                </div>
+              {% endfor %}
+            {% endif %}
+
             <div>
-              <label for="name" class="block text-gray-700 font-medium">Full Name</label>
-              <input type="text" id="name" name="name" placeholder="Your Name"
-                class="w-full mt-2 px-4 py-3 border rounded-lg border-gray-300 focus:ring-1 focus:ring-blue-500 focus:outline-none">
+              <label for="name" class="block text-gray-700 font-medium">Name</label>
+              <input type="text" id="name" name="name" placeholder="Your Name" value="{{ form.data.name|default_if_none:'' }}" class="w-full mt-2 px-4 py-3 border rounded-lg border-gray-300 focus:ring-1 focus:ring-blue-500 focus:outline-none" />
+              {% if form.name.errors %}
+                <p class="text-red-600 text-sm mt-1">{{ form.name.errors|striptags }}</p>
+              {% endif %}
             </div>
-            
+
             <div>
               <label for="email" class="block text-gray-700 font-medium">Email</label>
-              <input type="email" id="email" name="email" placeholder="you@example.com"
-                class="w-full mt-2 px-4 py-3 border rounded-lg border-gray-300 focus:ring-1 focus:ring-blue-500 focus:outline-none">
+              <input type="email" id="email" name="email" placeholder="you@example.com" value="{{ form.data.email|default_if_none:'' }}" class="w-full mt-2 px-4 py-3 border rounded-lg border-gray-300 focus:ring-1 focus:ring-blue-500 focus:outline-none" />
+              {% if form.email.errors %}
+                <p class="text-red-600 text-sm mt-1">{{ form.email.errors|striptags }}</p>
+              {% endif %}
+            </div>
+
+            <div>
+              <label for="subject" class="block text-gray-700 font-medium">Subject</label>
+              <input type="text" id="subject" name="subject" placeholder="Subject" value="{{ form.data.subject|default_if_none:'' }}" class="w-full mt-2 px-4 py-3 border rounded-lg border-gray-300 focus:ring-1 focus:ring-blue-500 focus:outline-none" />
+              {% if form.subject.errors %}
+                <p class="text-red-600 text-sm mt-1">{{ form.subject.errors|striptags }}</p>
+              {% endif %}
             </div>
 
             <div>
               <label for="message" class="block text-gray-700 font-medium">Message</label>
-              <textarea id="message" name="message" rows="4" placeholder="Write your message..."
-                class="w-full mt-2 px-4 py-3 border rounded-lg border-gray-300 focus:ring-1 focus:ring-blue-500 focus:outline-none"></textarea>
+              <textarea id="message" name="message" rows="4" placeholder="Write your message..." class="w-full mt-2 px-4 py-3 border rounded-lg border-gray-300 focus:ring-1 focus:ring-blue-500 focus:outline-none">{{ form.data.message|default_if_none:'' }}</textarea>
+              {% if form.message.errors %}
+                <p class="text-red-600 text-sm mt-1">{{ form.message.errors|striptags }}</p>
+              {% endif %}
             </div>
 
-            <button type="submit"
-              class="w-full bg-blue-600 text-white font-medium py-3 rounded-lg hover:bg-blue-700 transition">
-              Send Message
-            </button>
+            <button type="submit" class="w-full bg-blue-600 text-white font-medium py-3 rounded-lg hover:bg-blue-700 transition">Send Message</button>
           </form>
         </div>
       </div>
 
       <!-- Map -->
       <div class="mt-12">
-        <iframe class="w-full h-72 rounded-xl shadow"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7318.3911245800155!2d73.0668116953769!3d23.489464555196093!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395dc1f8ca48eddf%3A0x362739a758669d5!2sFojivada%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1756570427316!5m2!1sen!2sin" class="w-[90%] h-[300px] md:h-[400px] rounded-lg shadow-md"
-          allowfullscreen="" loading="lazy"></iframe>
+        <iframe class="w-full h-72 rounded-xl shadow" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7318.3911245800155!2d73.0668116953769!3d23.489464555196093!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395dc1f8ca48eddf%3A0x362739a758669d5!2sFojivada%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1756570427316!5m2!1sen!2sin" class="w-[90%] h-[300px] md:h-[400px] rounded-lg shadow-md" allowfullscreen="" loading="lazy"></iframe>
       </div>
-
     </div>
   </section>
-
-
 {% endblock %}
