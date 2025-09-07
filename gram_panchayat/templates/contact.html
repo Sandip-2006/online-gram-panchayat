@@ -40,6 +40,7 @@
         <!-- Right: Contact Form -->
         <div class="bg-white shadow rounded-xl p-8">
           <form action="#" method="POST" class="space-y-6">
+            {% csrf_token %}
             <div>
               <label for="name" class="block text-gray-700 font-medium">Full Name</label>
               <input type="text" id="name" name="name" placeholder="Your Name"
