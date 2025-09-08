@@ -59,5 +59,21 @@ class Celebrity(models.Model):
     extra_points = models.TextField(blank=True,null=True)
     created_at  = models.DateTimeField(auto_now_add=True,blank=True)
 
+    class Meta:
+        db_table = 'Celebrity'
+
     def __str__(self):
         return self.name
+    
+class Gallery(models.Model):
+    title = models.CharField(max_length=100)
+    description = models.TextField(blank=True)
+    image = models.ImageField(upload_to='gallery/')
+    created_at  = models.DateTimeField(auto_now_add=True,blank=True)
+
+    class Meta:
+        db_table = 'Gallery'
+
+    
+    def __str__(self):
+        return self.title

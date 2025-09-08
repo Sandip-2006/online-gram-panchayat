@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Celebrity, Event
+from .models import Celebrity, Event, Gallery
 from .forms import complain_form, contact_form
 from django.shortcuts import get_object_or_404,redirect
 from django.contrib import messages
@@ -26,7 +26,8 @@ def about(request):
     return render(request, "about.html")
 
 def gallery(request):
-    return render(request, "gallery.html")
+    images = Gallery.objects.all().order_by('-created_at') 
+    return render(request, "gallery.html",{'images':images})
 
 def sarpanch(request):
     return render(request, "sarpanch.html")
