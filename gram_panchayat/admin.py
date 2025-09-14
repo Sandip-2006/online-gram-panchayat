@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Celebrity, complain,Contact,Event
+from .models import Celebrity, Gallery, complain,Contact,Event
 
 @admin.register(complain)
 class complainview(admin.ModelAdmin):
@@ -16,3 +16,7 @@ class eventAdmin(admin.ModelAdmin):
 @admin.register(Celebrity)
 class CelebrityAdmin(admin.ModelAdmin):
     list_display = ['name','created_at']
+
+@admin.register(Gallery)
+class GalleryAdmin(admin.ModelAdmin):
+    list_display = ['title','created_at']
