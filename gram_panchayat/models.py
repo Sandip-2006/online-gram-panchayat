@@ -69,6 +69,7 @@ class Gallery(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField(blank=True)
     image = models.ImageField(upload_to='gallery/')
+
     created_at  = models.DateTimeField(auto_now_add=True,blank=True)
 
     class Meta:
@@ -77,3 +78,29 @@ class Gallery(models.Model):
     
     def __str__(self):
         return self.title
+    
+
+class staffs(models.Model):
+    staff_mem_name = models.CharField(max_length=100)
+    staff_mem_position = models.CharField(max_length=50)
+    staff_mem_contact = models.CharField(max_length=10)
+    staff_mem_image = models.ImageField(upload_to="staffs/")
+
+    class Meta:
+        db_table = "staffs_img"
+
+    def __str__(self):
+        return self.staff_mem_name
+    
+
+class members(models.Model):
+    member_name = models.CharField(max_length=100)
+    member_position = models.CharField(max_length=50)
+    member_contact = models.CharField(max_length=10)
+    member_image = models.ImageField(upload_to="members/")
+
+    class Meta:
+        db_table = "members"
+    
+    def __str__(self):
+        return self.member_name
