@@ -32,74 +32,92 @@
     {% endif %} {% endcomment %}
     <!-- Navbar -->
     <header class="bg-white shadow-md fixed top-0 left-0 w-full z-50">
-      <nav class="container mx-auto flex items-center justify-between px-6 py-3">
-        <!-- Logo -->
-        <a href="{% url 'home' %}" class="flex items-center space-x-2">
-          <img src="{% static 'images/1.jpg' %}" alt="Profile photo"
-             class="h-10 w-10 rounded-full object-cover" />
+      {# Precompute important urls to compare with request.path #}
+      {% url 'home' as home_url %}
+      {% url 'about' as about_url %}
+      {% url 'gallery' as gallery_url %}
+      {% url 'event' as event_url %}
+      {% url 'celebrity' as celebrity_url %}
+      {% url 'sarpanch' as sarpanch_url %}
+      {% url 'complain' as complain_url %}
+      {% url 'gramsabha' as gramsabha_url %}
+      {% url 'contact' as contact_url %}
+      {% url 'history' as history_url %}
+      {% url 'development' as development_url %}
+      {% url 'scheme' as scheme_url %}
+      {% url 'download' as download_url %}
+      {% url 'Infrastructure' as infra_url %}
+      {% url 'staff_member' 'staff' as staff_url %}
+      {% url 'staff_member' 'member' as member_url %}
 
-          <span class="text-xl font-bold text-gray-800">Gram Panchayat</span>
+     {# determine active view name and page_type (for staff/member) #}
+      {% with request.resolver_match.url_name as active_name %}
+      {% with request.resolver_match.kwargs.page_type|default:"" as active_page %}
+
+      <nav x-data="{ open: false, schemes: false, media: false }" class="container mx-auto flex items-center justify-between px-6 py-3">
+        <!-- Logo -->
+        <a href="{{ home_url }}" class="flex items-center space-x-2">
+          <img src="{% static 'images/1.jpg' %}" alt="Profile photo"
+            class="h-10 w-10 rounded-full object-cover border-2 border-blue-600" />
+          <span class="text-xl font-bold text-blue-700">Gram Panchayat</span>
         </a>
 
         <!-- Desktop Menu -->
         <div class="hidden md:flex items-center space-x-6">
-          <a href="{% url 'home' %}" class="text-gray-700 hover:text-blue-600">Home</a>
-          <a href="{% url 'about' %}" class="text-gray-700 hover:text-blue-600">About</a>
+          <a href="{{ home_url }}" class="{% if active_name == 'index' or active_name == 'home' or active_name == '' %}text-blue-700 font-semibold border-b-2 border-blue-600 pb-1{% else %}text-gray-700 hover:text-blue-600 font-medium opacity-70{% endif %}">Home</a>
+          <a href="{{ about_url }}" class="{% if active_name == 'about' %}text-blue-700 font-semibold border-b-2 border-blue-600 pb-1{% else %}text-gray-700 hover:text-blue-600 font-medium opacity-70{% endif %}">About</a>
 
-          <!-- Schemes Dropdown -->
-          <div class="relative">
-            <button id="dropdownSchemesBtn" data-dropdown-toggle="dropdownSchemes" class="flex items-center text-gray-700 hover:text-blue-600">
+          <!-- Schemes Dropdown (highlight when any scheme path is active) -->
+          <div class="relative" @mouseenter="schemes = true" @mouseleave="schemes = false">
+            <button class="flex items-center {% if active_name == 'scheme' %}text-blue-700 font-semibold border-b-2 border-blue-600 pb-1{% else %}text-gray-700 hover:text-blue-600 font-medium opacity-70{% endif %} focus:outline-none">
               Schemes
               <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
             </button>
-            <div id="dropdownSchemes" class="hidden z-50 bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+            <div x-show="schemes" x-transition class="absolute left-0 mt-2 w-44 bg-white border border-blue-100 rounded-lg shadow-lg z-50">
               <ul class="py-2 text-sm text-gray-700">
-                <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Water Supply</a></li>
-                <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Sanitation</a></li>
-                <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Employment</a></li>
-                <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Education</a></li>
+                <li><a href="#" class="block px-4 py-2 hover:bg-blue-50">Water Supply</a></li>
+                <li><a href="#" class="block px-4 py-2 hover:bg-blue-50">Sanitation</a></li>
+                <li><a href="#" class="block px-4 py-2 hover:bg-blue-50">Employment</a></li>
+                <li><a href="#" class="block px-4 py-2 hover:bg-blue-50">Education</a></li>
               </ul>
             </div>
           </div>
 
           <!-- Media Dropdown -->
-          <div class="relative">
-            <button id="dropdownMediaBtn" data-dropdown-toggle="dropdownMedia" class="flex items-center text-gray-700 hover:text-blue-600">
+          <div class="relative" @mouseenter="media = true" @mouseleave="media = false">
+            <button class="flex items-center {% if active_name == 'gallery' or active_name == 'event' or active_name == 'celebrity' %}text-blue-700 font-semibold border-b-2 border-blue-600 pb-1{% else %}text-gray-700 hover:text-blue-600 font-medium opacity-70{% endif %} focus:outline-none">
               Media
               <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
             </button>
-            <div id="dropdownMedia" class="hidden z-50 bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+            <div x-show="media" x-transition class="absolute left-0 mt-2 w-44 bg-white border border-blue-100 rounded-lg shadow-lg z-50">
               <ul class="py-2 text-sm text-gray-700">
-                <li><a href="{% url 'gallery' %}" class="block px-4 py-2 hover:bg-gray-100">Gallery</a></li>
-                <li><a href="{% url 'event' %}" class="block px-4 py-2 hover:bg-gray-100">Events</a></li>
-                <li><a href="{% url 'celebrity' %}" class="block px-4 py-2 hover:bg-gray-100">Celebrity</a></li>
+                <li><a href="{{ gallery_url }}" class="block px-4 py-2 hover:bg-blue-50">Gallery</a></li>
+                <li><a href="{{ event_url }}" class="block px-4 py-2 hover:bg-blue-50">Events</a></li>
+                <li><a href="{{ celebrity_url }}" class="block px-4 py-2 hover:bg-blue-50">Celebrity</a></li>
               </ul>
             </div>
           </div>
 
-          <!-- Other Links -->
-          <a href="{% url 'sarpanch' %}" class="text-gray-700 hover:text-blue-600">Sarpanch</a>
-          <a href="{% url 'complain' %}" class="text-gray-700 hover:text-blue-600">Complain</a>
-          <a href="{% url 'gramsabha' %}" class="text-gray-700 hover:text-blue-600">Gramsabha</a>
-          <a href="{% url 'contact' %}" class="text-gray-700 hover:text-blue-600">Contact</a>
-          <a href="{% url 'staff_member' 'staff' %}" class="text-gray-700 hover:text-blue-600">Staff</a>
-          <a href="{% url 'staff_member' 'member' %}" class="text-gray-700 hover:text-blue-600">Members</a>
-          <a href="{% url 'history' %}" class="text-gray-700 hover:text-blue-600">History</a>
-          <a href="{% url 'development' %}" class="text-gray-700 hover:text-blue-600">Development</a>
-          <a href="{% url 'scheme' %}" class="text-gray-700 hover:text-blue-600">Scheme</a>
-          <a href="{% url 'download' %}" class="block text-gray-700 hover:text-blue-600">Download</a>
-          <a href="{% url 'Infrastructure' %}" class="block text-gray-700 hover:text-blue-600">Infrastructure</a>
-          
-          <!-- Login -->
-          <a href="#" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Login</a>
+          <a href="{{ sarpanch_url }}" class="{% if request.path == sarpanch_url %}text-blue-700 font-semibold border-b-2 border-blue-600 pb-1{% else %}text-gray-700 hover:text-blue-600 font-medium opacity-70{% endif %}">Sarpanch</a>
+          <a href="{{ complain_url }}" class="{% if request.path == complain_url %}text-blue-700 font-semibold border-b-2 border-blue-600 pb-1{% else %}text-gray-700 hover:text-blue-600 font-medium opacity-70{% endif %}">Complain</a>
+          <a href="{{ gramsabha_url }}" class="{% if request.path == gramsabha_url %}text-blue-700 font-semibold border-b-2 border-blue-600 pb-1{% else %}text-gray-700 hover:text-blue-600 font-medium opacity-70{% endif %}">Gramsabha</a>
+          <a href="{{ contact_url }}" class="{% if request.path == contact_url %}text-blue-700 font-semibold border-b-2 border-blue-600 pb-1{% else %}text-gray-700 hover:text-blue-600 font-medium opacity-70{% endif %}">Contact</a>
+          <a href="{{ staff_url }}" class="{% if active_name == 'staff_member' and active_page == 'staff' %}text-blue-700 font-semibold border-b-2 border-blue-600 pb-1{% else %}text-gray-700 hover:text-blue-600 font-medium opacity-70{% endif %}">Staff</a>
+          <a href="{{ member_url }}" class="{% if active_name == 'staff_member' and active_page == 'member' %}text-blue-700 font-semibold border-b-2 border-blue-600 pb-1{% else %}text-gray-700 hover:text-blue-600 font-medium opacity-70{% endif %}">Members</a>
+          <a href="{{ history_url }}" class="{% if request.path == history_url %}text-blue-700 font-semibold border-b-2 border-blue-600 pb-1{% else %}text-gray-700 hover:text-blue-600 font-medium opacity-70{% endif %}">History</a>
+          <a href="{{ development_url }}" class="{% if active_name == 'development' %}text-blue-700 font-semibold border-b-2 border-blue-600 pb-1{% else %}text-gray-700 hover:text-blue-600 font-medium opacity-70{% endif %}">Development</a>
+          <a href="{{ scheme_url }}" class="{% if active_name == 'scheme' %}text-blue-700 font-semibold border-b-2 border-blue-600 pb-1{% else %}text-gray-700 hover:text-blue-600 font-medium opacity-70{% endif %}">Scheme</a>
+          <a href="{{ download_url }}" class="{% if request.path == download_url %}text-blue-700 font-semibold border-b-2 border-blue-600 pb-1{% else %}text-gray-700 hover:text-blue-600 font-medium opacity-70{% endif %}">Download</a>
+          <a href="{{ infra_url }}" class="{% if active_name == 'Infrastructure' or active_name == 'infrastructure' %}text-blue-700 font-semibold border-b-2 border-blue-600 pb-1{% else %}text-gray-700 hover:text-blue-600 font-medium opacity-70{% endif %}">Infrastructure</a>
+          <a href="#" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 font-semibold shadow">Login</a>
         </div>
 
         <!-- Mobile Menu Button -->
-        <button id="menu-btn" class="md:hidden text-gray-700 focus:outline-none">
+        <button @click="open = !open" class="md:hidden text-blue-700 focus:outline-none">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
@@ -107,11 +125,10 @@
       </nav>
 
       <!-- Mobile Menu -->
-      <div id="menu" class="hidden md:hidden bg-gray-100 px-6 py-4 space-y-3">
-        <a href="{% url 'home' %}" class="block text-gray-700 hover:text-blue-600">Home</a>
-        <a href="{% url 'about' %}" class="block text-gray-700 hover:text-blue-600">About</a>
+      <div x-show="open" x-transition class="md:hidden bg-white border-t border-blue-100 px-6 py-4 space-y-3 shadow-lg">
+        <a href="{{ home_url }}" class="{% if active_name == 'index' or active_name == 'home' or active_name == '' %}text-blue-700 font-semibold border-b-2 border-blue-600 pb-1{% else %}block text-gray-700 hover:text-blue-600 font-medium opacity-70{% endif %}">Home</a>
+        <a href="{{ about_url }}" class="{% if active_name == 'about' %}text-blue-700 font-semibold border-b-2 border-blue-600 pb-1{% else %}block text-gray-700 hover:text-blue-600 font-medium opacity-70{% endif %}">About</a>
 
-        <!-- Schemes -->
         <div>
           <p class="font-semibold text-gray-700">Schemes</p>
           <a href="#" class="block text-sm pl-4 text-gray-600 hover:text-blue-600">Water Supply</a>
@@ -120,30 +137,32 @@
           <a href="#" class="block text-sm pl-4 text-gray-600 hover:text-blue-600">Education</a>
         </div>
 
-        <!-- Media -->
         <div>
           <p class="font-semibold text-gray-700">Media</p>
-          <a href="{% url 'gallery' %}" class="block text-sm pl-4 text-gray-600 hover:text-blue-600">Gallery</a>
-          <a href="{% url 'event' %}" class="block text-sm pl-4 text-gray-600 hover:text-blue-600">Events</a>
-          <a href="{% url 'celebrity' %}" class="block text-sm pl-4 text-gray-600 hover:text-blue-600">Celebrity</a>
+          <a href="{{ gallery_url }}" class="{% if active_name == 'gallery' %}text-blue-700 font-semibold border-b-2 border-blue-600 pb-1{% else %}block text-sm pl-4 text-gray-600 hover:text-blue-600{% endif %}">Gallery</a>
+          <a href="{{ event_url }}" class="{% if active_name == 'event' %}text-blue-700 font-semibold border-b-2 border-blue-600 pb-1{% else %}block text-sm pl-4 text-gray-600 hover:text-blue-600{% endif %}">Events</a>
+          <a href="{{ celebrity_url }}" class="{% if active_name == 'celebrity' %}text-blue-700 font-semibold border-b-2 border-blue-600 pb-1{% else %}block text-sm pl-4 text-gray-600 hover:text-blue-600{% endif %}">Celebrity</a>
         </div>
 
-        <a href="{% url 'sarpanch' %}" class="block text-gray-700 hover:text-blue-600">Sarpanch</a>
-        <a href="{% url 'complain' %}" class="block text-gray-700 hover:text-blue-600">Complaint</a>
-        <a href="{% url 'gramsabha' %}" class="block text-gray-700 hover:text-blue-600">Gramsabha</a>
-        <a href="{% url 'contact' %}" class="block text-gray-700 hover:text-blue-600">Contact</a>
-        <a href="{% url 'staff_member' 'staff' %}" class="block text-gray-700 hover:text-blue-600">Staff</a>
-        <a href="{% url 'staff_member' 'member' %}" class="block text-gray-700 hover:text-blue-600">Members</a>
-        <a href="{% url 'history' %}" class="block text-gray-700 hover:text-blue-600">History</a>
-        <a href="{% url 'development' %}" class="block text-gray-700 hover:text-blue-600">Development</a>
-        <a href="{% url 'scheme' %}" class="block text-gray-700 hover:text-blue-600">Scheme</a>
-      
-
-        <a href="#" class="block bg-blue-600 text-white px-4 py-2 rounded-lg text-center hover:bg-blue-700">Login</a>
+        <a href="{{ sarpanch_url }}" class="{% if request.path == sarpanch_url %}text-blue-700 font-semibold{% else %}block text-gray-700 hover:text-blue-600 font-medium opacity-70{% endif %}">Sarpanch</a>
+        <a href="{{ complain_url }}" class="{% if request.path == complain_url %}text-blue-700 font-semibold{% else %}block text-gray-700 hover:text-blue-600 font-medium opacity-70{% endif %}">Complaint</a>
+        <a href="{{ gramsabha_url }}" class="{% if request.path == gramsabha_url %}text-blue-700 font-semibold{% else %}block text-gray-700 hover:text-blue-600 font-medium opacity-70{% endif %}">Gramsabha</a>
+        <a href="{{ contact_url }}" class="{% if request.path == contact_url %}text-blue-700 font-semibold{% else %}block text-gray-700 hover:text-blue-600 font-medium opacity-70{% endif %}">Contact</a>
+        <a href="{{ staff_url }}" class="{% if active_name == 'staff_member' and active_page == 'staff' %}text-blue-700 font-semibold{% else %}block text-gray-700 hover:text-blue-600 font-medium opacity-70{% endif %}">Staff</a>
+        <a href="{{ member_url }}" class="{% if active_name == 'staff_member' and active_page == 'member' %}text-blue-700 font-semibold{% else %}block text-gray-700 hover:text-blue-600 font-medium opacity-70{% endif %}">Members</a>
+        <a href="{{ history_url }}" class="{% if request.path == history_url %}text-blue-700 font-semibold{% else %}block text-gray-700 hover:text-blue-600 font-medium opacity-70{% endif %}">History</a>
+        <a href="{{ development_url }}" class="{% if active_name == 'development' %}text-blue-700 font-semibold{% else %}block text-gray-700 hover:text-blue-600 font-medium opacity-70{% endif %}">Development</a>
+        <a href="{{ scheme_url }}" class="{% if active_name == 'scheme' %}text-blue-700 font-semibold{% else %}block text-gray-700 hover:text-blue-600 font-medium opacity-70{% endif %}">Scheme</a>
+        <a href="{{ download_url }}" class="{% if request.path == download_url %}text-blue-700 font-semibold{% else %}block text-gray-700 hover:text-blue-600 font-medium opacity-70{% endif %}">Download</a>
+        <a href="{{ infra_url }}" class="{% if active_name == 'Infrastructure' or active_name == 'infrastructure' %}text-blue-700 font-semibold{% else %}block text-gray-700 hover:text-blue-600 font-medium opacity-70{% endif %}">Infrastructure</a>
+        <a href="#" class="block bg-blue-600 text-white px-4 py-2 rounded-lg text-center hover:bg-blue-700 font-semibold shadow">Login</a>
       </div>
+      {% endwith %}
+      {% endwith %}
     </header>
 
-    
+    <!-- Add Alpine.js for interactivity -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 
     <!-- Body Content -->
     <main class="pt-24">
