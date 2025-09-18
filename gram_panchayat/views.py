@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Celebrity, Event, Gallery,Infrastructure,Development
+from .models import Celebrity, Event, Gallery,Infrastructure,Development,staffs,members
 from .forms import complain_form, contact_form
 from django.shortcuts import get_object_or_404,redirect
 from django.contrib import messages
@@ -52,27 +52,22 @@ def contact(request):
 
 def staff_member(request, page_type):
     if page_type == "staff":
-        context={"title": "OUR PANCHAYAT STAFF", "person": [
-            {"name": "Suthar Gunvant lal", "position": "Sarpanch", "contact": "1234567890", "image": "images/member.png"},
-            {"name": "Suthar Gunvant lal", "position": "Sarpanch", "contact": "1234567890", "image": "images/member.png"},
-            {"name": "Jane Smith", "position": "Panchayat Member", "contact": "0987654321", "image": "images/download.jpg"},
-            {"name": "Suthar Gunvant lal", "position": "Sarpanch", "contact": "1234567890", "image": "images/member.png"},
-            {"name": "Jane Smith", "position": "Panchayat Member", "contact": "0987654321", "image": "images/download.jpg"},
-            {"name": "Suthar Gunvant lal", "position": "Sarpanch", "contact": "1234567890", "image": "images/member.png"},
-            {"name": "Jane Smith", "position": "Panchayat Member", "contact": "0987654321", "image": "images/download.jpg"},
-            {"name": "Suthar Gunvant lal", "position": "Sarpanch", "contact": "1234567890", "image": "images/member.png"},
-            {"name": "Jane Smith", "position": "Panchayat Member", "contact": "0987654321", "image": "images/download.jpg"},
-            {"name": "Suthar Gunvant lal", "position": "Sarpanch", "contact": "1234567890", "image": "images/member.png"},
-        ]}
-           
+        staff_members = staffs.objects.all().order_by('staff_mem_name')
+        return render(request, "staff_member.html", {
+            "title": "OUR PANCHAYAT STAFF",
+            "person": staff_members
+        })
     elif page_type == "member":
-        context={"title": "OUR PANCHAYAT MEMBERS", "person": [
-            {"name": "Alice Brown", "position": "Member", "contact": "1122334455", "image": "images/images.jpg"},
-            {"name": "Bob White", "position": "Member", "contact": "2233445566", "image": "images/panch.jpg"},
-        ]}
+        member_list = members.objects.all().order_by('member_name')
+        return render(request, "staff_member.html", {
+            "title": "OUR PANCHAYAT MEMBERS",
+            "person": member_list
+        })
     else:
-        context = {"title": "404 NOT FOUND :)", "description": "Welcome to the Panchayat"}
-    return render(request, "staff_member.html", context)
+        return render(request, "staff_member.html", {
+            "title": "Not Found",
+            "person": []
+        })
 
 
 def history(request):

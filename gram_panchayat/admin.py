@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Celebrity, Development, Gallery, Infrastructure, complain,Contact,Event
+from .models import Celebrity, Development, Gallery, Infrastructure, complain,Contact,Event,staffs,members
 
 @admin.register(complain)
 class complainAdmin(admin.ModelAdmin):
@@ -50,3 +50,25 @@ class InfrastructureAdmin(admin.ModelAdmin):
         return obj.description
 
     short_description.short_description = 'Description Preview'
+
+
+@admin.register(staffs)
+class staffsAdmin(admin.ModelAdmin):
+    list_display = ['staff_mem_name','staff_mem_position']
+    list_filter = ['staff_mem_position']
+    search_fields = ['staff_mem_name']
+    list_per_page = 10
+    ordering = ['staff_mem_name']
+    list_editable = ['staff_mem_position']
+    list_display_links = ['staff_mem_name']
+    
+
+@admin.register(members)
+class membersAdmin(admin.ModelAdmin):
+    list_display= ['member_name','member_position']
+    list_filter = ['member_name']
+    search_fields = ['member_name']
+    list_per_page = 10
+    ordering = ['member_name']
+    list_editable = ['member_position']
+    list_display_links = ['member_name']

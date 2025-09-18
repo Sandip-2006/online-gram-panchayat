@@ -165,7 +165,29 @@
     {% endif %} {% endcomment %}
     <!-- Navbar -->
     <header class="bg-white shadow-md fixed top-0 left-0 w-full z-50">
-      <nav class="container mx-auto flex items-center justify-between px-6 py-3">
+      {# Precompute important urls to compare with request.path #}
+      {% url 'home' as home_url %}
+      {% url 'about' as about_url %}
+      {% url 'gallery' as gallery_url %}
+      {% url 'event' as event_url %}
+      {% url 'celebrity' as celebrity_url %}
+      {% url 'sarpanch' as sarpanch_url %}
+      {% url 'complain' as complain_url %}
+      {% url 'gramsabha' as gramsabha_url %}
+      {% url 'contact' as contact_url %}
+      {% url 'history' as history_url %}
+      {% url 'development' as development_url %}
+      {% url 'scheme' as scheme_url %}
+      {% url 'download' as download_url %}
+      {% url 'Infrastructure' as infra_url %}
+      {% url 'staff_member' 'staff' as staff_url %}
+      {% url 'staff_member' 'member' as member_url %}
+
+     {# determine active view name and page_type (for staff/member) #}
+      {% with request.resolver_match.url_name as active_name %}
+      {% with request.resolver_match.kwargs.page_type|default:"" as active_page %}
+
+      <nav x-data="{ open: false, schemes: false, media: false }" class="container mx-auto flex items-center justify-between px-6 py-3">
         <!-- Logo -->
         <a href="{% url 'home' %}" class="flex items-center space-x-2">
           <img src="{% static 'images/1.jpg' %}" alt="Profile photo" class="h-10 w-10 rounded-full object-cover" />
@@ -175,8 +197,8 @@
 
         <!-- Desktop Menu -->
         <div class="hidden md:flex items-center space-x-6">
-          <a href="{% url 'home' %}" class="text-gray-700 hover:text-blue-600">Home</a>
-          <a href="{% url 'about' %}" class="text-gray-700 hover:text-blue-600">About</a>
+          <a href="{{ home_url }}" class="{% if active_name == 'index' or active_name == 'home' or active_name == '' %}text-blue-700 font-semibold border-b-2 border-blue-600 pb-1{% else %}text-gray-700 hover:text-blue-600 font-medium opacity-70{% endif %}">Home</a>
+          <a href="{{ about_url }}" class="{% if active_name == 'about' %}text-blue-700 font-semibold border-b-2 border-blue-600 pb-1{% else %}text-gray-700 hover:text-blue-600 font-medium opacity-70{% endif %}">About</a>
 
           <!-- Schemes Dropdown -->
           <div class="relative group">
@@ -281,7 +303,7 @@
         </div>
 
         <!-- Mobile Menu Button -->
-        <button id="menu-btn" class="md:hidden text-gray-700 focus:outline-none">
+        <button @click="open = !open" class="md:hidden text-blue-700 focus:outline-none">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
@@ -289,11 +311,10 @@
       </nav>
 
       <!-- Mobile Menu -->
-      <div id="menu" class="hidden md:hidden bg-gray-100 px-6 py-4 space-y-3">
-        <a href="{% url 'home' %}" class="block text-gray-700 hover:text-blue-600">Home</a>
-        <a href="#" class="block text-gray-700 hover:text-blue-600">About</a>
+      <div x-show="open" x-transition class="md:hidden bg-white border-t border-blue-100 px-6 py-4 space-y-3 shadow-lg">
+        <a href="{{ home_url }}" class="{% if active_name == 'index' or active_name == 'home' or active_name == '' %}text-blue-700 font-semibold border-b-2 border-blue-600 pb-1{% else %}block text-gray-700 hover:text-blue-600 font-medium opacity-70{% endif %}">Home</a>
+        <a href="{{ about_url }}" class="{% if active_name == 'about' %}text-blue-700 font-semibold border-b-2 border-blue-600 pb-1{% else %}block text-gray-700 hover:text-blue-600 font-medium opacity-70{% endif %}">About</a>
 
-        <!-- Schemes -->
         <div>
           <p class="font-semibold text-gray-700">Schemes</p>
           <a href="#" class="block text-sm pl-4 text-gray-600 hover:text-blue-600">Water Supply</a>
@@ -302,12 +323,11 @@
           <a href="#" class="block text-sm pl-4 text-gray-600 hover:text-blue-600">Education</a>
         </div>
 
-        <!-- Media -->
         <div>
           <p class="font-semibold text-gray-700">Media</p>
-          <a href="{% url 'gallery' %}" class="block text-sm pl-4 text-gray-600 hover:text-blue-600">Gallery</a>
-          <a href="{% url 'event' %}" class="block text-sm pl-4 text-gray-600 hover:text-blue-600">Events</a>
-          <a href="{% url 'celebrity' %}" class="block text-sm pl-4 text-gray-600 hover:text-blue-600">Celebrity</a>
+          <a href="{{ gallery_url }}" class="{% if active_name == 'gallery' %}text-blue-700 font-semibold border-b-2 border-blue-600 pb-1{% else %}block text-sm pl-4 text-gray-600 hover:text-blue-600{% endif %}">Gallery</a>
+          <a href="{{ event_url }}" class="{% if active_name == 'event' %}text-blue-700 font-semibold border-b-2 border-blue-600 pb-1{% else %}block text-sm pl-4 text-gray-600 hover:text-blue-600{% endif %}">Events</a>
+          <a href="{{ celebrity_url }}" class="{% if active_name == 'celebrity' %}text-blue-700 font-semibold border-b-2 border-blue-600 pb-1{% else %}block text-sm pl-4 text-gray-600 hover:text-blue-600{% endif %}">Celebrity</a>
         </div>
 
         <a href="{% url 'sarpanch' %}" class="block text-gray-700 hover:text-blue-600">Sarpanch</a>
@@ -322,6 +342,8 @@
 
         <a href="#" class="block bg-blue-600 text-white px-4 py-2 rounded-lg text-center hover:bg-blue-700">Login</a>
       </div>
+      {% endwith %}
+      {% endwith %}
     </header>
 
     <!-- Body Content -->
@@ -369,6 +391,12 @@
             <li>📍 Fojivada, Sabarkantha, Gujarat</li>
             <li>📞 +91 98 56 23 1245</li>
             <li>📧 fojivada@gmail.com</li>
+            <li> <div class="flex">
+              <div class="left text-center flex items-center">Made By : &nbsp</div>
+              <div class="right">Krish Suthar <br>
+              Sandip Rathod</div>
+            </div>
+            </li>
           </ul>
         </div>
       </div>
