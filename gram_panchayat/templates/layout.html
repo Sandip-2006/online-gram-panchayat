@@ -5,13 +5,12 @@
   <head>
     <meta charset="utf-8" />
     <title>Gram Panchayat</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Gram Panchayat Website" />
-    <meta name="author" content="Krish Suthar | Sandip Rathod" />  
+    <meta name="author" content="Krish Suthar | Sandip Rathod" />
     <meta name="keywords" content="Gram Panchayat, Village, Development, Governance" />
     <meta name="robots" content="index, follow" />
     <meta name="googlebot" content="index, follow" />
-
 
     {% tailwind_css %}
 
@@ -20,23 +19,156 @@
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" />
+    <style>
+      
+@media (min-width: 1200px) {
+  .navmenu {
+    padding: 0;
+  }
+
+  .navmenu ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    list-style: none;
+    align-items: center;
+  }
+
+  .navmenu li {
+    position: relative;
+  }
+
+  .navmenu>ul>li {
+    white-space: nowrap;
+    padding: 15px 28px 15px 0;
+  }
+
+  .navmenu>ul>li:last-child {
+    padding-right: 0;
+  }
+
+  .navmenu a,
+  .navmenu a:focus {
+    color: var(--nav-color);
+    font-size: 15px;
+    padding: 0 2px;
+    font-family: var(--nav-font);
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    white-space: nowrap;
+    transition: 0.3s;
+    position: relative;
+  }
+
+  .navmenu a i,
+  .navmenu a:focus i {
+    font-size: 12px;
+    line-height: 0;
+    margin-left: 5px;
+    transition: 0.3s;
+  }
+
+  .navmenu>ul>li>a:before {
+    content: "";
+    position: absolute;
+    height: 2px;
+    bottom: -6px;
+    left: 0;
+    background-color: var(--nav-hover-color);
+    visibility: hidden;
+    width: 0px;
+    transition: all 0.3s ease-in-out 0s;
+  }
+
+  .navmenu a:hover:before,
+  .navmenu li:hover>a:before,
+  .navmenu .active:before {
+    visibility: visible;
+    width: 25px;
+  }
+
+  .navmenu li:hover>a,
+  .navmenu .active,
+  .navmenu .active:focus {
+    color: var(--nav-hover-color);
+  }
+
+  .navmenu .dropdown ul {
+    margin: 0;
+    padding: 10px 0;
+    background: var(--nav-dropdown-background-color);
+    display: block;
+    position: absolute;
+    visibility: hidden;
+    left: -5px;
+    top: 130%;
+    opacity: 0;
+    transition: 0.3s;
+    border-radius: 4px;
+    z-index: 99;
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .navmenu .dropdown ul li {
+    min-width: 200px;
+  }
+
+  .navmenu .dropdown ul a {
+    padding: 10px 20px;
+    font-size: 15px;
+    text-transform: none;
+    color: var(--nav-dropdown-color);
+  }
+
+  .navmenu .dropdown ul a i {
+    font-size: 12px;
+  }
+
+  .navmenu .dropdown ul a:hover,
+  .navmenu .dropdown ul .active:hover,
+  .navmenu .dropdown ul li:hover>a {
+    color: var(--nav-dropdown-hover-color);
+  }
+
+  .navmenu .dropdown:hover>ul {
+    opacity: 1;
+    top: 100%;
+    visibility: visible;
+  }
+
+  .navmenu .dropdown .dropdown ul {
+    top: 0;
+    left: -90%;
+    visibility: hidden;
+  }
+
+  .navmenu .dropdown .dropdown:hover>ul {
+    opacity: 1;
+    top: 0;
+    left: -100%;
+    visibility: visible;
+  }
+}
+
+
+    </style>
   </head>
 
   <body class="bg-gray-50 text-black">
-
-    {% comment %} form submit meassge {% endcomment %}
-  {% comment %} {% if messages %}
-    {% for message in messages %}
-    <div class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[99] border rounded-4xl alert alert-success text-zinc-950">{{ message }}</div>
-    {% endfor %}
+    {% comment %}form submit meassge{% endcomment %}
+    {% comment %} {% if messages %}
+      {% for message in messages %}
+        <div class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[99] border rounded-4xl alert alert-success text-zinc-950">{{ message }}</div>
+      {% endfor %}
     {% endif %} {% endcomment %}
     <!-- Navbar -->
     <header class="bg-white shadow-md fixed top-0 left-0 w-full z-50">
       <nav class="container mx-auto flex items-center justify-between px-6 py-3">
         <!-- Logo -->
         <a href="{% url 'home' %}" class="flex items-center space-x-2">
-          <img src="{% static 'images/1.jpg' %}" alt="Profile photo"
-             class="h-10 w-10 rounded-full object-cover" />
+          <img src="{% static 'images/1.jpg' %}" alt="Profile photo" class="h-10 w-10 rounded-full object-cover" />
 
           <span class="text-xl font-bold text-gray-800">Gram Panchayat</span>
         </a>
@@ -47,53 +179,103 @@
           <a href="{% url 'about' %}" class="text-gray-700 hover:text-blue-600">About</a>
 
           <!-- Schemes Dropdown -->
-          <div class="relative">
-            <button id="dropdownSchemesBtn" data-dropdown-toggle="dropdownSchemes" class="flex items-center text-gray-700 hover:text-blue-600">
-              Schemes
-              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="relative group">
+            <button class="flex items-center text-gray-700 hover:text-blue-600 transition-colors duration-300 py-2">
+              Media<svg class="w-4 h-4 ml-1 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
             </button>
-            <div id="dropdownSchemes" class="hidden z-50 bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
-              <ul class="py-2 text-sm text-gray-700">
-                <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Water Supply</a></li>
-                <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Sanitation</a></li>
-                <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Employment</a></li>
-                <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Education</a></li>
+            <div class="absolute top-full left-0 mt-1 w-44 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+              <ul class="py-2">
+                <li>
+                  <a href="{% url 'gallery' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">Gallery</a>
+                </li>
+                <li>
+                  <a href="{% url 'event' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">Events</a>
+                </li>
+                <li>
+                  <a href="{% url 'celebrity' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">Celebrity</a>
+                </li>
+                <li>
+                  <a href="{% url 'history' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">History</a>
+                </li>
               </ul>
             </div>
           </div>
 
-          <!-- Media Dropdown -->
-          <div class="relative">
-            <button id="dropdownMediaBtn" data-dropdown-toggle="dropdownMedia" class="flex items-center text-gray-700 hover:text-blue-600">
-              Media
-              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <!-- Panchayat Menu -->
+          <div class="relative group">
+            <button class="flex items-center text-gray-700 hover:text-blue-600 transition-colors duration-300 py-2">
+              Panchayat<svg class="w-4 h-4 ml-1 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
             </button>
-            <div id="dropdownMedia" class="hidden z-50 bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
-              <ul class="py-2 text-sm text-gray-700">
-                <li><a href="{% url 'gallery' %}" class="block px-4 py-2 hover:bg-gray-100">Gallery</a></li>
-                <li><a href="{% url 'event' %}" class="block px-4 py-2 hover:bg-gray-100">Events</a></li>
-                <li><a href="{% url 'celebrity' %}" class="block px-4 py-2 hover:bg-gray-100">Celebrity</a></li>
+            <div class="absolute top-full left-0 mt-1 w-44 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+              <ul class="py-2">
+                <li>
+                  <a href="{% url 'gramsabha' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">Gramsabha</a>
+                </li>
+                <li>
+                  <a href="{% url 'staff_member' 'staff' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">Staff</a>
+                </li>
+                <li>
+                  <a href="{% url 'staff_member' 'member' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">Members</a>
+                </li>
+                <li>
+                  <a href="{% url 'sarpanch' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">Sarpanch</a>
+                </li>
+                <li>
+                  <a href="{% url 'development' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">Development Work</a>
+                </li>
+                <li>
+                  <a href="{% url 'Infrastructure' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">Infrastructure</a>
+                </li>
               </ul>
             </div>
           </div>
+
+          <!-- Service Menu -->
+          <div class="relative group">
+            <button class="flex items-center text-gray-700 hover:text-blue-600 transition-colors duration-300 py-2">
+              Service<svg class="w-4 h-4 ml-1 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div class="absolute top-full left-0 mt-1 w-44 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+              <ul class="py-2">
+                <li>
+                  <a href="{% url 'complain' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">Complain</a>
+                </li>
+                <li>
+                  <a href="{% url 'development' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">Development</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Download Menu -->
+          <div class="relative group">
+            <button class="flex items-center text-gray-700 hover:text-blue-600 transition-colors duration-300 py-2">
+              Download<svg class="w-4 h-4 ml-1 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div class="absolute top-full left-0 mt-1 w-44 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+              <ul class="py-2">
+                <li>
+                  <a href="{% url 'scheme' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">Scheme</a>
+                </li>
+                <li>
+                  <a href="{% url 'download' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">Download</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
 
           <!-- Other Links -->
-          <a href="{% url 'sarpanch' %}" class="text-gray-700 hover:text-blue-600">Sarpanch</a>
-          <a href="{% url 'complain' %}" class="text-gray-700 hover:text-blue-600">Complain</a>
-          <a href="{% url 'gramsabha' %}" class="text-gray-700 hover:text-blue-600">Gramsabha</a>
           <a href="{% url 'contact' %}" class="text-gray-700 hover:text-blue-600">Contact</a>
-          <a href="{% url 'staff_member' 'staff' %}" class="text-gray-700 hover:text-blue-600">Staff</a>
-          <a href="{% url 'staff_member' 'member' %}" class="text-gray-700 hover:text-blue-600">Members</a>
-          <a href="{% url 'history' %}" class="text-gray-700 hover:text-blue-600">History</a>
-          <a href="{% url 'development' %}" class="text-gray-700 hover:text-blue-600">Development</a>
-          <a href="{% url 'scheme' %}" class="text-gray-700 hover:text-blue-600">Scheme</a>
-          <a href="{% url 'download' %}" class="block text-gray-700 hover:text-blue-600">Download</a>
-          <a href="{% url 'Infrastructure' %}" class="block text-gray-700 hover:text-blue-600">Infrastructure</a>
-          
+
           <!-- Login -->
           <a href="#" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Login</a>
         </div>
@@ -137,17 +319,16 @@
         <a href="{% url 'history' %}" class="block text-gray-700 hover:text-blue-600">History</a>
         <a href="{% url 'development' %}" class="block text-gray-700 hover:text-blue-600">Development</a>
         <a href="{% url 'scheme' %}" class="block text-gray-700 hover:text-blue-600">Scheme</a>
-      
 
         <a href="#" class="block bg-blue-600 text-white px-4 py-2 rounded-lg text-center hover:bg-blue-700">Login</a>
       </div>
     </header>
 
-    
-
     <!-- Body Content -->
     <main class="pt-24">
-      {% block content %}{% endblock %}
+      {% block content %}
+
+      {% endblock %}
     </main>
 
     <!-- Footer (same as before) -->
@@ -163,15 +344,26 @@
         <div>
           <h3 class="text-lg font-semibold text-white mb-4">Quick Links</h3>
           <ul class="space-y-2">
-            <li><a href="{% url 'home' %}" class="hover:text-white hover:underline">Home</a></li>
-            <li><a href="{% url 'gallery' %}" class="hover:text-white hover:underline">Gallery</a></li>
-            <li><a href="{% url 'sarpanch' %}" class="hover:text-white hover:underline">Sarpanch</a></li>
+            <li>
+              <a href="{% url 'home' %}" class="hover:text-white hover:underline">Home</a>
+            </li>
+            <li>
+              <a href="{% url 'gallery' %}" class="hover:text-white hover:underline">Gallery</a>
+            </li>
+            <li>
+              <a href="{% url 'sarpanch' %}" class="hover:text-white hover:underline">Sarpanch</a>
+            </li>
+            <li>
+              <a href="{% url 'complain' %}" class="hover:text-white hover:underline">Complain</a>
+            </li>
+            <li>
+              <a href="{% url 'gramsabha' %}" class="hover:text-white hover:underline">Gramsabha</a>
+            </li>
           </ul>
         </div>
 
         <!-- Contact -->
         <div>
-          
           <h3 class="text-lg font-semibold text-white mb-4">Contact</h3>
           <ul class="space-y-2 text-sm">
             <li>📍 Fojivada, Sabarkantha, Gujarat</li>
@@ -184,7 +376,9 @@
       <!-- Bottom -->
       <div class="bg-gray-800 py-4">
         <div class="container mx-auto px-6 flex justify-between items-center">
-          <p class="text-sm">© 2025 Gram Panchayat. All Rights Reserved.</p>
+          <p class="text-sm">
+            ©{% now 'Y' %}Gram Panchayat. All Rights Reserved.
+          </p>
           <div class="flex space-x-4">
             <a href="#" class="hover:text-white">🌐</a>
             <a href="#" class="hover:text-white">📘</a>
@@ -196,11 +390,11 @@
 
     <!-- JS for Mobile Menu -->
     <script>
-      const btn = document.getElementById('menu-btn');
-      const menu = document.getElementById('menu');
+      const btn = document.getElementById('menu-btn')
+      const menu = document.getElementById('menu')
       btn.addEventListener('click', () => {
-        menu.classList.toggle('hidden');
-      });
+        menu.classList.toggle('hidden')
+      })
     </script>
   </body>
 </html>

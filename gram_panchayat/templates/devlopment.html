@@ -1,121 +1,71 @@
-{% extends "layout.html" %}
+{% extends 'layout.html' %}
 {% load static %}
 
 {% block content %}
-<!-- Development Work Section -->
-<section class="text-gray-800 py-16 px-6">
+  <!-- Development Work Section -->
+  <section class="text-gray-800 py-16 px-6">
     <div class="container mx-auto max-w-6xl">
-        <!-- Page Heading -->
-        <h1 class="text-3xl md:text-4xl font-bold text-center text-black mb-12">
-            Development Work
-        </h1>
+      <!-- Page Heading -->
+      <h1 class="text-3xl md:text-4xl font-bold text-center text-black mb-12">Development Work</h1>
 
-        <!-- Development Item 1 -->
+      <!-- Development Item 1 -->
+      {% for development in developments %}
         <div class="dev-item grid gap-10 md:grid-cols-2 items-center bg-white rounded-2xl shadow-md p-6 mb-12">
-            <!-- Image -->
-            <div class="dev-image flex justify-center">
-                <img src="{% static 'images/road.webp' %}" alt="Road Development"
-                    class="rounded-xl shadow-lg w-full max-w-md object-cover">
+          <!-- Image -->
+          <div class="dev-image flex justify-center">
+            <img src="{{ development.image.url }}" alt="Road Development" class="rounded-xl shadow-lg w-full max-w-md object-cover" />
+          </div>
+          <!-- Text -->
+          <div class="dev-text">
+            <div class="flex items-center justify-between mb-4">
+              <h2 class="text-2xl font-semibold text-gray-900">{{ development.title }}</h2>
+              <span class="text-sm text-indigo-500 font-medium">Year: {{ development.year|date:'Y' }}</span>
             </div>
-            <!-- Text -->
-            <div class="dev-text">
-                <div class="flex items-center justify-between mb-4">
-                    <h2 class="text-2xl font-semibold text-gray-900">Road Development</h2>
-                    <span class="text-sm text-indigo-500 font-medium">Year: 1993</span>
-                </div>
-                <h3 class="text-lg font-semibold text-gray-800 mb-3">Nirmal Gram</h3>
-                <p class="text-gray-600 leading-relaxed">
-                    Road development work of our Gram Panchayat included <b>3 major road projects</b> for the village.
-                    All roads were successfully completed with an investment of
-                    <span class="font-semibold text-gray-900">₹3,00,000</span>.
-                    This project improved connectivity and made daily travel much easier for villagers.
-                </p>
-            </div>
+            <h3 class="text-lg font-semibold text-gray-800 mb-3">{{ development.short_description }}</h3>
+            <p class="text-gray-600 leading-relaxed">{{ development.description }}</p>
+          </div>
         </div>
-
-        <!-- Development Item 2 -->
-        <div class="dev-item grid gap-10 md:grid-cols-2 items-center bg-white rounded-2xl shadow-md p-6 mb-12">
-            <!-- Image -->
-            <div class="dev-image flex justify-center md:order-2">
-                <img src="{% static 'images/water-supply.jpg' %}" alt="Water Supply Development"
-                    class="rounded-xl shadow-lg w-full max-w-md object-cover">
-            </div>
-            <!-- Text -->
-            <div class="dev-text md:order-1">
-                <div class="flex items-center justify-between mb-4">
-                    <h2 class="text-2xl font-semibold text-gray-900">Water Supply</h2>
-                    <span class="text-sm text-indigo-500 font-medium">Year: 2005</span>
-                </div>
-                <h3 class="text-lg font-semibold text-gray-800 mb-3">Village Water Project</h3>
-                <p class="text-gray-600 leading-relaxed">
-                    A new water supply system was installed to provide clean drinking water
-                    to every household in the village. This development greatly improved
-                    public health and reduced the hardships faced by families.
-                </p>
-            </div>
-        </div>
-
-        <!-- Development Item 3 -->
-        <div class="dev-item grid gap-10 md:grid-cols-2 items-center bg-white rounded-2xl shadow-md p-6">
-            <!-- Image -->
-            <div class="dev-image flex justify-center">
-                <img src="{% static 'images/Education.jpg' %}" alt="School Development"
-                    class="rounded-xl shadow-lg w-full max-w-md object-cover">
-            </div>
-            <!-- Text -->
-            <div class="dev-text">
-                <div class="flex items-center justify-between mb-4">
-                    <h2 class="text-2xl font-semibold text-gray-900">Education Development</h2>
-                    <span class="text-sm text-indigo-500 font-medium">Year: 2015</span>
-                </div>
-                <h3 class="text-lg font-semibold text-gray-800 mb-3">New Village School</h3>
-                <p class="text-gray-600 leading-relaxed">
-                    A new primary school building was constructed with modern facilities
-                    to support the education of village children. This project empowered
-                    the younger generation with better learning opportunities.
-                </p>
-            </div>
-        </div>
+      {% endfor %}
     </div>
-</section>
+  </section>
 
-<!-- GSAP + ScrollTrigger -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script>
-    gsap.registerPlugin(ScrollTrigger);
-
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script>
+    gsap.registerPlugin(ScrollTrigger)
+    
     // Animate each development item
-    document.querySelectorAll(".dev-item").forEach((item) => {
-        let image = item.querySelector(".dev-image img");
-        let text = item.querySelector(".dev-text");
-
-        gsap.from(image, {
-            scale: 0.8,
-            opacity: 0,
-            duration: 1,
-            scrollTrigger: {
-                trigger: item,
-                start: "top 50%",
-                end: "bottom 100%",
-                scrub: true,
-                pin: image, // pinning image
-                toggleActions: "play none none reverse"
-            }
-        });
-
-        gsap.from(text, {
-            x: 100,
-            opacity: 0,
-            duration: 1,
-            scrollTrigger: {
-                trigger: item,
-                start: "top 80%",
-                end: "bottom 50%",
-                scrub: true,
-                toggleActions: "play none none reverse"
-            }
-        });
-    });
-</script>
-{% endblock content %}
+    document.querySelectorAll('.dev-item').forEach((item) => {
+      let image = item.querySelector('.dev-image img')
+      let text = item.querySelector('.dev-text')
+    
+      gsap.from(image, {
+        scale: 0.8,
+        opacity: 0,
+        duration: 1,
+        scrollTrigger: {
+          trigger: item,
+          start: 'top 50%',
+          end: 'bottom 100%',
+          scrub: true,
+          pin: image, // pinning image
+          toggleActions: 'play none none reverse'
+        }
+      })
+    
+      gsap.from(text, {
+        x: 100,
+        opacity: 0,
+        duration: 1,
+        scrollTrigger: {
+          trigger: item,
+          start: 'top 80%',
+          end: 'bottom 100%',
+          scrub: true,
+          toggleActions: 'play none none reverse'
+        }
+      })
+    })
+  </script>
+{% endblock %}

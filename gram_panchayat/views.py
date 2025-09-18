@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Celebrity, Event, Gallery
+from .models import Celebrity, Event, Gallery,Infrastructure,Development
 from .forms import complain_form, contact_form
 from django.shortcuts import get_object_or_404,redirect
 from django.contrib import messages
@@ -79,7 +79,8 @@ def history(request):
     return render(request,'history.html')
 
 def devlopment(request):
-    return render(request,'devlopment.html')
+    devlopments = Development.objects.all().order_by('year')
+    return render(request,'devlopment.html',{'developments':devlopments})
 
 def celebrity(request):
     celebritys = Celebrity.objects.all().order_by('-created_at')
@@ -94,7 +95,7 @@ def celebrity_detail(request,celebrity_id):
     # Split extra_points by comma into a list
     points = []
     if celebrity.extra_points:
-        points = [p.strip() for p in celebrity.extra_points.split(',')]
+        points = [p.strip() for p in celebrity.extra_points.split('\n')]
     
     return render(request, 'celebrity_detail.html', {'celebrity': celebrity, 'points': points})
 
@@ -104,8 +105,20 @@ def scheme(request):
 def download(request):
     return render(request,'download.html')
 
-def Infrastructure(request):
-    return render(request,'Infrastructure.html')
+def infrastructure(request):
+    infra = Infrastructure.objects.all().order_by('created_at')
+
+    infra_with_points = []
+    for item in infra:
+        points = []
+        if item.extra_points:
+            points = [p.strip() for p in item.extra_points.split('\n')]
+        infra_with_points.append({
+            'object': item,
+            'points': points
+        })
+    return render(request, 'Infrastructure.html', {'infra_with_points': infra_with_points})
+
 
 # dont touch this file its for robots.txt
 from django.http import HttpResponse

@@ -17,7 +17,7 @@ urlpatterns = [
     path('gramsabha/',views.gramsabha,name="gramsabha"),
     path('scheme/', views.scheme, name="scheme"),
     path('download/', views.download, name="download"),
-    path('Infrastructure/', views.Infrastructure, name="Infrastructure"),
+    path('Infrastructure/', views.infrastructure, name="Infrastructure"),
 
     # robots.txt dont touch the below line
     # path("robots.txt", views.robots_txt, name="robots"),

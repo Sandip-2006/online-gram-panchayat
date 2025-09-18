@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.utils import timezone
 
 # Create your models here.
 
@@ -77,3 +77,32 @@ class Gallery(models.Model):
     
     def __str__(self):
         return self.title
+    
+
+class Development(models.Model):
+    title = models.CharField(max_length=100)
+    short_description = models.CharField(max_length=200,blank=True,null=True)
+    description = models.TextField(blank=True)
+    image = models.ImageField(upload_to='devlopment/')
+    year = models.DateField(default=timezone.now)
+    created_at = models.DateTimeField(auto_now_add=True,blank=True)
+    
+    class Meta:
+        db_table = 'Development'
+
+    def __str__(self):
+        return self.title
+
+
+class Infrastructure(models.Model):
+    title = models.CharField(max_length=100)
+    description = models.TextField()
+    extra_points = models.TextField(blank=True,null=True)
+    image = models.ImageField(upload_to='infrastructure/')
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        db_table = 'Infrastructure'
+
+    def __str__(self):
+        return f"{self.title} - {self.description[:30]}"
