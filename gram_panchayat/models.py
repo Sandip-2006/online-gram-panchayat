@@ -133,3 +133,14 @@ class members(models.Model):
     
     def __str__(self):
         return self.member_name
+    
+class Sarpanch(models.Model):
+    sarpanch_image = models.ImageField(upload_to='sarpanch/')
+    sarpanch_name = models.CharField(max_length=100,null=False)
+    introduction = models.TextField(blank=False,null=False)
+    phone_no = models.CharField(max_length=10)
+    email = models.EmailField()
+    address = models.TextField(null=False,blank=False)
+    start_year = models.DateField(null=False)
+    end_year = models.DateField(null=False)
+    extra_points = models.TextField(blank=True,null=True)

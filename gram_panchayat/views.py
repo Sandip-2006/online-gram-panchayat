@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Celebrity, Event, Gallery,Infrastructure,Development,staffs,members
+from .models import Celebrity, Event, Gallery,Infrastructure,Development, Sarpanch,staffs,members
 from .forms import complain_form, contact_form
 from django.shortcuts import get_object_or_404,redirect
 from django.contrib import messages
@@ -30,7 +30,17 @@ def gallery(request):
     return render(request, "gallery.html",{'images':images})
 
 def sarpanch(request):
-    return render(request, "sarpanch.html")
+    sarpanch_detail = Sarpanch.objects.all()
+    srp_detail = []
+    for item in sarpanch_detail:
+        points = []
+        if item.extra_points:
+            points = [p.strip() for p in item.extra_points.split('\n')]
+        srp_detail.append({
+            'detail': item,
+            'points': points
+        })
+    return render(request, 'sarpanch.html', {'sarpanch_list': srp_detail})
 
 def event(request):
     events = Event.objects.all().order_by("-date")

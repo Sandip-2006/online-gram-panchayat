@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Celebrity, Development, Gallery, Infrastructure, complain,Contact,Event,staffs,members
+from .models import Celebrity, Development, Gallery, Infrastructure, complain,Contact,Event,staffs,members,Sarpanch
 
 @admin.register(complain)
 class complainAdmin(admin.ModelAdmin):
@@ -72,3 +72,8 @@ class membersAdmin(admin.ModelAdmin):
     ordering = ['member_name']
     list_editable = ['member_position']
     list_display_links = ['member_name']
+
+@admin.register(Sarpanch)
+class SarpanchAdmin(admin.ModelAdmin):
+    list_display = ['sarpanch_name','start_year','end_year']
+    
