@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Celebrity, Event, Gallery,Infrastructure,Development, Sarpanch,staffs,members
+from .models import Celebrity, Event, Gallery,Infrastructure,Development, Sarpanch, Scheme,staffs,members
 from .forms import complain_form, contact_form
 from django.shortcuts import get_object_or_404,redirect
 from django.contrib import messages
@@ -105,7 +105,8 @@ def celebrity_detail(request,celebrity_id):
     return render(request, 'celebrity_detail.html', {'celebrity': celebrity, 'points': points})
 
 def scheme(request):
-    return render(request,'scheme.html')
+    schemes = Scheme.objects.all().order_by('-created_at')
+    return render(request,'scheme.html',{'schemes':schemes})
 
 def download(request):
     return render(request,'download.html')
