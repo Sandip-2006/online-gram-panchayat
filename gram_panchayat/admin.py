@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Celebrity, Development, Gallery, Infrastructure, complain,Contact,Event,staffs,members,Sarpanch
+from .models import Celebrity, Development, Gallery, Infrastructure, Scheme, complain,Contact,Event,staffs,members,Sarpanch
 
 @admin.register(complain)
 class complainAdmin(admin.ModelAdmin):
@@ -34,7 +34,7 @@ class developmentAdmin(admin.ModelAdmin):
             return obj.description[:30] + '...'
         return obj.description
 
-    short_description.short_description = 'Description Preview'
+   
 
 @admin.register(Infrastructure)
 class InfrastructureAdmin(admin.ModelAdmin):
@@ -48,9 +48,6 @@ class InfrastructureAdmin(admin.ModelAdmin):
         if len(obj.description) > 30:
             return obj.description[:30] + '...'
         return obj.description
-
-    short_description.short_description = 'Description Preview'
-
 
 @admin.register(staffs)
 class staffsAdmin(admin.ModelAdmin):
@@ -77,3 +74,17 @@ class membersAdmin(admin.ModelAdmin):
 class SarpanchAdmin(admin.ModelAdmin):
     list_display = ['sarpanch_name','start_year','end_year']
     
+@admin.register(Scheme)
+class SchemeAdmin(admin.ModelAdmin):
+    list_display = ['scheme_name','short_about','created_at']
+    list_filter = ['scheme_name']
+    search_fields = ['scheme_name']
+    list_per_page = 10
+    ordering = ['scheme_name']
+
+    def short_about(self,obj):
+        if len(obj.about) > 30:
+            return obj.about[:30] + '...'
+        return obj.about
+    
+    short_about.short_description = "About"  # column heading

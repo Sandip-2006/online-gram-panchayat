@@ -144,3 +144,15 @@ class Sarpanch(models.Model):
     start_year = models.DateField(null=False)
     end_year = models.DateField(null=False)
     extra_points = models.TextField(blank=True,null=True)
+
+class Scheme(models.Model):
+    scheme_name = models.CharField(max_length=100)
+    about = models.TextField(max_length=300)
+    eligibility = models.TextField(max_length=300)
+    benefit = models.TextField(max_length=300)
+    document_required = models.TextField(max_length=300)
+    how_to_apply = models.TextField(max_length=300)
+
+    created_at = models.DateTimeField(auto_now=True)
+
+
