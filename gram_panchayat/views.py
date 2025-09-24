@@ -3,8 +3,16 @@ from .models import Celebrity, Event, Gallery,Infrastructure,Development, Sarpan
 from .forms import complain_form, contact_form
 from django.shortcuts import get_object_or_404,redirect
 from django.contrib import messages
+from django.contrib.auth.views import LoginView
 
 # Create your views here.
+
+class AppLoginView(LoginView):
+    template_name = "registration/login.html"
+    def form_valid(self, form):
+        remember = self.request.POST.get("remember_me")
+        return super().form_valid(form)
+    
 
 def index(request):
     return render(request, "index.html")

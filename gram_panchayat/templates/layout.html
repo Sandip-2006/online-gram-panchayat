@@ -340,7 +340,7 @@
         <a href="{% url 'development' %}" class="block text-gray-700 hover:text-blue-600">Development</a>
         <a href="{% url 'scheme' %}" class="block text-gray-700 hover:text-blue-600">Scheme</a>
 
-        <a href="#" class="block bg-blue-600 text-white px-4 py-2 rounded-lg text-center hover:bg-blue-700">Login</a>
+        <a href="{% url 'login' %}" class="block bg-blue-600 text-white px-4 py-2 rounded-lg text-center hover:bg-blue-700">Login</a>
       </div>
       {% endwith %}
       {% endwith %}
@@ -391,12 +391,7 @@
             <li>📍 Fojivada, Sabarkantha, Gujarat</li>
             <li>📞 +91 98 56 23 1245</li>
             <li>📧 fojivada@gmail.com</li>
-            <li> <div class="flex">
-              <div class="left text-center flex items-center">Made By : &nbsp</div>
-              <div class="right">Krish Suthar <br>
-              Sandip Rathod</div>
-            </div>
-            </li>
+            
           </ul>
         </div>
       </div>

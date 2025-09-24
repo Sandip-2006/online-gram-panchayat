@@ -144,6 +144,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 
+LOGIN_REDIRECT_URL = 'home'      # name or path to send users after login
+LOGOUT_REDIRECT_URL = 'login'    # where to go after logout (optional)
+LOGIN_URL = 'login' 
+
+
+
+
 # improve security of the website by adding the below lines in settings.py
 # Content Security Policy (CSP)
 # ✅ NEW STYLE (django-csp v4+)
