@@ -93,6 +93,17 @@ DATABASES = {
 }
 
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',   # Database backend
+#         'NAME': 'online_gram_panchayat',          # Database name
+#         'USER': 'root',               # MySQL username
+#         'PASSWORD': 'sandip@123',           # MySQL password
+#         'HOST': 'localhost',                   # Or IP, e.g., '127.0.0.1'
+#         'PORT': '3306',                        # Default MySQL port
+#     }
+# }
+
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 

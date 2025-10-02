@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Celebrity, Development, Gallery, Infrastructure, Scheme, complain,Contact,Event,staffs,members,Sarpanch
+from .models import Celebrity, Development, Document, Gallery, GramSabhaMeeting, Infrastructure, Scheme, complain,Contact,Event,staffs,members,Sarpanch
 
 @admin.register(complain)
 class complainAdmin(admin.ModelAdmin):
@@ -88,3 +88,15 @@ class SchemeAdmin(admin.ModelAdmin):
         return obj.about
     
     short_about.short_description = "About"  # column heading
+
+@admin.register(GramSabhaMeeting)
+class GramSabhaMeetingAdmin(admin.ModelAdmin):
+    list_display = ("title", "date", "time", "venue", "is_upcoming")
+    search_fields = ("title", "agenda", "venue")
+    list_filter = ("date",)
+    ordering = ("-date",)
+
+
+@admin.register(Document)
+class DocumentAdmin(admin.ModelAdmin):
+    list_display = ('title', 'uploaded_at')

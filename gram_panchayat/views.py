@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
-from .models import Celebrity, Event, Gallery,Infrastructure,Development, Sarpanch, Scheme,staffs,members
+from .models import Celebrity, Event, Gallery, GramSabhaMeeting,Infrastructure,Development, Sarpanch, Scheme,staffs,members,Document
 from .forms import complain_form, contact_form
 from django.shortcuts import get_object_or_404,redirect
 from django.contrib import messages
 from django.contrib.auth.views import LoginView
+from django.utils import timezone
+
 
 # Create your views here.
 
@@ -100,7 +102,14 @@ def celebrity(request):
     return render(request,'celebrity.html',{'celebritys':celebritys})
 
 def gramsabha(request):
-    return render(request,'gramsabha.html')
+    today = timezone.now().date()
+    upcoming_meetings = GramSabhaMeeting.objects.filter(date__gte=today).order_by('date')
+    past_meetings = GramSabhaMeeting.objects.filter(date__lt=today).order_by('-date')
+
+    return render(request, "gramsabha.html", {
+        "upcoming_meetings": upcoming_meetings,
+        "past_meetings": past_meetings
+    })
 
 def celebrity_detail(request,celebrity_id):
     celebrity = get_object_or_404(Celebrity,id=celebrity_id)
@@ -117,7 +126,8 @@ def scheme(request):
     return render(request,'scheme.html',{'schemes':schemes})
 
 def download(request):
-    return render(request,'download.html')
+    documents = Document.objects.all()  # Users can see list
+    return render(request, 'download.html', {'documents': documents})
 
 def infrastructure(request):
     infra = Infrastructure.objects.all().order_by('created_at')
@@ -151,3 +161,5 @@ from django.http import HttpResponse
 #     Sitemap: https://yourdomain.com/sitemap.xml
 #     """
 #     return HttpResponse(content, content_type="text/plain")
+
+
