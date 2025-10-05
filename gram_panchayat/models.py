@@ -24,6 +24,9 @@ class complain(models.Model):
     def __str__(self):
         return f'complain is: {self.complain} | {self.Complaint_Details[:36]}' 
     
+    class Meta:
+        db_table = "complain"
+    
 
 class Contact(models.Model):
     name = models.CharField(max_length=100)
@@ -145,6 +148,9 @@ class Sarpanch(models.Model):
     end_year = models.DateField(null=False)
     extra_points = models.TextField(blank=True,null=True)
 
+    class Meta:
+        db_table = "sarpanch"
+
 class Scheme(models.Model):
     scheme_name = models.CharField(max_length=100)
     about = models.TextField(max_length=300)
@@ -156,6 +162,38 @@ class Scheme(models.Model):
     created_at = models.DateTimeField(auto_now=True)
 
 
+class Meta:
+        db_table = "scheme"
+
+
+
+class GramSabhaMeeting(models.Model):
+    title = models.CharField(max_length=200)
+    agenda = models.TextField()
+    date = models.DateField()
+    time = models.TimeField()
+    venue = models.CharField(max_length=200)
+    minutes_file = models.FileField(upload_to="minutes/", blank=True, null=True)  # past meetings ke liye
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    @property
+    def is_upcoming(self):
+        return self.date >= timezone.now().date()
+
+    def __str__(self):
+        return f"{self.title} - {self.date}"
+    
+    class Meta:
+        db_table = "gramsabha"
+    
+class Document(models.Model):
+    title = models.CharField(max_length=200)
+    file = models.FileField(upload_to='documents/')
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return self.title
+    
 class feedback(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
@@ -165,4 +203,4 @@ class feedback(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"Feedback from {self.name}"
+        return f"{self.name} - {self.rating} Stars"
