@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Celebrity, Development, Gallery, Infrastructure, Scheme, complain,Contact,Event,staffs,members,Sarpanch
+from .models import Celebrity, Development, Gallery, Infrastructure, Scheme, complain,Contact,Event,staffs,members,Sarpanch,feedback
 
 @admin.register(complain)
 class complainAdmin(admin.ModelAdmin):
@@ -88,3 +88,11 @@ class SchemeAdmin(admin.ModelAdmin):
         return obj.about
     
     short_about.short_description = "About"  # column heading
+
+
+@admin.register(feedback)
+class feedbackAdmin(admin.ModelAdmin):
+    list_display = ['name', 'email', 'rating', 'message', 'created_at']
+    list_filter = ['rating']
+    search_fields = ['name', 'email', 'message']
+    list_per_page = 10

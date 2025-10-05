@@ -1,5 +1,5 @@
 from django import forms
-from .models import complain,Contact
+from .models import complain,Contact, feedback
 
 class complain_form(forms.ModelForm):
     class Meta:
@@ -10,3 +10,8 @@ class contact_form(forms.ModelForm):
     class Meta:
         model = Contact
         fields = ['name','email','subject','message']
+
+class feedback_form(forms.ModelForm):
+    class Meta:
+        model = feedback
+        fields = ['name', 'email', 'rating', 'message', 'image']

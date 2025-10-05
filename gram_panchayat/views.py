@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Celebrity, Event, Gallery,Infrastructure,Development, Sarpanch, Scheme,staffs,members
-from .forms import complain_form, contact_form
+from .forms import complain_form, contact_form, feedback_form
 from django.shortcuts import get_object_or_404,redirect
 from django.contrib import messages
 from django.contrib.auth.views import LoginView
@@ -61,8 +61,8 @@ def contact(request):
             form.save()
             messages.success(request,'Your message has been send successfully!')
             return redirect('contact')
-        # else:
-        #     messages.error(request,'Please correct the errors below.')
+        else:
+            messages.error(request,'Please correct the errors below.')
     else:
             form = contact_form()
 
@@ -102,6 +102,22 @@ def celebrity(request):
 def gramsabha(request):
     return render(request,'gramsabha.html')
 
+
+def feedback(request):
+    if request.method == "POST":
+        form = feedback_form(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request,'Your feedback has been send successfully!')
+            return redirect('feedback')
+        else:
+            messages.error(request,'Please correct the errors below.')
+    else:
+            form = feedback_form()
+
+    return render(request,'feedback.html', {'form': form})
+
+
 def celebrity_detail(request,celebrity_id):
     celebrity = get_object_or_404(Celebrity,id=celebrity_id)
     # print(celebritys)
@@ -132,6 +148,7 @@ def infrastructure(request):
             'points': points
         })
     return render(request, 'Infrastructure.html', {'infra_with_points': infra_with_points})
+
 
 
 # dont touch this file its for robots.txt

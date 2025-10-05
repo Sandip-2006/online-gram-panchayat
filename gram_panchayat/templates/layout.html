@@ -2,424 +2,464 @@
 <!DOCTYPE html>
 
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Gram Panchayat</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Gram Panchayat Website" />
-    <meta name="author" content="Krish Suthar | Sandip Rathod" />
-    <meta name="keywords" content="Gram Panchayat, Village, Development, Governance" />
-    <meta name="robots" content="index, follow" />
-    <meta name="googlebot" content="index, follow" />
 
-    {% tailwind_css %}
+<head>
+  <meta charset="utf-8" />
+  <title>Gram Panchayat</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Gram Panchayat Website" />
+  <meta name="author" content="Krish Suthar | Sandip Rathod" />
+  <meta name="keywords" content="Gram Panchayat, Village, Development, Governance" />
+  <meta name="robots" content="index, follow" />
+  <meta name="googlebot" content="index, follow" />
 
-    <!-- Flowbite (for dropdowns, carousel etc.) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+  {% tailwind_css %}
 
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" />
-    <style>
-      
-@media (min-width: 1200px) {
-  .navmenu {
-    padding: 0;
-  }
+  <!-- Flowbite (for dropdowns, carousel etc.) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 
-  .navmenu ul {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    list-style: none;
-    align-items: center;
-  }
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" />
+  <style>
+    @media (min-width: 1200px) {
+      .navmenu {
+        padding: 0;
+      }
 
-  .navmenu li {
-    position: relative;
-  }
+      .navmenu ul {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        list-style: none;
+        align-items: center;
+      }
 
-  .navmenu>ul>li {
-    white-space: nowrap;
-    padding: 15px 28px 15px 0;
-  }
+      .navmenu li {
+        position: relative;
+      }
 
-  .navmenu>ul>li:last-child {
-    padding-right: 0;
-  }
+      .navmenu>ul>li {
+        white-space: nowrap;
+        padding: 15px 28px 15px 0;
+      }
 
-  .navmenu a,
-  .navmenu a:focus {
-    color: var(--nav-color);
-    font-size: 15px;
-    padding: 0 2px;
-    font-family: var(--nav-font);
-    font-weight: 400;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    white-space: nowrap;
-    transition: 0.3s;
-    position: relative;
-  }
+      .navmenu>ul>li:last-child {
+        padding-right: 0;
+      }
 
-  .navmenu a i,
-  .navmenu a:focus i {
-    font-size: 12px;
-    line-height: 0;
-    margin-left: 5px;
-    transition: 0.3s;
-  }
+      .navmenu a,
+      .navmenu a:focus {
+        color: var(--nav-color);
+        font-size: 15px;
+        padding: 0 2px;
+        font-family: var(--nav-font);
+        font-weight: 400;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        white-space: nowrap;
+        transition: 0.3s;
+        position: relative;
+      }
 
-  .navmenu>ul>li>a:before {
-    content: "";
-    position: absolute;
-    height: 2px;
-    bottom: -6px;
-    left: 0;
-    background-color: var(--nav-hover-color);
-    visibility: hidden;
-    width: 0px;
-    transition: all 0.3s ease-in-out 0s;
-  }
+      .navmenu a i,
+      .navmenu a:focus i {
+        font-size: 12px;
+        line-height: 0;
+        margin-left: 5px;
+        transition: 0.3s;
+      }
 
-  .navmenu a:hover:before,
-  .navmenu li:hover>a:before,
-  .navmenu .active:before {
-    visibility: visible;
-    width: 25px;
-  }
+      .navmenu>ul>li>a:before {
+        content: "";
+        position: absolute;
+        height: 2px;
+        bottom: -6px;
+        left: 0;
+        background-color: var(--nav-hover-color);
+        visibility: hidden;
+        width: 0px;
+        transition: all 0.3s ease-in-out 0s;
+      }
 
-  .navmenu li:hover>a,
-  .navmenu .active,
-  .navmenu .active:focus {
-    color: var(--nav-hover-color);
-  }
+      .navmenu a:hover:before,
+      .navmenu li:hover>a:before,
+      .navmenu .active:before {
+        visibility: visible;
+        width: 25px;
+      }
 
-  .navmenu .dropdown ul {
-    margin: 0;
-    padding: 10px 0;
-    background: var(--nav-dropdown-background-color);
-    display: block;
-    position: absolute;
-    visibility: hidden;
-    left: -5px;
-    top: 130%;
-    opacity: 0;
-    transition: 0.3s;
-    border-radius: 4px;
-    z-index: 99;
-    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
-  }
+      .navmenu li:hover>a,
+      .navmenu .active,
+      .navmenu .active:focus {
+        color: var(--nav-hover-color);
+      }
 
-  .navmenu .dropdown ul li {
-    min-width: 200px;
-  }
+      .navmenu .dropdown ul {
+        margin: 0;
+        padding: 10px 0;
+        background: var(--nav-dropdown-background-color);
+        display: block;
+        position: absolute;
+        visibility: hidden;
+        left: -5px;
+        top: 130%;
+        opacity: 0;
+        transition: 0.3s;
+        border-radius: 4px;
+        z-index: 99;
+        box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+      }
 
-  .navmenu .dropdown ul a {
-    padding: 10px 20px;
-    font-size: 15px;
-    text-transform: none;
-    color: var(--nav-dropdown-color);
-  }
+      .navmenu .dropdown ul li {
+        min-width: 200px;
+      }
 
-  .navmenu .dropdown ul a i {
-    font-size: 12px;
-  }
+      .navmenu .dropdown ul a {
+        padding: 10px 20px;
+        font-size: 15px;
+        text-transform: none;
+        color: var(--nav-dropdown-color);
+      }
 
-  .navmenu .dropdown ul a:hover,
-  .navmenu .dropdown ul .active:hover,
-  .navmenu .dropdown ul li:hover>a {
-    color: var(--nav-dropdown-hover-color);
-  }
+      .navmenu .dropdown ul a i {
+        font-size: 12px;
+      }
 
-  .navmenu .dropdown:hover>ul {
-    opacity: 1;
-    top: 100%;
-    visibility: visible;
-  }
+      .navmenu .dropdown ul a:hover,
+      .navmenu .dropdown ul .active:hover,
+      .navmenu .dropdown ul li:hover>a {
+        color: var(--nav-dropdown-hover-color);
+      }
 
-  .navmenu .dropdown .dropdown ul {
-    top: 0;
-    left: -90%;
-    visibility: hidden;
-  }
+      .navmenu .dropdown:hover>ul {
+        opacity: 1;
+        top: 100%;
+        visibility: visible;
+      }
 
-  .navmenu .dropdown .dropdown:hover>ul {
-    opacity: 1;
-    top: 0;
-    left: -100%;
-    visibility: visible;
-  }
-}
+      .navmenu .dropdown .dropdown ul {
+        top: 0;
+        left: -90%;
+        visibility: hidden;
+      }
 
+      .navmenu .dropdown .dropdown:hover>ul {
+        opacity: 1;
+        top: 0;
+        left: -100%;
+        visibility: visible;
+      }
+    }
+  </style>
+</head>
 
-    </style>
-  </head>
+<body class="bg-gray-50 text-black">
+  {% comment %}form submit meassge{% endcomment %}
+  {% comment %} {% if messages %}
+  {% for message in messages %}
+  <div
+    class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[99] border rounded-4xl alert alert-success text-zinc-950">
+    {{ message }}</div>
+  {% endfor %}
+  {% endif %} {% endcomment %}
+  <!-- Navbar -->
+  <header class="bg-white shadow-md fixed top-0 left-0 w-full z-50">
+    {# Precompute important urls to compare with request.path #}
+    {% url 'home' as home_url %}
+    {% url 'about' as about_url %}
+    {% url 'gallery' as gallery_url %}
+    {% url 'event' as event_url %}
+    {% url 'celebrity' as celebrity_url %}
+    {% url 'sarpanch' as sarpanch_url %}
+    {% url 'complain' as complain_url %}
+    {% url 'gramsabha' as gramsabha_url %}
+    {% url 'contact' as contact_url %}
+    {% url 'history' as history_url %}
+    {% url 'development' as development_url %}
+    {% url 'scheme' as scheme_url %}
+    {% url 'download' as download_url %}
+    {% url 'Infrastructure' as infra_url %}
+    {% url 'staff_member' 'staff' as staff_url %}
+    {% url 'staff_member' 'member' as member_url %}
+    {% url 'feedback' as feedback_url %}
 
-  <body class="bg-gray-50 text-black">
-    {% comment %}form submit meassge{% endcomment %}
-    {% comment %} {% if messages %}
-      {% for message in messages %}
-        <div class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[99] border rounded-4xl alert alert-success text-zinc-950">{{ message }}</div>
-      {% endfor %}
-    {% endif %} {% endcomment %}
-    <!-- Navbar -->
-    <header class="bg-white shadow-md fixed top-0 left-0 w-full z-50">
-      {# Precompute important urls to compare with request.path #}
-      {% url 'home' as home_url %}
-      {% url 'about' as about_url %}
-      {% url 'gallery' as gallery_url %}
-      {% url 'event' as event_url %}
-      {% url 'celebrity' as celebrity_url %}
-      {% url 'sarpanch' as sarpanch_url %}
-      {% url 'complain' as complain_url %}
-      {% url 'gramsabha' as gramsabha_url %}
-      {% url 'contact' as contact_url %}
-      {% url 'history' as history_url %}
-      {% url 'development' as development_url %}
-      {% url 'scheme' as scheme_url %}
-      {% url 'download' as download_url %}
-      {% url 'Infrastructure' as infra_url %}
-      {% url 'staff_member' 'staff' as staff_url %}
-      {% url 'staff_member' 'member' as member_url %}
+    {# determine active view name and page_type (for staff/member) #}
+    {% with request.resolver_match.url_name as active_name %}
+    {% with request.resolver_match.kwargs.page_type|default:"" as active_page %}
 
-     {# determine active view name and page_type (for staff/member) #}
-      {% with request.resolver_match.url_name as active_name %}
-      {% with request.resolver_match.kwargs.page_type|default:"" as active_page %}
+    <nav x-data="{ open: false, schemes: false, media: false }"
+      class="container mx-auto flex items-center justify-between px-6 py-3">
+      <!-- Logo -->
+      <a href="{% url 'home' %}" class="flex items-center space-x-2">
+        <img src="{% static 'images/1.jpg' %}" alt="Profile photo" class="h-10 w-10 rounded-full object-cover" />
 
-      <nav x-data="{ open: false, schemes: false, media: false }" class="container mx-auto flex items-center justify-between px-6 py-3">
-        <!-- Logo -->
-        <a href="{% url 'home' %}" class="flex items-center space-x-2">
-          <img src="{% static 'images/1.jpg' %}" alt="Profile photo" class="h-10 w-10 rounded-full object-cover" />
+        <span class="text-xl font-bold text-gray-800">Gram Panchayat</span>
+      </a>
 
-          <span class="text-xl font-bold text-gray-800">Gram Panchayat</span>
-        </a>
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex items-center space-x-6">
+        <a href="{{ home_url }}"
+          class="{% if active_name == 'index' or active_name == 'home' or active_name == '' %}text-blue-700 font-semibold border-b-2  border-blue-600 pb-1{% else %}text-gray-700 mr-0 hover:text-blue-600 font-medium opacity-70{% endif %}">Home</a>
+        <a href="{{ about_url }}"
+          class="{% if active_name == 'about' %}text-blue-700 font-semibold border-b-2 border-blue-600 pb-1{% else %}text-gray-700 hover:text-blue-600 font-medium opacity-70{% endif %}">About</a>
 
-        <!-- Desktop Menu -->
-        <div class="hidden md:flex items-center space-x-6">
-          <a href="{{ home_url }}" class="{% if active_name == 'index' or active_name == 'home' or active_name == '' %}text-blue-700 font-semibold border-b-2  border-blue-600 pb-1{% else %}text-gray-700 mr-0 hover:text-blue-600 font-medium opacity-70{% endif %}">Home</a>
-          <a href="{{ about_url }}" class="{% if active_name == 'about' %}text-blue-700 font-semibold border-b-2 border-blue-600 pb-1{% else %}text-gray-700 hover:text-blue-600 font-medium opacity-70{% endif %}">About</a>
-
-          <!-- Schemes Dropdown -->
-          <div class="relative group">
-            <button class="flex items-center text-gray-700 hover:text-blue-600 transition-colors duration-300 py-2">
-              Media<svg class="w-4 h-4 ml-1 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
-            <div class="absolute top-full left-0 mt-1 w-44 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-              <ul class="py-2">
-                <li>
-                  <a href="{% url 'gallery' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">Gallery</a>
-                </li>
-                <li>
-                  <a href="{% url 'event' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">Events</a>
-                </li>
-                <li>
-                  <a href="{% url 'celebrity' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">Celebrity</a>
-                </li>
-                <li>
-                  <a href="{% url 'history' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">History</a>
-                </li>
-              </ul>
-            </div>
+        <!-- Schemes Dropdown -->
+        <div class="relative group">
+          <button class="flex items-center text-gray-700 hover:text-blue-600 transition-colors duration-300 py-2">
+            Media<svg class="w-4 h-4 ml-1 transition-transform duration-300 group-hover:rotate-180" fill="none"
+              stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div
+            class="absolute top-full left-0 mt-1 w-44 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+            <ul class="py-2">
+              <li>
+                <a href="{% url 'gallery' %}"
+                  class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">Gallery</a>
+              </li>
+              <li>
+                <a href="{% url 'event' %}"
+                  class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">Events</a>
+              </li>
+              <li>
+                <a href="{% url 'celebrity' %}"
+                  class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">Celebrity</a>
+              </li>
+              <li>
+                <a href="{% url 'history' %}"
+                  class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">History</a>
+              </li>
+            </ul>
           </div>
+        </div>
 
-          <!-- Panchayat Menu -->
-          <div class="relative group">
-            <button class="flex items-center text-gray-700 hover:text-blue-600 transition-colors duration-300 py-2">
-              Panchayat<svg class="w-4 h-4 ml-1 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
-            <div class="absolute top-full left-0 mt-1 w-44 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-              <ul class="py-2">
-                <li>
-                  <a href="{% url 'gramsabha' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">Gramsabha</a>
-                </li>
-                <li>
-                  <a href="{% url 'staff_member' 'staff' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">Staff</a>
-                </li>
-                <li>
-                  <a href="{% url 'staff_member' 'member' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">Members</a>
-                </li>
-                <li>
-                  <a href="{% url 'sarpanch' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">Sarpanch</a>
-                </li>
-                <li>
-                  <a href="{% url 'development' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">Development Work</a>
-                </li>
-                <li>
-                  <a href="{% url 'Infrastructure' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">Infrastructure</a>
-                </li>
-              </ul>
-            </div>
+        <!-- Panchayat Menu -->
+        <div class="relative group">
+          <button class="flex items-center text-gray-700 hover:text-blue-600 transition-colors duration-300 py-2">
+            Panchayat<svg class="w-4 h-4 ml-1 transition-transform duration-300 group-hover:rotate-180" fill="none"
+              stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div
+            class="absolute top-full left-0 mt-1 w-44 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+            <ul class="py-2">
+              <li>
+                <a href="{% url 'gramsabha' %}"
+                  class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">Gramsabha</a>
+              </li>
+              <li>
+                <a href="{% url 'staff_member' 'staff' %}"
+                  class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">Staff</a>
+              </li>
+              <li>
+                <a href="{% url 'staff_member' 'member' %}"
+                  class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">Members</a>
+              </li>
+              <li>
+                <a href="{% url 'sarpanch' %}"
+                  class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">Sarpanch</a>
+              </li>
+              <li>
+                <a href="{% url 'development' %}"
+                  class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">Development
+                  Work</a>
+              </li>
+              <li>
+                <a href="{% url 'Infrastructure' %}"
+                  class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">Infrastructure</a>
+              </li>
+            </ul>
           </div>
+        </div>
 
-          <!-- Service Menu -->
-          <div class="relative group">
-            <button class="flex items-center text-gray-700 hover:text-blue-600 transition-colors duration-300 py-2">
-              Service<svg class="w-4 h-4 ml-1 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
-            <div class="absolute top-full left-0 mt-1 w-44 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-              <ul class="py-2">
-                <li>
-                  <a href="{% url 'complain' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">Complain</a>
-                </li>
-                <li>
-                  <a href="{% url 'development' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">Development</a>
-                </li>
-              </ul>
-            </div>
+        <!-- Service Menu -->
+        <div class="relative group">
+          <button class="flex items-center text-gray-700 hover:text-blue-600 transition-colors duration-300 py-2">
+            Service<svg class="w-4 h-4 ml-1 transition-transform duration-300 group-hover:rotate-180" fill="none"
+              stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div
+            class="absolute top-full left-0 mt-1 w-44 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+            <ul class="py-2">
+              <li>
+                <a href="{% url 'complain' %}"
+                  class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">Complain</a>
+              </li>
+              <li>
+                <a href="{% url 'development' %}"
+                  class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">Development</a>
+              </li>
+            </ul>
           </div>
+        </div>
 
-          <!-- Download Menu -->
-          <div class="relative group">
-            <button class="flex items-center text-gray-700 hover:text-blue-600 transition-colors duration-300 py-2">
-              Download<svg class="w-4 h-4 ml-1 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
-            <div class="absolute top-full left-0 mt-1 w-44 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-              <ul class="py-2">
-                <li>
-                  <a href="{% url 'scheme' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">Scheme</a>
-                </li>
-                <li>
-                  <a href="{% url 'download' %}" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">Download</a>
-                </li>
-              </ul>
-            </div>
+        <!-- Download Menu -->
+        <div class="relative group">
+          <button class="flex items-center text-gray-700 hover:text-blue-600 transition-colors duration-300 py-2">
+            Download<svg class="w-4 h-4 ml-1 transition-transform duration-300 group-hover:rotate-180" fill="none"
+              stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div
+            class="absolute top-full left-0 mt-1 w-44 bg-white rounded-lg shadow-lg border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+            <ul class="py-2">
+              <li>
+                <a href="{% url 'scheme' %}"
+                  class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">Scheme</a>
+              </li>
+              <li>
+                <a href="{% url 'download' %}"
+                  class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200">Download</a>
+              </li>
+            </ul>
           </div>
-
-
-          <!-- Other Links -->
-          {% comment %} <a href="{% url 'contact' %}" class="text-gray-700 hover:text-blue-600">Contact</a> {% endcomment %}
-          <a href="{{ contact_url }}" class="{% if active_name == 'contact' %}text-blue-700 font-semibold border-b-2 border-blue-600 pb-1{% else %}text-gray-700 hover:text-blue-600 font-medium opacity-70{% endif %}">Contact</a>
-
-
-          <!-- Login -->
-          <a href="#" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Login</a>
         </div>
 
-        <!-- Mobile Menu Button -->
-        <button @click="open = !open" class="md:hidden text-blue-700 focus:outline-none">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
-      </nav>
 
-      <!-- Mobile Menu -->
-      <div x-show="open" x-transition class="md:hidden bg-white border-t border-blue-100 px-6 py-4 space-y-3 shadow-lg">
-        <a href="{{ home_url }}" class="{% if active_name == 'index' or active_name == 'home' or active_name == '' %}text-blue-700 font-semibold border-b-2 border-blue-600 pb-1{% else %}block text-gray-700 hover:text-blue-600 font-medium opacity-70{% endif %}">Home</a>
-        <a href="{{ about_url }}" class="{% if active_name == 'about' %}text-blue-700 font-semibold border-b-2 border-blue-600 pb-1{% else %}block text-gray-700 hover:text-blue-600 font-medium opacity-70{% endif %}">About</a>
+        <!-- Other Links -->
+        {% comment %} <a href="{% url 'contact' %}" class="text-gray-700 hover:text-blue-600">Contact</a> {% endcomment%}
+        <a href="{{ contact_url }}"
+          class="{% if active_name == 'contact' %}text-blue-700 font-semibold border-b-2 border-blue-600 pb-1{% else %}text-gray-700 hover:text-blue-600 font-medium opacity-70{% endif %}">Contact</a>
 
-        <div>
-          <p class="font-semibold text-gray-700">Schemes</p>
-          <a href="#" class="block text-sm pl-4 text-gray-600 hover:text-blue-600">Water Supply</a>
-          <a href="#" class="block text-sm pl-4 text-gray-600 hover:text-blue-600">Sanitation</a>
-          <a href="#" class="block text-sm pl-4 text-gray-600 hover:text-blue-600">Employment</a>
-          <a href="#" class="block text-sm pl-4 text-gray-600 hover:text-blue-600">Education</a>
-        </div>
+          <a href="{{ feedback_url }}"
+          class="{% if active_name == 'feedback' %}text-blue-700 font-semibold border-b-2 border-blue-600 pb-1{% else %}text-gray-700 hover:text-blue-600 font-medium opacity-70{% endif %}">Feedback</a>
 
-        <div>
-          <p class="font-semibold text-gray-700">Media</p>
-          <a href="{{ gallery_url }}" class="{% if active_name == 'gallery' %}text-blue-700 font-semibold border-b-2 border-blue-600 pb-1{% else %}block text-sm pl-4 text-gray-600 hover:text-blue-600{% endif %}">Gallery</a>
-          <a href="{{ event_url }}" class="{% if active_name == 'event' %}text-blue-700 font-semibold border-b-2 border-blue-600 pb-1{% else %}block text-sm pl-4 text-gray-600 hover:text-blue-600{% endif %}">Events</a>
-          <a href="{{ celebrity_url }}" class="{% if active_name == 'celebrity' %}text-blue-700 font-semibold border-b-2 border-blue-600 pb-1{% else %}block text-sm pl-4 text-gray-600 hover:text-blue-600{% endif %}">Celebrity</a>
-        </div>
 
-        <a href="{% url 'sarpanch' %}" class="block text-gray-700 hover:text-blue-600">Sarpanch</a>
-        <a href="{% url 'complain' %}" class="block text-gray-700 hover:text-blue-600">Complaint</a>
-        <a href="{% url 'gramsabha' %}" class="block text-gray-700 hover:text-blue-600">Gramsabha</a>
-        <a href="{% url 'contact' %}" class="block text-gray-700 hover:text-blue-600">Contact</a>
-        <a href="{% url 'staff_member' 'staff' %}" class="block text-gray-700 hover:text-blue-600">Staff</a>
-        <a href="{% url 'staff_member' 'member' %}" class="block text-gray-700 hover:text-blue-600">Members</a>
-        <a href="{% url 'history' %}" class="block text-gray-700 hover:text-blue-600">History</a>
-        <a href="{% url 'development' %}" class="block text-gray-700 hover:text-blue-600">Development</a>
-        <a href="{% url 'scheme' %}" class="block text-gray-700 hover:text-blue-600">Scheme</a>
+        <!-- Login -->
+        <a href="#" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Login</a>
 
-        <a href="{% url 'login' %}" class="block bg-blue-600 text-white px-4 py-2 rounded-lg text-center hover:bg-blue-700">Login</a>
-      </div>
-      {% endwith %}
-      {% endwith %}
-    </header>
-
-    <!-- Body Content -->
-    <main class="pt-24">
-      {% block content %}
-
-      {% endblock %}
-    </main>
-
-    <!-- Footer (same as before) -->
-    <footer class="bg-gray-900 text-gray-300 mt-16">
-      <div class="container mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
-        <!-- About -->
-        <div>
-          <h3 class="text-lg font-semibold text-white mb-4">About Us</h3>
-          <p class="text-sm">Our Gram Panchayat works for village development, welfare, and transparent governance.</p>
-        </div>
-
-        <!-- Quick Links -->
-        <div>
-          <h3 class="text-lg font-semibold text-white mb-4">Quick Links</h3>
-          <ul class="space-y-2">
-            <li>
-              <a href="{% url 'home' %}" class="hover:text-white hover:underline">Home</a>
-            </li>
-            <li>
-              <a href="{% url 'gallery' %}" class="hover:text-white hover:underline">Gallery</a>
-            </li>
-            <li>
-              <a href="{% url 'sarpanch' %}" class="hover:text-white hover:underline">Sarpanch</a>
-            </li>
-            <li>
-              <a href="{% url 'complain' %}" class="hover:text-white hover:underline">Complain</a>
-            </li>
-            <li>
-              <a href="{% url 'gramsabha' %}" class="hover:text-white hover:underline">Gramsabha</a>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Contact -->
-        <div>
-          <h3 class="text-lg font-semibold text-white mb-4">Contact</h3>
-          <ul class="space-y-2 text-sm">
-            <li>📍 Fojivada, Sabarkantha, Gujarat</li>
-            <li>📞 +91 98 56 23 1245</li>
-            <li>📧 fojivada@gmail.com</li>
-            
-          </ul>
-        </div>
       </div>
 
-      <!-- Bottom -->
-      <div class="bg-gray-800 py-4">
-        <div class="container mx-auto px-6 flex justify-between items-center">
-          <p class="text-sm">
-            ©{% now 'Y' %}Gram Panchayat. All Rights Reserved.
-          </p>
-          <div class="flex space-x-4">
-            <a href="#" class="hover:text-white">🌐</a>
-            <a href="#" class="hover:text-white">📘</a>
-            <a href="#" class="hover:text-white">▶️</a>
-          </div>
+      <!-- Mobile Menu Button -->
+      <button @click="open = !open" class="md:hidden text-blue-700 focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div x-show="open" x-transition class="md:hidden bg-white border-t border-blue-100 px-6 py-4 space-y-3 shadow-lg">
+      <a href="{{ home_url }}"
+        class="{% if active_name == 'index' or active_name == 'home' or active_name == '' %}text-blue-700 font-semibold border-b-2 border-blue-600 pb-1{% else %}block text-gray-700 hover:text-blue-600 font-medium opacity-70{% endif %}">Home</a>
+      <a href="{{ about_url }}"
+        class="{% if active_name == 'about' %}text-blue-700 font-semibold border-b-2 border-blue-600 pb-1{% else %}block text-gray-700 hover:text-blue-600 font-medium opacity-70{% endif %}">About</a>
+
+      <div>
+        <p class="font-semibold text-gray-700">Schemes</p>
+        <a href="#" class="block text-sm pl-4 text-gray-600 hover:text-blue-600">Water Supply</a>
+        <a href="#" class="block text-sm pl-4 text-gray-600 hover:text-blue-600">Sanitation</a>
+        <a href="#" class="block text-sm pl-4 text-gray-600 hover:text-blue-600">Employment</a>
+        <a href="#" class="block text-sm pl-4 text-gray-600 hover:text-blue-600">Education</a>
+      </div>
+
+      <div>
+        <p class="font-semibold text-gray-700">Media</p>
+        <a href="{{ gallery_url }}"
+          class="{% if active_name == 'gallery' %}text-blue-700 font-semibold border-b-2 border-blue-600 pb-1{% else %}block text-sm pl-4 text-gray-600 hover:text-blue-600{% endif %}">Gallery</a>
+        <a href="{{ event_url }}"
+          class="{% if active_name == 'event' %}text-blue-700 font-semibold border-b-2 border-blue-600 pb-1{% else %}block text-sm pl-4 text-gray-600 hover:text-blue-600{% endif %}">Events</a>
+        <a href="{{ celebrity_url }}"
+          class="{% if active_name == 'celebrity' %}text-blue-700 font-semibold border-b-2 border-blue-600 pb-1{% else %}block text-sm pl-4 text-gray-600 hover:text-blue-600{% endif %}">Celebrity</a>
+      </div>
+
+      <a href="{% url 'sarpanch' %}" class="block text-gray-700 hover:text-blue-600">Sarpanch</a>
+      <a href="{% url 'complain' %}" class="block text-gray-700 hover:text-blue-600">Complaint</a>
+      <a href="{% url 'gramsabha' %}" class="block text-gray-700 hover:text-blue-600">Gramsabha</a>
+      <a href="{% url 'contact' %}" class="block text-gray-700 hover:text-blue-600">Contact</a>
+      <a href="{% url 'staff_member' 'staff' %}" class="block text-gray-700 hover:text-blue-600">Staff</a>
+      <a href="{% url 'staff_member' 'member' %}" class="block text-gray-700 hover:text-blue-600">Members</a>
+      <a href="{% url 'history' %}" class="block text-gray-700 hover:text-blue-600">History</a>
+      <a href="{% url 'development' %}" class="block text-gray-700 hover:text-blue-600">Development</a>
+      <a href="{% url 'scheme' %}" class="block text-gray-700 hover:text-blue-600">Scheme</a>
+
+      <a href="{% url 'login' %}"
+        class="block bg-blue-600 text-white px-4 py-2 rounded-lg text-center hover:bg-blue-700">Login</a>
+    </div>
+    {% endwith %}
+    {% endwith %}
+  </header>
+
+  <!-- Body Content -->
+  <main class="pt-24">
+    {% block content %}
+
+    {% endblock %}
+  </main>
+
+  <!-- Footer (same as before) -->
+  <footer class="bg-gray-900 text-gray-300 mt-16">
+    <div class="container mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- About -->
+      <div>
+        <h3 class="text-lg font-semibold text-white mb-4">About Us</h3>
+        <p class="text-sm">Our Gram Panchayat works for village development, welfare, and transparent governance.</p>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h3 class="text-lg font-semibold text-white mb-4">Quick Links</h3>
+        <ul class="space-y-2">
+          <li>
+            <a href="{% url 'home' %}" class="hover:text-white hover:underline">Home</a>
+          </li>
+          <li>
+            <a href="{% url 'gallery' %}" class="hover:text-white hover:underline">Gallery</a>
+          </li>
+          <li>
+            <a href="{% url 'sarpanch' %}" class="hover:text-white hover:underline">Sarpanch</a>
+          </li>
+          <li>
+            <a href="{% url 'complain' %}" class="hover:text-white hover:underline">Complain</a>
+          </li>
+          <li>
+            <a href="{% url 'gramsabha' %}" class="hover:text-white hover:underline">Gramsabha</a>
+          </li>
+         
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h3 class="text-lg font-semibold text-white mb-4">Contact</h3>
+        <ul class="space-y-2 text-sm">
+          <li>📍 Fojivada, Sabarkantha, Gujarat</li>
+          <li>📞 +91 98 56 23 1245</li>
+          <li>📧 fojivada@gmail.com</li>
+
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom -->
+    <div class="bg-gray-800 py-4">
+      <div class="container mx-auto px-6 flex justify-between items-center">
+        <p class="text-sm">
+          ©{% now 'Y' %}Gram Panchayat. All Rights Reserved.
+        </p>
+        <div class="flex space-x-4">
+          <a href="#" class="hover:text-white">🌐</a>
+          <a href="#" class="hover:text-white">📘</a>
+          <a href="#" class="hover:text-white">▶️</a>
         </div>
       </div>
-    </footer>
+    </div>
+  </footer>
 
-    <!-- JS for Mobile Menu -->
-    <script>
-      const btn = document.getElementById('menu-btn')
-      const menu = document.getElementById('menu')
-      btn.addEventListener('click', () => {
-        menu.classList.toggle('hidden')
-      })
-    </script>
-  </body>
+  <!-- JS for Mobile Menu -->
+  <script>
+    const btn = document.getElementById('menu-btn')
+    const menu = document.getElementById('menu')
+    btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden')
+    })
+  </script>
+</body>
+
 </html>

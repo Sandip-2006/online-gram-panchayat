@@ -156,3 +156,13 @@ class Scheme(models.Model):
     created_at = models.DateTimeField(auto_now=True)
 
 
+class feedback(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    rating = models.PositiveIntegerField(choices=[(i, str(i)) for i in range(1, 6)], default=5)
+    message = models.TextField()
+    image = models.ImageField(upload_to='feedback/', null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Feedback from {self.name}"

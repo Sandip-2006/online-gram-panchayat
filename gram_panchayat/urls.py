@@ -18,6 +18,7 @@ urlpatterns = [
     path('scheme/', views.scheme, name="scheme"),
     path('download/', views.download, name="download"),
     path('Infrastructure/', views.infrastructure, name="Infrastructure"),
+    path('feedback/', views.feedback, name="feedback"),
     path('login/', views.AppLoginView.as_view(), name="login"),
 
     # robots.txt dont touch the below line
