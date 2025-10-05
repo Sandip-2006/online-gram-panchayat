@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from .models import Celebrity, Event, Gallery, GramSabhaMeeting,Infrastructure,Development, Sarpanch, Scheme,staffs,members,feedback_form
-from .forms import complain_form, contact_form
+from .models import Celebrity, Event, Gallery, GramSabhaMeeting,Infrastructure,Development, Sarpanch, Scheme,staffs,members, Document
+from .forms import complain_form, contact_form, feedback_form
 from django.shortcuts import get_object_or_404,redirect
 from django.contrib import messages
 from django.contrib.auth.views import LoginView
