@@ -206,3 +206,11 @@ class feedback(models.Model):
 
     def __str__(self):
         return f"{self.name} - {self.rating} Stars"
+    
+
+class History(models.Model):
+    title = models.CharField(max_length=100)
+    description = models.TextField()
+    image = models.ImageField(upload_to='history/',null=False,blank=False)
+    year = models.DateField()
+    created_at = models.DateTimeField(auto_now_add=True)
