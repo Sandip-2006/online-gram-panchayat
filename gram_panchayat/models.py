@@ -162,7 +162,7 @@ class Scheme(models.Model):
     created_at = models.DateTimeField(auto_now=True)
 
 
-class Meta:
+    class Meta:
         db_table = "scheme"
 
 
