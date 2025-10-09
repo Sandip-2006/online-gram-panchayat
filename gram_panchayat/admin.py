@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Celebrity, Development,Document, Gallery, GramSabhaMeeting, Infrastructure, Scheme, complain,Contact,Event,staffs,members,Sarpanch,feedback
+from .models import Celebrity, Development,Document, Gallery, GramSabhaMeeting, History, Infrastructure, Scheme, complain,Contact,Event,staffs,members,Sarpanch,feedback
 
 @admin.register(complain)
 class complainAdmin(admin.ModelAdmin):
@@ -107,3 +107,15 @@ class feedbackAdmin(admin.ModelAdmin):
     list_filter = ['rating']
     search_fields = ['name', 'email', 'message']
     list_per_page = 10
+
+@admin.register(History)
+class HistoryAdmin(admin.ModelAdmin):
+    list_display = ['title','short_desc','year']
+    list_filter = ['title']
+
+    def short_desc(self,obj):
+        if len(obj.description) > 30:
+            return obj.description[:30] + '...'
+        return obj.description  
+    
+      

@@ -20,23 +20,24 @@
         <!-- Timeline Items -->
         <div class="space-y-20">
             <!-- Item 1 -->
-            <div class="grid gap-12 md:grid-cols-2 items-center">
-                <div class="flex justify-center">
-                    <img src="{% static 'images/history-image-1.jpg' %}" alt="The Beginning"
-                        class="rounded-2xl shadow-lg w-full max-w-md object-cover transform hover:scale-105 transition duration-500">
+             {% for hist in history %}
+             <div class="grid gap-12 md:grid-cols-2 items-center">
+                 <div class="flex justify-center">
+                    <img src="{{hist.image.url}}" alt="The Beginning"
+                    class="rounded-2xl shadow-lg w-full max-w-md object-cover transform hover:scale-105 transition duration-500">
                 </div>
                 <div>
-                    <span class="text-indigo-500 font-medium text-sm uppercase">2000</span>
-                    <h2 class="text-2xl font-semibold mt-2 mb-4">The Beginning</h2>
+                    <span class="text-indigo-500 font-medium text-sm uppercase">{{hist.year|date:'Y'}}</span>
+                    <h2 class="text-2xl font-semibold mt-2 mb-4">{{hist.title}}</h2>
                     <p class="text-gray-600 leading-relaxed">
-                        Our journey started with a vision to bring innovation and creativity to life.
-                        This was the foundation that shaped everything we are today.
+                        {{hist.description}}
                     </p>
                 </div>
             </div>
+            {% endfor %}
 
             <!-- Item 2 -->
-            <div class="grid gap-12 md:grid-cols-2 items-center">
+            {% comment %} <div class="grid gap-12 md:grid-cols-2 items-center">
                 <div class="flex justify-center md:order-2">
                     <img src="{% static 'images/history-image-2.jpg' %}" alt="Growth & Expansion"
                         class="rounded-2xl shadow-lg w-full max-w-md object-cover transform hover:scale-105 transition duration-500">
@@ -65,7 +66,7 @@
                         Our story is not just about the past but about shaping a better future.
                     </p>
                 </div>
-            </div>
+            </div> {% endcomment %}
         </div>
     </div>
 </section>

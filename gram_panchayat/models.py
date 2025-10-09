@@ -36,7 +36,7 @@ class Contact(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        db_table = 'Contact'
+        db_table = 'contact'
 
     def __str__(self):
         return f"{self.name} - {self.subject}"
@@ -50,7 +50,7 @@ class Event(models.Model):
     location = models.CharField(max_length=200)
 
     class Meta:
-        db_table = 'Event'
+        db_table = 'event'
 
     def __str__(self):
         return self.title
@@ -63,7 +63,7 @@ class Celebrity(models.Model):
     created_at  = models.DateTimeField(auto_now_add=True,blank=True)
 
     class Meta:
-        db_table = 'Celebrity'
+        db_table = 'celebrity'
 
     def __str__(self):
         return self.name
@@ -76,7 +76,7 @@ class Gallery(models.Model):
     created_at  = models.DateTimeField(auto_now_add=True,blank=True)
 
     class Meta:
-        db_table = 'Gallery'
+        db_table = 'gallery'
 
     
     def __str__(self):
@@ -92,7 +92,7 @@ class Development(models.Model):
     created_at = models.DateTimeField(auto_now_add=True,blank=True)
     
     class Meta:
-        db_table = 'Development'
+        db_table = 'development'
 
     def __str__(self):
         return self.title
@@ -106,7 +106,7 @@ class Infrastructure(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        db_table = 'Infrastructure'
+        db_table = 'infrastructure'
 
     def __str__(self):
         return f"{self.title} - {self.description[:30]}"
@@ -161,9 +161,8 @@ class Scheme(models.Model):
 
     created_at = models.DateTimeField(auto_now=True)
 
-
     class Meta:
-        db_table = "scheme"
+            db_table = "scheme"
 
 
 
@@ -203,7 +202,15 @@ class feedback(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        db_table = "Feedback"
+        db_table = 'feedback'
 
     def __str__(self):
         return f"{self.name} - {self.rating} Stars"
+    
+
+class History(models.Model):
+    title = models.CharField(max_length=100)
+    description = models.TextField()
+    image = models.ImageField(upload_to='history/',null=False,blank=False)
+    year = models.DateField()
+    created_at = models.DateTimeField(auto_now_add=True)
