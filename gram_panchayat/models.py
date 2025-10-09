@@ -119,7 +119,7 @@ class staffs(models.Model):
     staff_mem_image = models.ImageField(upload_to="staffs/")
 
     class Meta:
-        db_table = "staffs_img"
+        db_table = "staffs"
 
     def __str__(self):
         return self.staff_mem_name
@@ -184,7 +184,7 @@ class GramSabhaMeeting(models.Model):
         return f"{self.title} - {self.date}"
     
     class Meta:
-        db_table = "gramsabha"
+        db_table = "Gramsabha"
     
 class Document(models.Model):
     title = models.CharField(max_length=200)
@@ -201,6 +201,9 @@ class feedback(models.Model):
     message = models.TextField()
     image = models.ImageField(upload_to='feedback/', null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        db_table = "Feedback"
 
     def __str__(self):
         return f"{self.name} - {self.rating} Stars"

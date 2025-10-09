@@ -91,6 +91,7 @@ def staff_member(request, page_type):
 
 
 def history(request):
+    # History
     return render(request,'history.html')
 
 def devlopment(request):
