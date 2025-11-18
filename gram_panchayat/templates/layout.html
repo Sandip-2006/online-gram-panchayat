@@ -332,7 +332,7 @@
 
 
         <!-- Login -->
-        <a href="#" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Login</a>
+        {% comment %} <a href="#" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Login</a> {% endcomment %}
 
       </div>
 
@@ -379,8 +379,8 @@
       <a href="{% url 'development' %}" class="block text-gray-700 hover:text-blue-600">Development</a>
       <a href="{% url 'scheme' %}" class="block text-gray-700 hover:text-blue-600">Scheme</a>
 
-      <a href="{% url 'login' %}"
-        class="block bg-blue-600 text-white px-4 py-2 rounded-lg text-center hover:bg-blue-700">Login</a>
+      {% comment %} <a href="{% url 'login' %}"
+        class="block bg-blue-600 text-white px-4 py-2 rounded-lg text-center hover:bg-blue-700">Login</a> {% endcomment %}
     </div>
     {% endwith %}
     {% endwith %}
@@ -441,7 +441,7 @@
     <div class="bg-gray-800 py-4">
       <div class="container mx-auto px-6 flex justify-between items-center">
         <p class="text-sm">
-          ©{% now 'Y' %}Gram Panchayat. All Rights Reserved.
+          © {% now 'Y' %} Gram Panchayat. All Rights Reserved.
         </p>
         <div class="flex space-x-4">
           <a href="#" class="hover:text-white">🌐</a>
