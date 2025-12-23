@@ -8,4 +8,4 @@ __pycache__/
 *.log
 *.pot
 *.py[cod]
-.env
+*.env
