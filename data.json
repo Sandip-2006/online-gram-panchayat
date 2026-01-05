@@ -1,0 +1,653 @@
+[
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$gQ2IGEj35l7U3bUdUpBwCi$D0hO9KtUfD9vgEuZTQbPKaLQ9+8ne8k6xVJPaSw7ucw=",
+    "last_login": "2026-01-04T16:56:10.526Z",
+    "is_superuser": true,
+    "username": "sandip",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-08-30T04:44:04.684Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "oyct2xjq9nn8uq5byzq3cnnewsicfvef",
+  "fields": {
+    "session_data": ".eJxVjDkOwjAUBe_iGllewAslPWew_mLjALKlOKkQd4dIKaB9M_NeIsG61LSOPKeJxVlocfjdEOiR2wb4Du3WJfW2zBPKTZE7HfLaOT8vu_t3UGHUbx2zN0ckpsKYXSnaKl8I0QYVFbI-YYigvDdANpAP6AmjMtk50LqwEu8PEpc4uw:1usDWj:uCW8IXBdtlwREhSFi9tl8fn9opEWV5qAA8j5jrdHkfI",
+    "expire_date": "2025-09-13T04:49:21.830Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "vy1m0wkp4yuxasoh2rq4xfcg7njl1pkj",
+  "fields": {
+    "session_data": ".eJxVjDkOwjAUBe_iGllewAslPWew_mLjALKlOKkQd4dIKaB9M_NeIsG61LSOPKeJxVlocfjdEOiR2wb4Du3WJfW2zBPKTZE7HfLaOT8vu_t3UGHUbx2zN0ckpsKYXSnaKl8I0QYVFbI-YYigvDdANpAP6AmjMtk50LqwEu8PEpc4uw:1utmV0:AGqkuGWZcDqICcFSNWVB9um2felbUERo4Jl3UqeXHYM",
+    "expire_date": "2025-09-17T12:22:02.751Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "soku9zbjmh9npd0slfdutjr6cu9d2aqp",
+  "fields": {
+    "session_data": ".eJxVjDkOwjAUBe_iGllewAslPWew_mLjALKlOKkQd4dIKaB9M_NeIsG61LSOPKeJxVlocfjdEOiR2wb4Du3WJfW2zBPKTZE7HfLaOT8vu_t3UGHUbx2zN0ckpsKYXSnaKl8I0QYVFbI-YYigvDdANpAP6AmjMtk50LqwEu8PEpc4uw:1uv9MX:XdiNonuPGYcVttapi2_GctUfNJUpiTMtKi0s1OV57so",
+    "expire_date": "2025-09-21T06:58:57.901Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "s70ohx6nqb6v69dphbou75ten33pe801",
+  "fields": {
+    "session_data": ".eJxVjDkOwjAUBe_iGllewAslPWew_mLjALKlOKkQd4dIKaB9M_NeIsG61LSOPKeJxVlocfjdEOiR2wb4Du3WJfW2zBPKTZE7HfLaOT8vu_t3UGHUbx2zN0ckpsKYXSnaKl8I0QYVFbI-YYigvDdANpAP6AmjMtk50LqwEu8PEpc4uw:1uvXgp:IBTzfFOlJogcAdvXAmpnERvjJgDfoqnvJI825GjNQ70",
+    "expire_date": "2025-09-22T08:57:31.072Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "kcgz4nzzimsc57us9bhvn8n6dwby9yu0",
+  "fields": {
+    "session_data": ".eJxVjDkOwjAUBe_iGllewAslPWew_mLjALKlOKkQd4dIKaB9M_NeIsG61LSOPKeJxVlocfjdEOiR2wb4Du3WJfW2zBPKTZE7HfLaOT8vu_t3UGHUbx2zN0ckpsKYXSnaKl8I0QYVFbI-YYigvDdANpAP6AmjMtk50LqwEu8PEpc4uw:1uxJEj:wN7eltyU4UHt8BOEL809nffPTT4c9cpysk1J5M87psc",
+    "expire_date": "2025-09-27T05:55:49.289Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "gj6gzorv4vjm3zpiwhyljdcdkzsgeky7",
+  "fields": {
+    "session_data": ".eJxVjDkOwjAUBe_iGllewAslPWew_mLjALKlOKkQd4dIKaB9M_NeIsG61LSOPKeJxVlocfjdEOiR2wb4Du3WJfW2zBPKTZE7HfLaOT8vu_t3UGHUbx2zN0ckpsKYXSnaKl8I0QYVFbI-YYigvDdANpAP6AmjMtk50LqwEu8PEpc4uw:1uz8xA:5AYxRzLqusk11BqFAcWBQ6E1qu0uNEj3awwXnizcbmE",
+    "expire_date": "2025-10-02T07:21:16.474Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "ph7dqho75h7tdq96fqbxphpdvzd9unya",
+  "fields": {
+    "session_data": ".eJxVjDkOwjAUBe_iGllewAslPWew_mLjALKlOKkQd4dIKaB9M_NeIsG61LSOPKeJxVlocfjdEOiR2wb4Du3WJfW2zBPKTZE7HfLaOT8vu_t3UGHUbx2zN0ckpsKYXSnaKl8I0QYVFbI-YYigvDdANpAP6AmjMtk50LqwEu8PEpc4uw:1v1Jf6:o5mw-Mxpko_ycOaDPIVKtpM0Fm8Rn-49F-XzwGQwdgk",
+    "expire_date": "2025-10-08T07:11:36.025Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "07lpk58rhwmeozbaqx5pummm8taxa6x7",
+  "fields": {
+    "session_data": ".eJxVjDkOwjAUBe_iGllewAslPWew_mLjALKlOKkQd4dIKaB9M_NeIsG61LSOPKeJxVlocfjdEOiR2wb4Du3WJfW2zBPKTZE7HfLaOT8vu_t3UGHUbx2zN0ckpsKYXSnaKl8I0QYVFbI-YYigvDdANpAP6AmjMtk50LqwEu8PEpc4uw:1v4D1m:QdFjPWd-tEA1Ko4yz5DBOumopl7Qb7A0-Z7wwdLacPI",
+    "expire_date": "2025-10-16T06:42:58.994Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "xcwstik920tjo9u5q5bke8krfy9eaquw",
+  "fields": {
+    "session_data": ".eJxVjDkOwjAUBe_iGllewAslPWew_mLjALKlOKkQd4dIKaB9M_NeIsG61LSOPKeJxVlocfjdEOiR2wb4Du3WJfW2zBPKTZE7HfLaOT8vu_t3UGHUbx2zN0ckpsKYXSnaKl8I0QYVFbI-YYigvDdANpAP6AmjMtk50LqwEu8PEpc4uw:1v5gIi:GgI8YO8wjVV4FhpbAkmUDkUB4dl_velNL-VrV4pTTxo",
+    "expire_date": "2025-10-20T08:10:32.751Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "bdiyiq5fkw2kpo0wnp7dyk29pd65cgxv",
+  "fields": {
+    "session_data": ".eJxVjDkOwjAUBe_iGllewAslPWew_mLjALKlOKkQd4dIKaB9M_NeIsG61LSOPKeJxVlocfjdEOiR2wb4Du3WJfW2zBPKTZE7HfLaOT8vu_t3UGHUbx2zN0ckpsKYXSnaKl8I0QYVFbI-YYigvDdANpAP6AmjMtk50LqwEu8PEpc4uw:1v6L5v:ddw61YhglgelrJDVg6w2AjPyPljdAzDbF-jHpXbIZsQ",
+    "expire_date": "2025-10-22T03:44:03.304Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "ndtyae8ditb44pwjudty12p8z2xpcaxe",
+  "fields": {
+    "session_data": ".eJxVjDkOwjAUBe_iGllewAslPWew_mLjALKlOKkQd4dIKaB9M_NeIsG61LSOPKeJxVlocfjdEOiR2wb4Du3WJfW2zBPKTZE7HfLaOT8vu_t3UGHUbx2zN0ckpsKYXSnaKl8I0QYVFbI-YYigvDdANpAP6AmjMtk50LqwEu8PEpc4uw:1vE1OU:BIxe0fVhmkKmnmBmowQZ2IASjte_6FQ1j-pmFdiluec",
+    "expire_date": "2025-11-12T08:18:58.929Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "nqtxacezhrurncj9ufh3a1fqt8hnaide",
+  "fields": {
+    "session_data": ".eJxVjDkOwjAUBe_iGllewAslPWew_mLjALKlOKkQd4dIKaB9M_NeIsG61LSOPKeJxVlocfjdEOiR2wb4Du3WJfW2zBPKTZE7HfLaOT8vu_t3UGHUbx2zN0ckpsKYXSnaKl8I0QYVFbI-YYigvDdANpAP6AmjMtk50LqwEu8PEpc4uw:1vGZ3E:ZYKSYKK_zEYyNAgCNtnFEaF1ZifODIxxYFlLfLrI9QU",
+    "expire_date": "2025-11-19T08:39:32.206Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "3e54zbug70kx4uwe50c6ij41edd6lo3h",
+  "fields": {
+    "session_data": ".eJxVjDkOwjAUBe_iGllewAslPWew_mLjALKlOKkQd4dIKaB9M_NeIsG61LSOPKeJxVlocfjdEOiR2wb4Du3WJfW2zBPKTZE7HfLaOT8vu_t3UGHUbx2zN0ckpsKYXSnaKl8I0QYVFbI-YYigvDdANpAP6AmjMtk50LqwEu8PEpc4uw:1vLClB:aUS59p4DApO6-UUuAeKcmzXw3eAvePacrVKqwMo5thA",
+    "expire_date": "2025-12-02T03:52:05.774Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "74lp8yklwcmx2hir9hsnazchbi9s1q8x",
+  "fields": {
+    "session_data": ".eJxVjDkOwjAUBe_iGllewAslPWew_mLjALKlOKkQd4dIKaB9M_NeIsG61LSOPKeJxVlocfjdEOiR2wb4Du3WJfW2zBPKTZE7HfLaOT8vu_t3UGHUbx2zN0ckpsKYXSnaKl8I0QYVFbI-YYigvDdANpAP6AmjMtk50LqwEu8PEpc4uw:1vcROk:A3btMrhPmiCaWTx15OewGcWqGlpDhE_M1CbWxusDnBk",
+    "expire_date": "2026-01-18T16:56:10.580Z"
+  }
+},
+{
+  "model": "gram_panchayat.complain",
+  "pk": 1,
+  "fields": {
+    "fname": "sas",
+    "phone_num": "sasa",
+    "Email": "sasa@gmail.com",
+    "complain": "Water",
+    "Complaint_Details": "sasasasasasa",
+    "photo": "",
+    "created_at": "2025-09-07T07:23:39.672Z",
+    "updated_at": "2025-09-07T07:23:39.673Z"
+  }
+},
+{
+  "model": "gram_panchayat.complain",
+  "pk": 2,
+  "fields": {
+    "fname": "krish",
+    "phone_num": "sasa",
+    "Email": "sandip@gmail.com",
+    "complain": "Other",
+    "Complaint_Details": "jkhjk",
+    "photo": "complaints/07_BCASEM5_11112025.pdf",
+    "created_at": "2025-11-05T06:32:21.407Z",
+    "updated_at": "2025-11-05T06:32:21.407Z"
+  }
+},
+{
+  "model": "gram_panchayat.contact",
+  "pk": 1,
+  "fields": {
+    "name": "sandip",
+    "email": "sandip@gmail.com",
+    "subject": "animation proper not work",
+    "message": "the devlopemtn page animation not a proper work",
+    "created_at": "2025-09-07T08:25:03.162Z"
+  }
+},
+{
+  "model": "gram_panchayat.contact",
+  "pk": 2,
+  "fields": {
+    "name": "virat",
+    "email": "virat@gmail.com",
+    "subject": "message how to disable problem",
+    "message": "snadi",
+    "created_at": "2025-09-07T08:47:15.320Z"
+  }
+},
+{
+  "model": "gram_panchayat.contact",
+  "pk": 3,
+  "fields": {
+    "name": "sandip",
+    "email": "sahil@gmail.com",
+    "subject": "i",
+    "message": "sas",
+    "created_at": "2025-09-07T08:48:36.134Z"
+  }
+},
+{
+  "model": "gram_panchayat.contact",
+  "pk": 4,
+  "fields": {
+    "name": "Pepsi  33cl",
+    "email": "sahil@gmail.com",
+    "subject": "pan document",
+    "message": "ssa",
+    "created_at": "2025-09-07T08:49:02.376Z"
+  }
+},
+{
+  "model": "gram_panchayat.contact",
+  "pk": 5,
+  "fields": {
+    "name": "Pepsi  33cl",
+    "email": "sahil@gmail.com",
+    "subject": "pan document",
+    "message": "sasa",
+    "created_at": "2025-09-07T08:49:41.123Z"
+  }
+},
+{
+  "model": "gram_panchayat.contact",
+  "pk": 6,
+  "fields": {
+    "name": "sandip",
+    "email": null,
+    "subject": "pan document",
+    "message": "",
+    "created_at": "2025-09-07T09:22:36.059Z"
+  }
+},
+{
+  "model": "gram_panchayat.contact",
+  "pk": 7,
+  "fields": {
+    "name": "None",
+    "email": null,
+    "subject": "None",
+    "message": "None",
+    "created_at": "2025-09-07T09:22:50.037Z"
+  }
+},
+{
+  "model": "gram_panchayat.contact",
+  "pk": 8,
+  "fields": {
+    "name": "Pepsi  33cl",
+    "email": "sahil@gmail.com",
+    "subject": "pan document",
+    "message": "ZZ",
+    "created_at": "2025-09-07T09:24:41.424Z"
+  }
+},
+{
+  "model": "gram_panchayat.contact",
+  "pk": 9,
+  "fields": {
+    "name": "sandip",
+    "email": "sandip1@gmail.com",
+    "subject": "pan document",
+    "message": "szs",
+    "created_at": "2025-09-07T09:25:09.834Z"
+  }
+},
+{
+  "model": "gram_panchayat.contact",
+  "pk": 10,
+  "fields": {
+    "name": "sandip",
+    "email": "sahil@gmail.com",
+    "subject": "react js",
+    "message": "sas",
+    "created_at": "2025-09-07T09:36:52.580Z"
+  }
+},
+{
+  "model": "gram_panchayat.contact",
+  "pk": 11,
+  "fields": {
+    "name": "small ginnger tea",
+    "email": "sahil@gmail.com",
+    "subject": "Inquiry about category",
+    "message": "amAHGFghfahg",
+    "created_at": "2025-09-08T08:04:44.523Z"
+  }
+},
+{
+  "model": "gram_panchayat.contact",
+  "pk": 12,
+  "fields": {
+    "name": "virat",
+    "email": "virat@gmail.com",
+    "subject": "Inquiry about category",
+    "message": "jhgfdryujnvcdrtyuik",
+    "created_at": "2025-11-05T06:33:09.718Z"
+  }
+},
+{
+  "model": "gram_panchayat.event",
+  "pk": 1,
+  "fields": {
+    "title": "Village Cleanliness Drive",
+    "image": "events/event1.jpg",
+    "description": "Join us in making our village clean and green. Let's come together for a healthy tomorrow.",
+    "date": "2025-09-10",
+    "location": "Gram Panchayat Bhavan"
+  }
+},
+{
+  "model": "gram_panchayat.event",
+  "pk": 2,
+  "fields": {
+    "title": "Health Check-up Camp",
+    "image": "events/event2_1.jpg",
+    "description": "Free medical check-ups for villagers. Doctors from district hospital will be present",
+    "date": "2025-07-16",
+    "location": "Primary School Ground"
+  }
+},
+{
+  "model": "gram_panchayat.event",
+  "pk": 3,
+  "fields": {
+    "title": "Cultural Festival",
+    "image": "events/event3.jpg",
+    "description": "Celebrate local culture with music, dance, and food. Everyone is invited to participate!",
+    "date": "2025-09-26",
+    "location": "School Ground"
+  }
+},
+{
+  "model": "gram_panchayat.celebrity",
+  "pk": 1,
+  "fields": {
+    "name": "Shri Ramesh Patel",
+    "description": "Born in 1945, Shri Ramesh Patel was a prominent social reformer and freedom fighter from our village. He dedicated his life towards improving education and rural infrastructure.",
+    "image": "celebrity_images/celebrity1.jpg",
+    "extra_points": "Started first village library\r\nLed water conservation movement\r\nWorked for women empowerment",
+    "created_at": "2025-09-07T11:03:46.639Z"
+  }
+},
+{
+  "model": "gram_panchayat.celebrity",
+  "pk": 2,
+  "fields": {
+    "name": "Smt. Meena Sharma",
+    "description": "Smt. Meena Sharma is a National Awarded Teacher from our village. She dedicated her life to educating rural children and promoting women’s education.",
+    "image": "celebrity_images/celebrity2.jpg",
+    "extra_points": "Introduced adult literacy programs\r\nOrganized community education events\r\nAwarded National Teacher Award in 2015",
+    "created_at": "2025-09-07T11:04:50.649Z"
+  }
+},
+{
+  "model": "gram_panchayat.gallery",
+  "pk": 1,
+  "fields": {
+    "title": "Village Field",
+    "description": "Beautiful farm land",
+    "image": "gallery/1.jpg",
+    "created_at": "2025-09-08T09:07:41.167Z"
+  }
+},
+{
+  "model": "gram_panchayat.gallery",
+  "pk": 2,
+  "fields": {
+    "title": "Cultural Event",
+    "description": "Annual Gram Sabha celebration",
+    "image": "gallery/2.jpg",
+    "created_at": "2025-09-08T09:07:54.673Z"
+  }
+},
+{
+  "model": "gram_panchayat.gallery",
+  "pk": 3,
+  "fields": {
+    "title": "School Activity",
+    "description": "Children participating in event",
+    "image": "gallery/3.jpg",
+    "created_at": "2025-09-08T09:08:12.315Z"
+  }
+},
+{
+  "model": "gram_panchayat.gallery",
+  "pk": 4,
+  "fields": {
+    "title": "Tree Plantation",
+    "description": "Green Village campaign",
+    "image": "gallery/5.jpg",
+    "created_at": "2025-09-08T09:08:28.022Z"
+  }
+},
+{
+  "model": "gram_panchayat.development",
+  "pk": 1,
+  "fields": {
+    "title": "Road Development",
+    "short_description": "Nirmal Gram",
+    "description": "Road development work of our Gram Panchayat included 3 major road projects for the village. All roads were successfully completed with an investment of ₹3,00,000. This project improved connectivity and made daily travel much easier for villagers.",
+    "image": "devlopment/road.webp",
+    "year": "2023-09-13",
+    "created_at": "2025-09-13T06:01:50.700Z"
+  }
+},
+{
+  "model": "gram_panchayat.development",
+  "pk": 2,
+  "fields": {
+    "title": "Water Supply",
+    "short_description": "Village Water Project",
+    "description": "A new water supply system was installed to provide clean drinking water to every household in the village. This development greatly improved public health and reduced the hardships faced by families.",
+    "image": "devlopment/water-supply.jpg",
+    "year": "2024-09-13",
+    "created_at": "2025-09-13T06:02:21.652Z"
+  }
+},
+{
+  "model": "gram_panchayat.development",
+  "pk": 3,
+  "fields": {
+    "title": "Education Development",
+    "short_description": "New Village School",
+    "description": "A new primary school building was constructed with modern facilities to support the education of village children. This project empowered the younger generation with better learning opportunities.",
+    "image": "devlopment/Education.jpg",
+    "year": "2015-09-13",
+    "created_at": "2025-09-13T06:02:59.488Z"
+  }
+},
+{
+  "model": "gram_panchayat.infrastructure",
+  "pk": 1,
+  "fields": {
+    "title": "Roads",
+    "description": "Our village has a network of paved and unpaved roads connecting all neighborhoods. Efforts are ongoing to improve road conditions for safer and faster travel.",
+    "extra_points": "Primary roads connecting nearby towns.\r\nSecondary roads within the village.\r\nOngoing repair and maintenance projects.",
+    "image": "infrastructure/road.webp",
+    "created_at": "2025-09-12T11:25:12.752Z"
+  }
+},
+{
+  "model": "gram_panchayat.infrastructure",
+  "pk": 2,
+  "fields": {
+    "title": "Water Supply",
+    "description": "Clean water availability is essential for healthy living. Our village has several water sources and pipelines under development.",
+    "extra_points": "Community wells and hand pumps.\r\nTap water connections in some households.\r\nWater purification and storage facilities.",
+    "image": "infrastructure/water-supply.jpg",
+    "created_at": "2025-09-12T11:25:44.783Z"
+  }
+},
+{
+  "model": "gram_panchayat.infrastructure",
+  "pk": 3,
+  "fields": {
+    "title": "Electricity Electricity",
+    "description": "Electricity is vital for development. Our village has access to electricity with ongoing efforts to ensure stable supply.",
+    "extra_points": "Electric connections in households and public places.\r\nStreet lighting in major areas.\r\nRenewable energy initiatives in progress.",
+    "image": "infrastructure/electri.jpg",
+    "created_at": "2025-09-12T11:26:19.043Z"
+  }
+},
+{
+  "model": "gram_panchayat.infrastructure",
+  "pk": 4,
+  "fields": {
+    "title": "Education",
+    "description": "Education facilities in the village include schools and adult literacy programs.",
+    "extra_points": "Primary and secondary schools.\r\nLibrary and study resources.\r\nVocational training programs for youth.",
+    "image": "infrastructure/Education.jpg",
+    "created_at": "2025-09-12T11:26:40.992Z"
+  }
+},
+{
+  "model": "gram_panchayat.infrastructure",
+  "pk": 5,
+  "fields": {
+    "title": "Health & Sanitation",
+    "description": "Healthcare access is crucial for well-being. The village has primary healthcare centers and ongoing sanitation initiatives.",
+    "extra_points": "Primary Health Center with medical staff.\r\nVaccination and health awareness programs.\r\nCleanliness drives and sanitation facilities.",
+    "image": "infrastructure/health_Ep9vLHR.jpg",
+    "created_at": "2025-09-12T11:27:05.191Z"
+  }
+},
+{
+  "model": "gram_panchayat.staffs",
+  "pk": 1,
+  "fields": {
+    "staff_mem_name": "Ramlal Patel",
+    "staff_mem_position": "Sarpanch",
+    "staff_mem_contact": "9324896486",
+    "staff_mem_image": "staffs/download_R6WEkqg.jpg"
+  }
+},
+{
+  "model": "gram_panchayat.members",
+  "pk": 1,
+  "fields": {
+    "member_name": "ramesh",
+    "member_position": "worker",
+    "member_contact": "321456987",
+    "member_image": "members/celebrity1_eOGRKlH.jpg"
+  }
+},
+{
+  "model": "gram_panchayat.sarpanch",
+  "pk": 1,
+  "fields": {
+    "sarpanch_image": "sarpanch/sarpanch.jpg",
+    "sarpanch_name": "Mr. Isvarbhai Patel",
+    "introduction": "My vision is to ensure the development of our village through education, cleanliness, healthcare, and employment. Every issue of the Panchayat will be resolved in a transparent and fair manner.",
+    "phone_no": "8265362566",
+    "email": "sarpanch@gmail.com",
+    "address": "Panchayat Bhavan, Main Road, Gujarat",
+    "start_year": "2022-08-17",
+    "end_year": "2026-08-17",
+    "extra_points": "Expansion of clean drinking water facilities\r\nImprovement of village roads and street lights."
+  }
+},
+{
+  "model": "gram_panchayat.scheme",
+  "pk": 1,
+  "fields": {
+    "scheme_name": "🏠 Rural Housing Scheme",
+    "about": "The Rural Housing Scheme provides financial support to poor families for constructing safe and permanent houses in villages.",
+    "eligibility": "Families below poverty line (BPL) or without permanent housing.",
+    "benefit": "Subsidy amount up to ₹1.2 – ₹1.5 lakh (varies by state).",
+    "document_required": "Aadhaar card, ration card, income proof, land ownership proof.",
+    "how_to_apply": "Visit Gram Panchayat office → Submit application form → Verification by officials → Approval & fund release.",
+    "created_at": "2025-09-21T08:39:05.577Z"
+  }
+},
+{
+  "model": "gram_panchayat.scheme",
+  "pk": 2,
+  "fields": {
+    "scheme_name": "🚰 Clean Water Mission",
+    "about": "Ensures safe drinking water supply and sanitation facilities for all households.",
+    "eligibility": "All rural households without piped drinking water connection.",
+    "benefit": "Free water tap connection, improved sanitation, regular water supply.",
+    "document_required": "Aadhaar card, residence proof, village certificate.",
+    "how_to_apply": "Apply at Panchayat office → Field inspection → Water connection installation.",
+    "created_at": "2025-09-21T08:50:50.150Z"
+  }
+},
+{
+  "model": "gram_panchayat.scheme",
+  "pk": 3,
+  "fields": {
+    "scheme_name": "👷 MGNREGA Employment",
+    "about": "Mahatma Gandhi National Rural Employment Guarantee Act (MGNREGA) guarantees 100 days of wage employment to rural households.",
+    "eligibility": "Any adult member of a rural household willing to do unskilled manual work.",
+    "benefit": "100 days guaranteed wage employment, equal wages for men & women, local work availability.",
+    "document_required": "Aadhaar card, job card (issued under MGNREGA), bank account details.",
+    "how_to_apply": "Apply at Gram Panchayat → Get job card → Demand for work → Panchayat assigns work within 15 days.",
+    "created_at": "2025-09-21T08:51:54.292Z"
+  }
+},
+{
+  "model": "gram_panchayat.gramsabhameeting",
+  "pk": 1,
+  "fields": {
+    "title": "Gram Sabha September Meeting",
+    "agenda": "- Drinking water supply project approval\r\n- School building renovation discussion\r\n- Village cleanliness drive planning",
+    "date": "2025-09-26",
+    "time": "10:00:00",
+    "venue": "Panchayat Hall",
+    "minutes_file": "",
+    "created_at": "2025-09-24T07:17:54.441Z"
+  }
+},
+{
+  "model": "gram_panchayat.gramsabhameeting",
+  "pk": 2,
+  "fields": {
+    "title": "dfghjkmnbvcderyukm",
+    "agenda": "Road Construction Approval",
+    "date": "2024-09-26",
+    "time": "10:00:00",
+    "venue": "Panchayat Hall",
+    "minutes_file": "",
+    "created_at": "2025-09-24T07:19:46.982Z"
+  }
+},
+{
+  "model": "gram_panchayat.gramsabhameeting",
+  "pk": 3,
+  "fields": {
+    "title": "fghjkmnv",
+    "agenda": "vghjk,mnh",
+    "date": "2025-11-18",
+    "time": "03:55:00",
+    "venue": "Panchayat Hall",
+    "minutes_file": "",
+    "created_at": "2025-11-18T03:53:08.746Z"
+  }
+},
+{
+  "model": "gram_panchayat.document",
+  "pk": 1,
+  "fields": {
+    "title": "Gram panchayat development plan",
+    "file": "documents/gram_panchayat_plan.pdf",
+    "uploaded_at": "2025-10-02T06:44:23.091Z"
+  }
+},
+{
+  "model": "gram_panchayat.document",
+  "pk": 2,
+  "fields": {
+    "title": "Road tender",
+    "file": "documents/1_tender-document.pdf",
+    "uploaded_at": "2025-10-02T06:44:46.364Z"
+  }
+},
+{
+  "model": "gram_panchayat.feedback",
+  "pk": 1,
+  "fields": {
+    "name": "kk",
+    "email": "sandip1@gmail.com",
+    "rating": 4,
+    "message": "jk",
+    "image": "",
+    "created_at": "2025-10-06T09:51:44.240Z"
+  }
+},
+{
+  "model": "gram_panchayat.history",
+  "pk": 1,
+  "fields": {
+    "title": "The Beginning",
+    "description": "Our journey started with a vision to bring innovation and creativity to life. This was the foundation that shaped everything we are today.",
+    "image": "history/history-image-1.jpg",
+    "year": "2000-01-01",
+    "created_at": "2025-10-06T09:41:08.939Z"
+  }
+},
+{
+  "model": "gram_panchayat.history",
+  "pk": 2,
+  "fields": {
+    "title": "Growth & Expansion",
+    "description": "Over the years, we expanded our reach, building trust and delivering quality. Every milestone reflects our dedication and hard work.",
+    "image": "history/history-image-2.jpg",
+    "year": "2010-10-09",
+    "created_at": "2025-10-06T09:41:46.107Z"
+  }
+},
+{
+  "model": "gram_panchayat.history",
+  "pk": 3,
+  "fields": {
+    "title": "Shaping the Future",
+    "description": "We continue to innovate and inspire. Our story is not just about the past but about shaping a better future.",
+    "image": "history/history-image-3.jpg",
+    "year": "2025-09-13",
+    "created_at": "2025-10-06T09:42:14.608Z"
+  }
+}
+]

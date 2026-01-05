@@ -8,11 +8,13 @@
     --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
+    --color-red-500: oklch(63.7% 0.237 25.331);
     --color-red-600: oklch(57.7% 0.245 27.325);
     --color-red-700: oklch(50.5% 0.213 27.518);
     --color-yellow-400: oklch(85.2% 0.199 91.936);
     --color-yellow-500: oklch(79.5% 0.184 86.047);
     --color-green-100: oklch(96.2% 0.044 156.743);
+    --color-green-200: oklch(92.5% 0.084 155.995);
     --color-green-400: oklch(79.2% 0.209 151.711);
     --color-green-500: oklch(72.3% 0.219 149.579);
     --color-green-600: oklch(62.7% 0.194 149.214);
@@ -37,6 +39,7 @@
     --color-white: #fff;
     --spacing: 0.25rem;
     --container-md: 28rem;
+    --container-lg: 32rem;
     --container-2xl: 42rem;
     --container-4xl: 56rem;
     --container-6xl: 72rem;
@@ -69,6 +72,7 @@
     --radius-4xl: 2rem;
     --ease-out: cubic-bezier(0, 0, 0.2, 1);
     --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+    --animate-bounce: bounce 1s infinite;
     --default-transition-duration: 150ms;
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     --default-font-family: var(--font-sans);
@@ -1625,6 +1629,64 @@
     cursor: not-allowed;
     opacity: 20%;
   }
+  .rating {
+    position: relative;
+    display: inline-flex;
+    vertical-align: middle;
+  }
+  .rating input {
+    border: none;
+    appearance: none;
+  }
+  .rating :where(*) {
+    animation: rating 0.25s ease-out;
+    height: calc(0.25rem * 6);
+    width: calc(0.25rem * 6);
+    border-radius: 0;
+    background-color: var(--color-base-content);
+    opacity: 20%;
+  }
+  .rating :where(*):is(input) {
+    cursor: pointer;
+  }
+  .rating .rating-hidden {
+    width: calc(0.25rem * 2);
+    background-color: transparent;
+  }
+  .rating input[type="radio"]:checked {
+    background-image: none;
+  }
+  .rating *:checked, .rating *[aria-checked="true"], .rating *[aria-current="true"], .rating *:has(~ *:checked, ~ *[aria-checked="true"], ~ *[aria-current="true"]) {
+    opacity: 100%;
+  }
+  .rating *:focus-visible {
+    transition: scale 0.2s ease-out;
+    scale: 1.1;
+  }
+  .rating *:active:focus {
+    animation: none;
+    scale: 1.1;
+  }
+  .rating.rating-xs :where(*:not(.rating-hidden)) {
+    width: calc(0.25rem * 4);
+    height: calc(0.25rem * 4);
+  }
+  .rating.rating-sm :where(*:not(.rating-hidden)) {
+    width: calc(0.25rem * 5);
+    height: calc(0.25rem * 5);
+  }
+  .rating.rating-md :where(*:not(.rating-hidden)) {
+    width: calc(0.25rem * 6);
+    height: calc(0.25rem * 6);
+  }
+  .rating.rating-lg :where(*:not(.rating-hidden)) {
+    width: calc(0.25rem * 7);
+    height: calc(0.25rem * 7);
+  }
+  .rating.rating-xl :where(*:not(.rating-hidden)) {
+    width: calc(0.25rem * 8);
+    height: calc(0.25rem * 8);
+  }
   .progress {
     position: relative;
     height: calc(0.25rem * 2);
@@ -1927,8 +1989,48 @@
   .my-2 {
     margin-block: calc(var(--spacing) * 2);
   }
-  .my-16 {
-    margin-block: calc(var(--spacing) * 16);
+  .label {
+    display: inline-flex;
+    align-items: center;
+    gap: calc(0.25rem * 1.5);
+    white-space: nowrap;
+    color: currentColor;
+  }
+  @supports (color: color-mix(in lab, red, red)) {
+    .label {
+      color: color-mix(in oklab, currentColor 60%, transparent);
+    }
+  }
+  .label:has(input) {
+    cursor: pointer;
+  }
+  .label:is(.input > *, .select > *) {
+    display: flex;
+    height: calc(100% - 0.5rem);
+    align-items: center;
+    padding-inline: calc(0.25rem * 3);
+    white-space: nowrap;
+    font-size: inherit;
+  }
+  .label:is(.input > *, .select > *):first-child {
+    margin-inline-start: calc(0.25rem * -3);
+    margin-inline-end: calc(0.25rem * 3);
+    border-inline-end: var(--border) solid currentColor;
+  }
+  @supports (color: color-mix(in lab, red, red)) {
+    .label:is(.input > *, .select > *):first-child {
+      border-inline-end: var(--border) solid color-mix(in oklab, currentColor 10%, #0000);
+    }
+  }
+  .label:is(.input > *, .select > *):last-child {
+    margin-inline-start: calc(0.25rem * 3);
+    margin-inline-end: calc(0.25rem * -3);
+    border-inline-start: var(--border) solid currentColor;
+  }
+  @supports (color: color-mix(in lab, red, red)) {
+    .label:is(.input > *, .select > *):last-child {
+      border-inline-start: var(--border) solid color-mix(in oklab, currentColor 10%, #0000);
+    }
   }
   .-mt-20 {
     margin-top: calc(var(--spacing) * -20);
@@ -1959,6 +2061,9 @@
   }
   .mt-16 {
     margin-top: calc(var(--spacing) * 16);
+  }
+  .mr-0 {
+    margin-right: calc(var(--spacing) * 0);
   }
   .mb-2 {
     margin-bottom: calc(var(--spacing) * 2);
@@ -2219,6 +2324,9 @@
   .h-5 {
     height: calc(var(--spacing) * 5);
   }
+  .h-6 {
+    height: calc(var(--spacing) * 6);
+  }
   .h-8 {
     height: calc(var(--spacing) * 8);
   }
@@ -2309,6 +2417,9 @@
   .max-w-6xl {
     max-width: var(--container-6xl);
   }
+  .max-w-lg {
+    max-width: var(--container-lg);
+  }
   .max-w-md {
     max-width: var(--container-md);
   }
@@ -2332,6 +2443,9 @@
   }
   .transform {
     transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
+  }
+  .animate-bounce {
+    animation: var(--animate-bounce);
   }
   .link {
     cursor: pointer;
@@ -2524,6 +2638,12 @@
       background-color: color-mix(in oklab, var(--color-black) 50%, transparent);
     }
   }
+  .bg-blue-50 {
+    background-color: var(--color-blue-50);
+  }
+  .bg-blue-500 {
+    background-color: var(--color-blue-500);
+  }
   .bg-blue-600 {
     background-color: var(--color-blue-600);
   }
@@ -2542,8 +2662,14 @@
   .bg-green-100 {
     background-color: var(--color-green-100);
   }
+  .bg-green-200 {
+    background-color: var(--color-green-200);
+  }
   .bg-green-500 {
     background-color: var(--color-green-500);
+  }
+  .bg-red-500 {
+    background-color: var(--color-red-500);
   }
   .bg-white {
     background-color: var(--color-white);
@@ -2566,6 +2692,9 @@
   }
   .bg-yellow-400 {
     background-color: var(--color-yellow-400);
+  }
+  .fill-current {
+    fill: currentcolor;
   }
   .object-contain {
     object-fit: contain;
@@ -2920,6 +3049,11 @@
   @media (hover: hover) {
     .hover\:bg-blue-50:hover {
       background-color: var(--color-blue-50);
+    }
+  }
+  @media (hover: hover) {
+    .hover\:bg-blue-100:hover {
+      background-color: var(--color-blue-100);
     }
   }
   @media (hover: hover) {
@@ -3575,6 +3709,16 @@
   syntax: "*";
   inherits: false;
   initial-value: 1;
+}
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(-25%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: none;
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
 }
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {

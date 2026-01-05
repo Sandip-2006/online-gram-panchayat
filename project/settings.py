@@ -29,10 +29,11 @@ env = os.environ.get
 SECRET_KEY = env("SECRET_KEY", get_random_secret_key())
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env("DEBUG")
+DEBUG = env("DEBUG", "False") == "True"
 
 # TODO: This should be picked from environment variables (.env).(Done)
-ALLOWED_HOSTS = env("ALLOWED_HOSTS").split(",")
+ALLOWED_HOSTS = env("ALLOWED_HOSTS", "").split(",")
+
 
 
 # Application definition
@@ -55,6 +56,8 @@ INSTALLED_APPS = [
 TAILWIND_APP_NAME='theme'
 INTERNAL_IPS=['127.0.0.1']
 NPM_BIN_PATH = "C:/Program Files/nodejs/npm.cmd"
+
+# NPM_BIN_PATH = "/usr/bin/npm"
  
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -91,24 +94,14 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
-
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.mysql',   # Database backend
-#         'NAME': 'online_gram_panchayat',          # Database name
-#         'USER': 'root',               # MySQL username
-#         'PASSWORD': 'sandip@123',           # MySQL password
-#         'HOST': 'localhost',                   # Or IP, e.g., '127.0.0.1'
-#         'PORT': '3306',                        # Default MySQL port
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
 # }
+
+
 
 DATABASES = {
     "default": {
@@ -160,6 +153,7 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
      BASE_DIR / "gram_panchayat" / "static"  
 ]
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'

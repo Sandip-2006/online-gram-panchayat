@@ -9,3 +9,4 @@ __pycache__/
 *.pot
 *.py[cod]
 *.env
+*export_data.py
