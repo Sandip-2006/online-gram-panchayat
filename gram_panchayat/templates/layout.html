@@ -151,7 +151,42 @@
         visibility: visible;
       }
     }
+
+    /* Mobile menu links */
+    .mobile-link {
+      display: block;
+      padding: 10px 12px;
+      border-radius: 6px;
+      font-weight: 500;
+      color: #1f2937;
+      /* gray-800 */
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .mobile-link:hover {
+      background-color: #f1f5f9;
+      /* gray-100 */
+    }
+
+    .mobile-link.active {
+      background-color: #eff6ff;
+      /* blue-50 */
+      color: #1d4ed8;
+      /* blue-700 */
+      border-left: 4px solid #2563eb;
+      /* blue-600 */
+      padding-left: 10px;
+      font-weight: 600;
+    }
+
+    [x-cloak] {
+      display: none !important;
+    }
   </style>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+
+
 </head>
 
 <body class="bg-gray-50 text-black">
@@ -164,7 +199,12 @@
   {% endfor %}
   {% endif %} {% endcomment %}
   <!-- Navbar -->
-  <header class="bg-white shadow-md fixed top-0 left-0 w-full z-50">
+  <header x-data="{
+    mobileOpen: false,
+    mediaOpen: false,
+    panchayatOpen: false
+  }" class="bg-white shadow-md fixed top-0 left-0 w-full z-50">
+
     {# Precompute important urls to compare with request.path #}
     {% url 'home' as home_url %}
     {% url 'about' as about_url %}
@@ -188,8 +228,8 @@
     {% with request.resolver_match.url_name as active_name %}
     {% with request.resolver_match.kwargs.page_type|default:"" as active_page %}
 
-    <nav x-data="{ open: false, schemes: false, media: false }"
-      class="container mx-auto flex items-center justify-between px-6 py-3">
+    <nav class="container mx-auto flex items-center justify-between px-6 py-3">
+
       <!-- Logo -->
       <a href="{% url 'home' %}" class="flex items-center space-x-2">
         <img src="{% static 'images/1.jpg' %}" alt="Profile photo" class="h-10 w-10 rounded-full object-cover" />
@@ -198,11 +238,11 @@
       </a>
 
       <!-- Desktop Menu -->
-      <div class="hidden md:flex items-center space-x-6">
+      <div class="hidden md:flex items-center gap-7">
         <a href="{{ home_url }}"
-          class="{% if active_name == 'index' or active_name == 'home' or active_name == '' %}text-blue-700 font-semibold border-b-2  border-blue-600 pb-1{% else %}text-gray-700 mr-0 hover:text-blue-600 font-medium opacity-70{% endif %}">Home</a>
+          class="{% if active_name == 'index' or active_name == 'home' or active_name == '' %}text-blue-700 font-semibold border-b-2  border-blue-600 pb-1{% else %}text-gray-700  hover:text-blue-600 font-medium opacity-70{% endif %}">Home</a>
         <a href="{{ about_url }}"
-          class="{% if active_name == 'about' %}text-blue-700 font-semibold border-b-2 border-blue-600 pb-1{% else %}text-gray-700 hover:text-blue-600 font-medium opacity-70{% endif %}">About</a>
+          class="{% if active_name == 'about' %}text-blue-700 font-semibold border-b-2 ml-0 border-blue-600 pb-1{% else %}text-gray-700 hover:text-blue-600 font-medium opacity-70{% endif %}">About</a>
 
         <!-- Schemes Dropdown -->
         <div class="relative group">
@@ -323,64 +363,129 @@
 
 
         <!-- Other Links -->
-        {% comment %} <a href="{% url 'contact' %}" class="text-gray-700 hover:text-blue-600">Contact</a> {% endcomment%}
         <a href="{{ contact_url }}"
           class="{% if active_name == 'contact' %}text-blue-700 font-semibold border-b-2 border-blue-600 pb-1{% else %}text-gray-700 hover:text-blue-600 font-medium opacity-70{% endif %}">Contact</a>
 
-          <a href="{{ feedback_url }}"
+        <a href="{{ feedback_url }}"
           class="{% if active_name == 'feedback' %}text-blue-700 font-semibold border-b-2 border-blue-600 pb-1{% else %}text-gray-700 hover:text-blue-600 font-medium opacity-70{% endif %}">Feedback</a>
-
-
-        <!-- Login -->
-        {% comment %} <a href="#" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Login</a> {% endcomment %}
 
       </div>
 
       <!-- Mobile Menu Button -->
-      <button @click="open = !open" class="md:hidden text-blue-700 focus:outline-none">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      <!-- Mobile Menu Button -->
+      <button @click="mobileOpen = !mobileOpen" class="md:hidden p-2 rounded focus:outline-none"
+        aria-label="Toggle menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-700" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+          <!-- Hamburger -->
+          <path :class="mobileOpen ? 'hidden' : 'block'" d="M4 6h16M4 12h16M4 18h16" />
+
+          <!-- Close -->
+          <path :class="mobileOpen ? 'block' : 'hidden'" d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
+
+
     </nav>
 
     <!-- Mobile Menu -->
-    <div x-show="open" x-transition class="md:hidden bg-white border-t border-blue-100 px-6 py-4 space-y-3 shadow-lg">
-      <a href="{{ home_url }}"
-        class="{% if active_name == 'index' or active_name == 'home' or active_name == '' %}text-blue-700 font-semibold border-b-2 border-blue-600 pb-1{% else %}block text-gray-700 hover:text-blue-600 font-medium opacity-70{% endif %}">Home</a>
-      <a href="{{ about_url }}"
-        class="{% if active_name == 'about' %}text-blue-700 font-semibold border-b-2 border-blue-600 pb-1{% else %}block text-gray-700 hover:text-blue-600 font-medium opacity-70{% endif %}">About</a>
+    <!-- Mobile Menu -->
+    <!-- MOBILE MENU -->
+    <div x-show="mobileOpen" x-transition x-cloak class="md:hidden bg-white border-t border-gray-200
+         px-4 py-3 space-y-1
+         max-h-[80vh] overflow-y-auto">
 
-      <div>
-        <p class="font-semibold text-gray-700">Schemes</p>
-        <a href="#" class="block text-sm pl-4 text-gray-600 hover:text-blue-600">Water Supply</a>
-        <a href="#" class="block text-sm pl-4 text-gray-600 hover:text-blue-600">Sanitation</a>
-        <a href="#" class="block text-sm pl-4 text-gray-600 hover:text-blue-600">Employment</a>
-        <a href="#" class="block text-sm pl-4 text-gray-600 hover:text-blue-600">Education</a>
-      </div>
 
-      <div>
-        <p class="font-semibold text-gray-700">Media</p>
-        <a href="{{ gallery_url }}"
-          class="{% if active_name == 'gallery' %}text-blue-700 font-semibold border-b-2 border-blue-600 pb-1{% else %}block text-sm pl-4 text-gray-600 hover:text-blue-600{% endif %}">Gallery</a>
-        <a href="{{ event_url }}"
-          class="{% if active_name == 'event' %}text-blue-700 font-semibold border-b-2 border-blue-600 pb-1{% else %}block text-sm pl-4 text-gray-600 hover:text-blue-600{% endif %}">Events</a>
-        <a href="{{ celebrity_url }}"
-          class="{% if active_name == 'celebrity' %}text-blue-700 font-semibold border-b-2 border-blue-600 pb-1{% else %}block text-sm pl-4 text-gray-600 hover:text-blue-600{% endif %}">Celebrity</a>
-      </div>
 
-      <a href="{% url 'sarpanch' %}" class="block text-gray-700 hover:text-blue-600">Sarpanch</a>
-      <a href="{% url 'complain' %}" class="block text-gray-700 hover:text-blue-600">Complaint</a>
-      <a href="{% url 'gramsabha' %}" class="block text-gray-700 hover:text-blue-600">Gramsabha</a>
-      <a href="{% url 'contact' %}" class="block text-gray-700 hover:text-blue-600">Contact</a>
-      <a href="{% url 'staff_member' 'staff' %}" class="block text-gray-700 hover:text-blue-600">Staff</a>
-      <a href="{% url 'staff_member' 'member' %}" class="block text-gray-700 hover:text-blue-600">Members</a>
-      <a href="{% url 'history' %}" class="block text-gray-700 hover:text-blue-600">History</a>
-      <a href="{% url 'development' %}" class="block text-gray-700 hover:text-blue-600">Development</a>
-      <a href="{% url 'scheme' %}" class="block text-gray-700 hover:text-blue-600">Scheme</a>
+      <a @click="mobileOpen=false" href="{{ home_url }}"
+        class="mobile-link {% if active_name == 'home' or active_name == 'index' %}active{% endif %}">
+        Home
+      </a>
 
-      {% comment %} <a href="{% url 'login' %}"
-        class="block bg-blue-600 text-white px-4 py-2 rounded-lg text-center hover:bg-blue-700">Login</a> {% endcomment %}
+      <a @click="mobileOpen=false" href="{{ about_url }}"
+        class="mobile-link {% if active_name == 'about' %}active{% endif %}">
+        About
+      </a>
+
+      <a @click="mobileOpen=false" href="{{ gallery_url }}"
+        class="mobile-link {% if active_name == 'gallery' %}active{% endif %}">
+        Gallery
+      </a>
+
+      <a @click="mobileOpen=false" href="{{ event_url }}"
+        class="mobile-link {% if active_name == 'event' %}active{% endif %}">
+        Events
+      </a>
+
+      <a @click="mobileOpen=false" href="{{ celebrity_url }}"
+        class="mobile-link {% if active_name == 'celebrity' %}active{% endif %}">
+        Celebrity
+      </a>
+
+      <a @click="mobileOpen=false" href="{{ history_url }}"
+        class="mobile-link {% if active_name == 'history' %}active{% endif %}">
+        History
+      </a>
+
+
+
+      <a @click="mobileOpen=false" href="{{ gramsabha_url }}"
+        class="mobile-link {% if active_name == 'gramsabha' %}active{% endif %}">
+        Gramsabha
+      </a>
+
+      <a @click="mobileOpen=false" href="{{ staff_url }}"
+        class="mobile-link {% if active_name == 'staff_member' and active_page == 'staff' %}active{% endif %}">
+        Staff
+      </a>
+
+      <a @click="mobileOpen=false" href="{{ member_url }}"
+        class="mobile-link {% if active_name == 'staff_member' and active_page == 'member' %}active{% endif %}">
+        Members
+      </a>
+
+      <a @click="mobileOpen=false" href="{{ sarpanch_url }}"
+        class="mobile-link {% if active_name == 'sarpanch' %}active{% endif %}">
+        Sarpanch
+      </a>
+
+      <a @click="mobileOpen=false" href="{{ development_url }}"
+        class="mobile-link {% if active_name == 'development' %}active{% endif %}">
+        Development
+      </a>
+
+      <a @click="mobileOpen=false" href="{{ infra_url }}"
+        class="mobile-link {% if active_name == 'Infrastructure' %}active{% endif %}">
+        Infrastructure
+      </a>
+
+      <a @click="mobileOpen=false" href="{{ complain_url }}"
+        class="mobile-link {% if active_name == 'complain' %}active{% endif %}">
+        Complain
+      </a>
+
+      <a @click="mobileOpen=false" href="{{ scheme_url }}"
+        class="mobile-link {% if active_name == 'scheme' %}active{% endif %}">
+        Scheme
+      </a>
+
+      <a @click="mobileOpen=false" href="{{ download_url }}"
+        class="mobile-link {% if active_name == 'download' %}active{% endif %}">
+        Download
+      </a>
+
+
+      <a @click="mobileOpen=false" href="{{ contact_url }}"
+        class="mobile-link {% if active_name == 'contact' %}active{% endif %}">
+        Contact
+      </a>
+
+      <a @click="mobileOpen=false" href="{{ feedback_url }}"
+        class="mobile-link {% if active_name == 'feedback' %}active{% endif %}">
+        Feedback
+      </a>
+
     </div>
     {% endwith %}
     {% endwith %}
@@ -421,7 +526,7 @@
           <li>
             <a href="{% url 'gramsabha' %}" class="hover:text-white hover:underline">Gramsabha</a>
           </li>
-         
+
         </ul>
       </div>
 
@@ -452,14 +557,7 @@
     </div>
   </footer>
 
-  <!-- JS for Mobile Menu -->
-  <script>
-    const btn = document.getElementById('menu-btn')
-    const menu = document.getElementById('menu')
-    btn.addEventListener('click', () => {
-      menu.classList.toggle('hidden')
-    })
-  </script>
+
 </body>
 
 </html>
