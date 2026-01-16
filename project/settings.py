@@ -189,3 +189,10 @@ LOGIN_URL = 'login'
 # }
 
 
+
+from django.contrib.messages import constants as messages
+
+MESSAGE_TAGS = {
+    messages.ERROR: 'error',
+    messages.SUCCESS: 'success',
+}

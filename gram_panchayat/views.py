@@ -19,17 +19,23 @@ class AppLoginView(LoginView):
 def index(request):
     return render(request, "index.html")
 
+
+
 def complain_create(request):
     if request.method == 'POST':
         form = complain_form(request.POST, request.FILES)
+
         if form.is_valid():
-            complains = form.save(commit=False)
-            complains.save()
-            messages.success(request, "Complaint submitted successfully!")
-            return redirect('home')
+            form.save()
+            messages.success(request, "✅ Complaint submitted successfully!")
+            return redirect('complain')  # same page redirect
+        else:
+            messages.error(request, "❌ Please correct the errors below.")
     else:
         form = complain_form()
+
     return render(request, "complain.html", {'form': form})
+
 
 
 def about(request):
