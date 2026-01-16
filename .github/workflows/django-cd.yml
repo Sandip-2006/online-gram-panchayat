@@ -1,13 +1,24 @@
-- name: Controlled Deploy (git pull only)
-  uses: appleboy/ssh-action@v1.0.0
-  with:
-    host: ${{ secrets.VPS_HOST }}
-    username: ${{ secrets.VPS_USER }}
-    password: ${{ secrets.VPS_PASSWORD }}
-    port: 22
-    script: |
-      echo "🚀 Starting controlled deploy (NO restart)"
-      cd /home/sadmin/apps/online-gram-panchayat
-      git status
-      git pull origin main
-      echo "✅ Code updated (NO service restart)"
+name: Django VPS Practice (Safe)
+
+on:
+  workflow_dispatch   # manual button only
+
+jobs:
+  practice:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Controlled Deploy (git pull only)
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          password: ${{ secrets.VPS_PASSWORD }}
+          port: 22
+          script: |
+            echo "🚀 Starting controlled deploy (NO restart)"
+            cd /home/sadmin/apps/online-gram-panchayat
+            git status
+            git pull origin main
+            echo "✅ Code updated (NO service restart)"
+
