@@ -20,5 +20,6 @@ jobs:
             cd /home/sadmin/apps/online-gram-panchayat
             git status
             git pull origin main
+            sudo systemctl restart gram_panchayat
             echo "✅ Code updated (NO service restart)"
 
