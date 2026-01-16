@@ -1,14 +1,17 @@
 name: Django VPS Practice (Safe)
 
 on:
-  workflow_dispatch   # manual button only
+  push:
+    branches:
+      - main
+
 
 jobs:
   practice:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Controlled Deploy (git pull only)
+      - name: Auto Deploy Django App
         uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.VPS_HOST }}
