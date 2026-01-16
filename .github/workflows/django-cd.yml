@@ -1,0 +1,25 @@
+name: Django VPS Practice (Safe)
+
+on:
+  workflow_dispatch   # manual button only
+
+jobs:
+  practice:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Connect to VPS (Practice Only)
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          password: ${{ secrets.VPS_PASSWORD }}
+          port: 22
+          script: |
+            echo "✅ Connected to VPS"
+            whoami
+            pwd
+            cd /home/sadmin/apps/online-gram-panchayat
+            echo "📂 Inside Django project folder"
+            ls -la
+            echo "✅ Practice step completed (NO DEPLOY)"
