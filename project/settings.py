@@ -196,3 +196,5 @@ MESSAGE_TAGS = {
     messages.ERROR: 'error',
     messages.SUCCESS: 'success',
 }   
+
+CSRF_TRUSTED_ORIGINS = env("CSRF_TRUSTED_ORIGINS", "").split(",")
