@@ -27,32 +27,8 @@ jobs:
             git fetch origin
             git reset --hard origin/main
 
-            echo "🐳 FULL CLEAN DEPLOY"
-            sudo docker compose down -v --remove-orphans
+            echo "🐳 Restart containers"
+            sudo docker compose down
+            sudo docker compose up -d --build
 
-            echo "🧹 Remove static manually"
-            sudo rm -rf staticfiles/*
-            sudo rm -rf media/*
-
-            echo "🐳 Fresh build"
-            sudo docker compose build --no-cache
-
-            echo "🐳 Start containers"
-            sudo docker compose up -d
-
-            echo "⏳ Wait until Django ready"
-            sleep 30
-
-            echo "📦 Django migrations"
-            sudo docker compose exec -T web python manage.py migrate --noinput
-
-            echo "📁 Collect static"
-            sudo docker compose exec -T web python manage.py collectstatic --noinput
-
-            echo "🔄 Restart nginx"
-            sudo docker compose restart nginx
-
-            echo "🧹 Docker cleanup"
-            sudo docker system prune -f
-
-            echo "✅ DEPLOY SUCCESS"
+            echo "✅ DEPLOY FINISHED"
