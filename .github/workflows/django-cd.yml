@@ -23,35 +23,36 @@ jobs:
 
             cd /home/sadmin/apps/online-gram-panchayat
 
-            echo "📥 Pull Latest Code"
+            echo "📥 Pull latest code"
             git fetch origin
             git reset --hard origin/main
 
-            echo "🐳 Stop Old Containers"
-            sudo docker compose down --remove-orphans
+            echo "🐳 FULL CLEAN DEPLOY"
+            sudo docker compose down -v --remove-orphans
 
-            echo "🐳 Build Fresh Image (No Cache)"
+            echo "🧹 Remove static manually"
+            sudo rm -rf staticfiles/*
+            sudo rm -rf media/*
+
+            echo "🐳 Fresh build"
             sudo docker compose build --no-cache
 
-            echo "🐳 Start Containers"
+            echo "🐳 Start containers"
             sudo docker compose up -d
 
-            echo "⏳ Waiting for container startup"
-            sleep 15
+            echo "⏳ Wait until Django ready"
+            sleep 30
 
-            echo "📦 Apply Migrations"
+            echo "📦 Django migrations"
             sudo docker compose exec -T web python manage.py migrate --noinput
 
-            echo "🧹 Remove Old Static Files"
-            sudo docker compose exec -T web rm -rf /app/staticfiles/*
-
-            echo "📁 Collect Static"
+            echo "📁 Collect static"
             sudo docker compose exec -T web python manage.py collectstatic --noinput
 
-            echo "🔄 Restart Nginx"
+            echo "🔄 Restart nginx"
             sudo docker compose restart nginx
 
-            echo "🧹 Cleanup Docker Images"
-            sudo docker image prune -f
+            echo "🧹 Docker cleanup"
+            sudo docker system prune -f
 
-            echo "✅ DEPLOYMENT SUCCESSFUL"
+            echo "✅ DEPLOY SUCCESS"
