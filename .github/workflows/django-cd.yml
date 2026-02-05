@@ -19,7 +19,7 @@ jobs:
           port: 22
 
           script: |
-            echo "🚀 Starting Auto Deploy"
+            echo "🚀 AUTO DEPLOY STARTED"
 
             cd /home/sadmin/apps/online-gram-panchayat
 
@@ -27,16 +27,31 @@ jobs:
             git fetch origin
             git reset --hard origin/main
 
-            echo "🐳 Rebuild Containers"
+            echo "🐳 Stop Old Containers"
             sudo docker compose down --remove-orphans
+
+            echo "🐳 Build Fresh Image (No Cache)"
             sudo docker compose build --no-cache
+
+            echo "🐳 Start Containers"
             sudo docker compose up -d
 
-            echo "📦 Django Tasks"
-            sudo docker compose exec web python manage.py migrate --noinput
-            sudo docker compose exec web python manage.py collectstatic --noinput
+            echo "⏳ Waiting for container startup"
+            sleep 15
+
+            echo "📦 Apply Migrations"
+            sudo docker compose exec -T web python manage.py migrate --noinput
+
+            echo "🧹 Remove Old Static Files"
+            sudo docker compose exec -T web rm -rf /app/staticfiles/*
+
+            echo "📁 Collect Static"
+            sudo docker compose exec -T web python manage.py collectstatic --noinput
 
             echo "🔄 Restart Nginx"
             sudo docker compose restart nginx
 
-            echo "✅ Deployment Completed"
+            echo "🧹 Cleanup Docker Images"
+            sudo docker image prune -f
+
+            echo "✅ DEPLOYMENT SUCCESSFUL"
