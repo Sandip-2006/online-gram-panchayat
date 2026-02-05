@@ -2,9 +2,10 @@ version: "3.9"
 
 services:
   web:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: gram-web
-    image: gram-web:latest
     env_file:
       - .env
     depends_on:

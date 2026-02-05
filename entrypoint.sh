@@ -8,7 +8,7 @@ echo "📦 Running migrations..."
 python manage.py migrate --noinput
 
 echo "🧹 Clearing old static files..."
-rm -rf /app/staticfiles/*
+rm -rf /app/staticfiles/* || true
 
 echo "📁 Collecting static..."
 python manage.py collectstatic --noinput
