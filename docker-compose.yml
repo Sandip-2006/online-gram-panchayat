@@ -1,0 +1,41 @@
+version: "3.9"
+
+services:
+  web:
+    build: .
+    container_name: gram-web
+    image: gram-web:latest
+    env_file:
+      - .env
+    depends_on:
+      - db
+    expose:
+      - "8000"
+    volumes:
+      - staticfiles:/app/staticfiles
+      - ./media:/app/media
+
+  db:
+    image: postgres:16
+    container_name: gram-db
+    env_file:
+      - .env
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    
+  nginx:
+    image: nginx:latest
+    container_name: gram-nginx
+    ports:
+      - "8010:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - staticfiles:/app/staticfiles
+      - ./media:/app/media
+    depends_on:
+      - web
+
+volumes:
+  pgdata:
+  staticfiles:
+  
