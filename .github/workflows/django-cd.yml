@@ -1,17 +1,16 @@
-name: Django VPS Practice (Safe)
+name: Django Docker Auto Deploy
 
 on:
   push:
     branches:
       - main
 
-
 jobs:
-  practice:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Auto Deploy Django App
+      - name: Deploy to VPS
         uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.VPS_HOST }}
@@ -19,22 +18,16 @@ jobs:
           password: ${{ secrets.VPS_PASSWORD }}
           port: 22
           script: |
-            echo "🚀 Starting auto deploy"
+            echo "🚀 Starting Deployment"
 
             cd /home/sadmin/apps/online-gram-panchayat
 
-            echo "📥 Syncing latest code"
+            echo "📥 Pull latest code"
             git fetch origin
             git reset --hard origin/main
 
-            echo "🐍 Activating virtual environment"
-            source venv/bin/activate || source .venv/bin/activate
+            echo "🐳 Restart Docker containers"
+            docker compose down
+            docker compose up -d --build
 
-            echo "🧹 Collecting static files"
-            python manage.py collectstatic --noinput
-
-            echo "🔄 Restarting Django service"
-            sudo systemctl restart gram_panchayat
-
-            echo "✅ Deploy completed successfully"
-
+            echo "✅ Deployment Done"
