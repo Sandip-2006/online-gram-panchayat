@@ -18,35 +18,41 @@ jobs:
           password: ${{ secrets.VPS_PASSWORD }}
           port: 22
 
-          script: |
-            set -e
-            echo "🚀 AUTO DEPLOY STARTED"
+          # ⭐ THIS LINE IMPORTANT
+          envs: VPS_SUDO_PASSWORD
 
-            cd /home/sadmin/apps/online-gram-panchayat
+        env:
+          VPS_SUDO_PASSWORD: ${{ secrets.VPS_SUDO_PASSWORD }}
 
-            echo "📥 Pull latest code"
-            git fetch origin main
-            git reset --hard origin/main
+        script: |
+          set -e
+          echo "🚀 AUTO DEPLOY STARTED"
 
-            echo "🐳 Stop old containers (only this project)"
-            sudo docker compose down --remove-orphans
+          cd /home/sadmin/apps/online-gram-panchayat
 
-            echo "🔨 Build fresh image"
-            sudo docker compose build --no-cache --pull
+          echo "📥 Pull latest code"
+          git fetch origin main
+          git reset --hard origin/main
 
-            echo "🚀 Start DB first"
-            sudo docker compose up -d db
+          echo "🐳 Stop old containers"
+          echo "$VPS_SUDO_PASSWORD" | sudo -S docker compose down --remove-orphans
 
-            echo "⏳ Waiting DB startup..."
-            sleep 15
+          echo "🔨 Build fresh image"
+          echo "$VPS_SUDO_PASSWORD" | sudo -S docker compose build --no-cache --pull
 
-            echo "🚀 Start all containers"
-            sudo docker compose up -d --force-recreate
+          echo "🚀 Start DB first"
+          echo "$VPS_SUDO_PASSWORD" | sudo -S docker compose up -d db
 
-            echo "📊 Container status"
-            sudo docker compose ps
+          echo "⏳ Waiting DB..."
+          sleep 15
 
-            echo "📜 Recent logs"
-            sudo docker compose logs --tail=50
+          echo "🚀 Start all containers"
+          echo "$VPS_SUDO_PASSWORD" | sudo -S docker compose up -d --force-recreate
 
-            echo "✅ DEPLOY DONE"
+          echo "📊 Container status"
+          echo "$VPS_SUDO_PASSWORD" | sudo -S docker compose ps
+
+          echo "📜 Logs"
+          echo "$VPS_SUDO_PASSWORD" | sudo -S docker compose logs --tail=50
+
+          echo "✅ DEPLOY DONE"
