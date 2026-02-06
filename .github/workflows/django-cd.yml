@@ -12,46 +12,22 @@ jobs:
     steps:
       - name: Deploy to VPS via SSH
         uses: appleboy/ssh-action@v1.0.0
-
         env:
           VPS_SUDO_PASSWORD: ${{ secrets.VPS_SUDO_PASSWORD }}
-
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
           password: ${{ secrets.VPS_PASSWORD }}
           port: 22
           envs: VPS_SUDO_PASSWORD
-
           script: |
             set -e
-            echo "🚀 AUTO DEPLOY STARTED"
-
             cd /home/sadmin/apps/online-gram-panchayat
 
-            echo "📥 Pull latest code"
             git fetch origin main
             git reset --hard origin/main
 
-            echo "🐳 Stop old containers"
             echo "$VPS_SUDO_PASSWORD" | sudo -S docker compose down --remove-orphans
-
-            echo "🔨 Build fresh image"
             echo "$VPS_SUDO_PASSWORD" | sudo -S docker compose build --no-cache --pull
-
-            echo "🚀 Start DB first"
-            echo "$VPS_SUDO_PASSWORD" | sudo -S docker compose up -d db
-
-            echo "⏳ Waiting DB..."
-            sleep 15
-
-            echo "🚀 Start all containers"
             echo "$VPS_SUDO_PASSWORD" | sudo -S docker compose up -d --force-recreate
-
-            echo "📊 Container status"
-            echo "$VPS_SUDO_PASSWORD" | sudo -S docker compose ps
-
-            echo "📜 Logs"
-            echo "$VPS_SUDO_PASSWORD" | sudo -S docker compose logs --tail=50
-
-            echo "✅ DEPLOY DONE"
+            echo "Deployment completed successfully."
