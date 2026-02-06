@@ -19,25 +19,34 @@ jobs:
           port: 22
 
           script: |
+            set -e
             echo "🚀 AUTO DEPLOY STARTED"
 
             cd /home/sadmin/apps/online-gram-panchayat
 
             echo "📥 Pull latest code"
-            git fetch origin
+            git fetch origin main
             git reset --hard origin/main
 
-            echo "🐳 Stop containers"
+            echo "🐳 Stop old containers (only this project)"
             sudo docker compose down --remove-orphans
-
-            echo "🧹 Remove old images of this project"
-            sudo docker image rm online-gram-panchayat-web || true
 
             echo "🔨 Build fresh image"
             sudo docker compose build --no-cache --pull
 
-            echo "🚀 Start containers fresh"
+            echo "🚀 Start DB first"
+            sudo docker compose up -d db
+
+            echo "⏳ Waiting DB startup..."
+            sleep 15
+
+            echo "🚀 Start all containers"
             sudo docker compose up -d --force-recreate
 
-            echo "✅ DEPLOY SUCCESS"
+            echo "📊 Container status"
+            sudo docker compose ps
 
+            echo "📜 Recent logs"
+            sudo docker compose logs --tail=50
+
+            echo "✅ DEPLOY DONE"
