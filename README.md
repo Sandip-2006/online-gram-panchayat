@@ -21,7 +21,7 @@ It helps villagers and administrators to connect, manage complaints, events, and
 - **Database:** SQLite / MySQL (Configurable)  
 - **Version Control:** Git & GitHub  
 
----
+---------------------
 
 ## ⚙️ Installation
 
