@@ -18,7 +18,7 @@ It helps villagers and administrators to connect, manage complaints, events, and
 ## 🛠 Tech Stack
 - **Backend:** Django (Python)  
 - **Frontend:** HTML, CSS, JavaScript, Bootstrap  
-- **Database:** SQLite / MySQL (Configurable)  
+- **Database:** PostgreSQL
 - **Version Control:** Git & GitHub  
 
 ---
