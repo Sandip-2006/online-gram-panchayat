@@ -17,11 +17,11 @@ It helps villagers and administrators to connect, manage complaints, events, and
 
 ## 🛠 Tech Stack
 - **Backend:** Django (Python)  
-- **Frontend:** HTML, CSS, JavaScript, Bootstrap  
+- **Frontend:** HTML, CSS, JavaScript, Tailwind  
 - **Database:** PostgreSQL
 - **Version Control:** Git & GitHub  
 
----
+---------------------
 
 ## ⚙️ Installation
 
