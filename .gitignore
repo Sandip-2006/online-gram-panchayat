@@ -11,4 +11,3 @@ __pycache__/
 *.env
 *export_data.py
 .github/
-.gitlab-ci.yml
